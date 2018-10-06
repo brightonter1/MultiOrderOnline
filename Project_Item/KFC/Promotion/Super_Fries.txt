@@ -1,0 +1,10 @@
+﻿Name : Super Fries / ซูเปอร์ฟรายส์
+
+Description :
+Super Fries, a unique swirl shape fried potatoes imported from U.S.A.
+comes with White BBQ dip sauce
+
+อธิบาย :
+ซูเปอร์ฟรายส์ มันฝรั่งแผ่นเกลียวชิ้นโต เกรดพรีเมี่ยมนำเข้าจากสหรัฐอเมริกา อร่อยเพลินกับซอสไวท์บาร์บีคิวเข้มข้น
+
+Price : 99

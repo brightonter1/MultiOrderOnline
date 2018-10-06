@@ -1,0 +1,13 @@
+﻿Name : Chicken Sudwork 1 / ไก่สุดเวิร์ค 1
+
+Description :
+1 pc. Fried Chicken
+3 pcs. WingZ Zabb
+2 pcs. Nuggets
+
+อธิบาย :
+ไก่ทอด 1 ชิ้น
+ไก่วิงซ์แซ่บ 3 ชิ้น
+นักเก็ตส์ 2 ชิ้น
+
+Price : 99

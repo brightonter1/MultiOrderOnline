@@ -1,0 +1,10 @@
+﻿Name : Regular KFC Coleslaw / โคลสลอว์ (ปกติ)
+
+Description :
+A comprised fresh cabbages, carrots
+and sweet onions mixed in KFC’s secret recipe dressing.
+
+อธิบาย :
+สลัดผักที่รวมความสด กรอบของกะหล่ำปลี แครอท และหอมหัวใหญ่ คลุกเคล้าสลัดครีมสูตรลับเฉพาะเคเอฟซี
+
+Price : 38

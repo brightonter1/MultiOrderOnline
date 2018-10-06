@@ -1,0 +1,10 @@
+﻿Name : Regular Tuna Corn Salad / ทูน่า คอร์น สลัด (ปกติ)
+
+Description :
+Awesome salad that can be eaten as a side,
+or on a bed of greens for a heartier meal
+
+อธิบาย :
+ทูน่าและผักสดนานาชนิด ทั้งข้าวโพด, สับปะรด, ถั่วลันเตา คลุกเคล้ากับมายองเนสรสเข้มข้นหวานมัน
+
+Price : 38
