@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MultiOrderOnline</string>
+    <string name="register">Already have an account? <u>Sing in now</u>.</string>
 </resources>
