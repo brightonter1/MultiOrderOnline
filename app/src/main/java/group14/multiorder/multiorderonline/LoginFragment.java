@@ -38,7 +38,7 @@ public class LoginFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         setFont();
-       
+        asdsd
         btnRegister();
     }
 
