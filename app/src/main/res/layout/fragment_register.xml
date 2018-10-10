@@ -13,7 +13,7 @@
     <EditText
         android:id="@+id/register_password"
         android:hint="Password"
-        android:inputType="numberPassword"
+        android:inputType="textPassword"
         android:layout_gravity="center"
         android:layout_width="300dp"
         android:layout_height="50dp" />

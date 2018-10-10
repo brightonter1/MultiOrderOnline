@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null){
+
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.main_view, new LoginFragment())
