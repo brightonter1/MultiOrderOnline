@@ -1,5 +1,4 @@
 package group14.multiorder.multiorderonline;
 
-public class MenuFragment extends Fragment{
-    
+public class MenuFragment {
 }
