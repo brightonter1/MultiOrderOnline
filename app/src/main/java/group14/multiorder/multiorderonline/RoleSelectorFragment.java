@@ -1,5 +1,6 @@
 package group14.multiorder.multiorderonline;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,11 +34,11 @@ public class RoleSelectorFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_view, new RegisterFragment())
-                        .addToBackStack(null)
-                        .commit();
+//                getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.main_view, new RegisterFragment())
+//                        .addToBackStack(null)
+//                        .commit();
             }
         });
     }
@@ -47,10 +48,10 @@ public class RoleSelectorFragment extends Fragment {
         _customerBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_view, new LoginFragment())
-                        .commit();
+//                getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.main_view, new LoginFragment())
+//                        .commit();
             }
         });
     }

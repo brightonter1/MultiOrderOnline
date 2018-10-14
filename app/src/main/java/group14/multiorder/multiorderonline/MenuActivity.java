@@ -76,9 +76,9 @@ public class MenuActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-//                    return new LoginFragment();
+                    return new RoleSelectorFragment();
                 case 1:
-//                    return new RegisterFragment();
+                    return new RoleSelectorFragment();
             }
             return null;
         }
