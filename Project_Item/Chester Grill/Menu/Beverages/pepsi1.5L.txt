@@ -1,0 +1,7 @@
+﻿Name : Pepsi 1.5 Lt. / เป๊ปซี่ 1.5 ล. (ขวด)
+
+Description : Pepsi 1.5 Lt. (Bottle)
+
+อธิบาย :  เป๊ปซี่ 1.5 ล. (ขวด)
+
+Price : 35 

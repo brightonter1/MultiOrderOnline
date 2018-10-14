@@ -1,0 +1,7 @@
+﻿Name : Pepsi 550 ml. / เป๊ปซี่ 550 มล. (ขวด)
+
+Description : Pepsi 550 ml. (Bottle)
+
+อธิบาย :  เป๊ปซี่ 550 มล. (ขวด)
+
+Price : 32 
