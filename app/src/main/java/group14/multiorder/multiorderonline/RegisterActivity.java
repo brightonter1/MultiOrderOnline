@@ -1,13 +1,12 @@
 package group14.multiorder.multiorderonline;
 
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,23 +17,20 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class RegisterFragment extends Fragment {
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_register, container, false );
-    }
-    FirebaseAuth mAuth;
+public class RegisterActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+    private Context context;
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
+        context = this;
         btnRegister();
     }
-
     public void btnRegister(){
-        Button btnRegis = getView().findViewById(R.id.register_regisBtn);
+        Button btnRegis = findViewById(R.id.register_regisBtn);
         btnRegis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,8 +39,8 @@ public class RegisterFragment extends Fragment {
         });
     }
     public void regisNewuser(){
-        EditText _email = getView().findViewById(R.id.register_email);
-        EditText _pwd = getView().findViewById(R.id.register_password);
+        EditText _email = findViewById(R.id.register_email);
+        EditText _pwd = findViewById(R.id.register_password);
         String _emailStr = _email.getText().toString();
         String _pwdStr = _pwd.getText().toString();
 
@@ -54,18 +50,16 @@ public class RegisterFragment extends Fragment {
                 public void onSuccess(AuthResult authResult) {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
-                    Toast.makeText(getActivity(), "Register Complete!!", Toast.LENGTH_SHORT).show();
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.main_view, new LoginFragment())
-                            .addToBackStack(null)
-                            .commit();
+                    Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    finish();
+                    startActivity(intent);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Log.d("System", "[Register] Register failed");
-                    Toast.makeText(getActivity(), "ERROR : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "ERROR : " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -75,7 +69,7 @@ public class RegisterFragment extends Fragment {
             return true;
         }else{
             Log.d("System", "[Register] pwd at least 6 character");
-            Toast.makeText(getActivity(), "pass word must be at least 6 character", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "pass word must be at least 6 character", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -88,7 +82,7 @@ public class RegisterFragment extends Fragment {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), "ERROR : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "ERROR : " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
