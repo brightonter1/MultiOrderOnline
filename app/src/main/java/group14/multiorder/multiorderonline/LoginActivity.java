@@ -101,5 +101,6 @@ public class LoginActivity extends AppCompatActivity {
         userName.setTypeface(typeface);
         pwd.setTypeface(typeface);
         btn.setTypeface(typeface);
+
     }
 }
