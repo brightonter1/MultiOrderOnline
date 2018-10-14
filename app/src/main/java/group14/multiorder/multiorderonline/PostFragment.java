@@ -1,5 +1,7 @@
 package group14.multiorder.multiorderonline;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,12 +15,34 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-public class PostFragment extends Fragment {
+import group14.multiorder.multiorderonline.util.UniversalImageLoader;
+
+
+public class PostFragment extends Fragment implements SelectPhotoDialog.onPhotoSelectedLister {
     private static final String TAG = "PostFragment";
 
     private ImageView _postImage;
     private EditText _title;
     private ProgressBar _ProgressBar;
+
+    private Bitmap mSelectedBitmap;
+    private Uri mSelectedUri;
+    @Override
+    public void getImagePath(Uri imagePath) {
+        Log.d(TAG, "getImagePth: setting the image to imageview");
+        UniversalImageLoader.setImage(imagePath.toString(), _postImage);
+        mSelectedBitmap = null;
+        mSelectedUri = imagePath;
+    }
+
+    @Override
+    public void getImageBitmap(Bitmap bitmap) {
+        Log.d(TAG, "getImageBitmap: setting the image to imageview");
+        _postImage.setImageBitmap(bitmap);
+        mSelectedUri = null;
+        mSelectedBitmap = bitmap;
+
+    }
 
     @Nullable
     @Override
@@ -29,6 +53,7 @@ public class PostFragment extends Fragment {
         _ProgressBar = view.findViewById(R.id.progressBar);
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        init();
         return view;
     }
 
@@ -37,11 +62,16 @@ public class PostFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: opening dialog");
+                SelectPhotoDialog dialog = new SelectPhotoDialog();
+                dialog.show(getFragmentManager(), getString(R.string.dialog_select_photo));
+                dialog.setTargetFragment(PostFragment.this, 1);
             }
         });
     }
 
     private void resetFiels(){
+        UniversalImageLoader.setImage("", _postImage);
+        _title.setText("");
 
 
     }
@@ -59,4 +89,6 @@ public class PostFragment extends Fragment {
     private boolean isEmpty(String string){
         return string.equals("");
     }
+
+
 }
