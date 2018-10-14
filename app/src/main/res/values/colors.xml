@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="Yellow">#FFFF00</color>
+    <color name="solidRegis">#336469</color>
+    <color name="toolbar">#0A454D</color>
 </resources>
