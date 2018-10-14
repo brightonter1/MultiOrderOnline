@@ -6,4 +6,6 @@
     <color name="Yellow">#FFFF00</color>
     <color name="solidRegis">#336469</color>
     <color name="toolbar">#0A454D</color>
+    <color name="Black">#000000</color>
+    <color name="White">#FFFFFF</color>
 </resources>
