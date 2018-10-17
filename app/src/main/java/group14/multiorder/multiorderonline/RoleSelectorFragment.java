@@ -1,14 +1,21 @@
 package group14.multiorder.multiorderonline;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 
 public class RoleSelectorFragment extends Fragment {
 
@@ -36,7 +43,7 @@ public class RoleSelectorFragment extends Fragment {
             public void onClick(View v) {
 //                getActivity().getSupportFragmentManager()
 //                        .beginTransaction()
-//                        .replace(R.id.main_view, new RegisterFragment())
+//                        .replace(R.id.main_view, new PostFragment())
 //                        .addToBackStack(null)
 //                        .commit();
             }
@@ -55,4 +62,7 @@ public class RoleSelectorFragment extends Fragment {
             }
         });
     }
+
+
+
 }

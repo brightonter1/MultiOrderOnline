@@ -35,23 +35,23 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         context = this;
-//        setFont();
-//        btnLogin();
-//        btnRegister();
-        if (savedInstanceState == null){
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.main_view, new RoleSelectorFragment())
-                    .commit();
-        }
+        setFont();
+        btnLogin();
+        btnRegister();
+//        if (savedInstanceState == null){
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .replace(R.id.main_view, new RoleSelectorFragment())
+//                    .commit();
+//        }
     }
     public void btnRegister(){
         TextView btnReg = findViewById(R.id.login_register);
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+//                startActivity(intent);
             }
         });
     }
@@ -101,5 +101,6 @@ public class LoginActivity extends AppCompatActivity {
         userName.setTypeface(typeface);
         pwd.setTypeface(typeface);
         btn.setTypeface(typeface);
+
     }
 }

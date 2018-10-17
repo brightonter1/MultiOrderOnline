@@ -1,9 +1,9 @@
 package group14.multiorder.multiorderonline;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -11,26 +11,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 import group14.multiorder.multiorderonline.util.UniversalImageLoader;
 
 
-public class PostFragment extends Fragment implements SelectPhotoDialog.onPhotoSelectedLister {
+public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoSelectedListener {
     private static final String TAG = "PostFragment";
 
-    private ImageView _postImage;
-    private EditText _title;
-    private ProgressBar _ProgressBar;
-
-    private Bitmap mSelectedBitmap;
-    private Uri mSelectedUri;
     @Override
     public void getImagePath(Uri imagePath) {
-        Log.d(TAG, "getImagePth: setting the image to imageview");
-        UniversalImageLoader.setImage(imagePath.toString(), _postImage);
+        Log.d(TAG, "getImagePath: setting the image to imageview");
+        UniversalImageLoader.setImage(imagePath.toString(), mPostImage);
+        //assign to global variable
         mSelectedBitmap = null;
         mSelectedUri = imagePath;
     }
@@ -38,30 +38,55 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.onPhotoS
     @Override
     public void getImageBitmap(Bitmap bitmap) {
         Log.d(TAG, "getImageBitmap: setting the image to imageview");
-        _postImage.setImageBitmap(bitmap);
+        mPostImage.setImageBitmap(bitmap);
+        //assign to a global variable
         mSelectedUri = null;
         mSelectedBitmap = bitmap;
-
     }
+
+    //widgets
+    private ImageView mPostImage;
+    private EditText mTitle, mDescription, mPrice, mCountry, mStateProvince, mCity, mContactEmail;
+    private Button mPost;
+    private ProgressBar mProgressBar;
+
+    //vars
+    private Bitmap mSelectedBitmap;
+    private Uri mSelectedUri;
+
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(getActivity()));
         View view = inflater.inflate(R.layout.fragment_post, container, false);
-        _postImage = view.findViewById(R.id.post_image);
-        _title = view.findViewById(R.id.post_title);
-        _ProgressBar = view.findViewById(R.id.progressBar);
+        mPostImage = view.findViewById(R.id.post_image);
+        mTitle = view.findViewById(R.id.input_title);
+        mDescription = view.findViewById(R.id.input_description);
+        mPrice = view.findViewById(R.id.input_price);
+        mCountry = view.findViewById(R.id.input_country);
+        mStateProvince = view.findViewById(R.id.input_state_province);
+        mCity = view.findViewById(R.id.input_city);
+        mContactEmail = view.findViewById(R.id.input_email);
+        mPost = view.findViewById(R.id.btn_post);
+        mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+
         init();
+
         return view;
     }
 
+
+
     private void init(){
-        _postImage.setOnClickListener(new View.OnClickListener() {
+
+        mPostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: opening dialog");
+                Log.d(TAG, "onClick: opening dialog to choose new photo");
                 SelectPhotoDialog dialog = new SelectPhotoDialog();
                 dialog.show(getFragmentManager(), getString(R.string.dialog_select_photo));
                 dialog.setTargetFragment(PostFragment.this, 1);
@@ -69,26 +94,38 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.onPhotoS
         });
     }
 
-    private void resetFiels(){
-        UniversalImageLoader.setImage("", _postImage);
-        _title.setText("");
-
-
+    private void resetFields(){
+        UniversalImageLoader.setImage("", mPostImage);
+        mTitle.setText("");
+        mDescription.setText("");
+        mPrice.setText("");
+        mCountry.setText("");
+        mStateProvince.setText("");
+        mCity.setText("");
+        mContactEmail.setText("");
     }
 
     private void showProgressBar(){
-        _ProgressBar.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.VISIBLE);
+
     }
 
     private void hideProgressBar(){
-        if(_ProgressBar.getVisibility() == View.VISIBLE){
-            _ProgressBar.setVisibility(View.INVISIBLE);
+        if(mProgressBar.getVisibility() == View.VISIBLE){
+            mProgressBar.setVisibility(View.INVISIBLE);
         }
     }
 
+    /**
+     * Return true if the @param is null
+     * @param string
+     * @return
+     */
     private boolean isEmpty(String string){
         return string.equals("");
     }
+
+
 
 
 }

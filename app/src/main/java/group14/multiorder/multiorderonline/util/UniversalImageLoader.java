@@ -10,6 +10,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
+
 import group14.multiorder.multiorderonline.R;
 
 public class UniversalImageLoader {
@@ -17,12 +18,12 @@ public class UniversalImageLoader {
     private static final int defaultImage = R.drawable.logo;
     private Context mContext;
 
-    public UniversalImageLoader(Context context){
+    public UniversalImageLoader(Context context) {
         mContext = context;
     }
 
     public ImageLoaderConfiguration getConfig(){
-        DisplayImageOptions defaultOption = new DisplayImageOptions.Builder()
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .showImageOnLoading(defaultImage)
                 .showImageForEmptyUri(defaultImage)
                 .showImageOnFail(defaultImage)
@@ -31,13 +32,24 @@ public class UniversalImageLoader {
                 .cacheOnDisk(true).resetViewBeforeLoading(true)
                 .imageScaleType(ImageScaleType.EXACTLY)
                 .displayer(new FadeInBitmapDisplayer(300)).build();
+
         ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(mContext)
-                .defaultDisplayImageOptions(defaultOption)
+                .defaultDisplayImageOptions(defaultOptions)
                 .memoryCache(new WeakMemoryCache())
                 .diskCacheSize(100 * 1024 * 1024).build();
+
         return configuration;
     }
+
+    /**
+     * this method can be sued to set images that are static. It can't be used if the images
+     * are being changed in the Fragment/Activity - OR if they are being set in a list or
+     * a grid
+     * @param imgURL
+     * @param image
+     */
     public static void setImage(String imgURL, ImageView image){
+
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.displayImage(imgURL, image);
     }
