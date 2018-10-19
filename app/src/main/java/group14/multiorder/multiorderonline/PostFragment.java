@@ -74,6 +74,10 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
     private double mProgress = 0;
 
 
+    Post post = new Post();
+    DatabaseReference reference;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -156,6 +160,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
     public class BackgroundImageResize extends AsyncTask<Uri, Integer, byte[]>{
         Bitmap mBitmap;
 
+
         BackgroundImageResize(Bitmap bitmap){
             this.mBitmap = bitmap;
         }
@@ -213,22 +218,43 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
 
                 //insert the download uri into firebase database
                 Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl();
-                Log.d(TAG, "OnSuccess: firebase download url"+ task.toString());
-                //Uri firebaseUri = taskSnapshot.getMetadata().getReference().getDownloadUrl().getResult();
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-                Post post = new Post();
-                post.setImage(task.toString());
-                post.setDescription(mDescription.getText().toString());
-                post.setPost_id(postId);
-                post.setPrice(mPrice.getText().toString());
-                post.setTitle(mTitle.getText().toString());
-                post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                task.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String UI = uri.toString();
+                        //System.out.print("URI = "+UI);
+                        Log.d(TAG, "URI = "+UI);
+                        reference = FirebaseDatabase.getInstance().getReference();
+                        post.setImage(UI);
+                        post.setDescription(mDescription.getText().toString());
+                        post.setPost_id(postId);
+                        post.setPrice(mPrice.getText().toString());
+                        post.setTitle(mTitle.getText().toString());
+                        post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-                reference.child(getString(R.string.node_post))
-                        .child(postId)
-                        .setValue(post);
-                resetFields();
+                        reference.child(getString(R.string.node_post))
+                                .child(postId)
+                                .setValue(post);
+                        resetFields();
+                        Log.d(TAG, "OnSuccess: firebase download url"+ UI);
+
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.print("ERERER");
+                    }
+                });
+
+                //Log.d(TAG, "OnSuccess: firebase download url"+ task.toString());
+                //Uri firebaseUri = task.getResult();
+
+
+
+//                post.setImage(firebaseUri.toString());
+
 
             }
         }).addOnFailureListener(new OnFailureListener() {
