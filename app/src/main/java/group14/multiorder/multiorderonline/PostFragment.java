@@ -63,7 +63,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
 
     //widgets
     private ImageView mPostImage;
-    private EditText mTitle, mDescription, mPrice, mCountry, mStateProvince, mCity, mContactEmail;
+    private EditText mTitle, mDescription, mPrice;
     private Button mPost;
     private ProgressBar mProgressBar;
 
@@ -87,10 +87,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
         mTitle = view.findViewById(R.id.input_title);
         mDescription = view.findViewById(R.id.input_description);
         mPrice = view.findViewById(R.id.input_price);
-        mCountry = view.findViewById(R.id.input_country);
-        mStateProvince = view.findViewById(R.id.input_state_province);
-        mCity = view.findViewById(R.id.input_city);
-        mContactEmail = view.findViewById(R.id.input_email);
+
         mPost = view.findViewById(R.id.btn_post);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
 
@@ -287,10 +284,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
         mTitle.setText("");
         mDescription.setText("");
         mPrice.setText("");
-        mCountry.setText("");
-        mStateProvince.setText("");
-        mCity.setText("");
-        mContactEmail.setText("");
+
     }
 
     private void showProgressBar(){
