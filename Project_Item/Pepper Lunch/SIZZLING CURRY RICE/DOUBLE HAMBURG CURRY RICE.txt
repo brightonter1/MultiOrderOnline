@@ -1,0 +1,7 @@
+﻿Name : DOUBLE HAMBURG CURRY RICE / ข้าวแกงกะหรี่ดับเบิ้ลแฮมเบิร์ก
+
+Description : 2 Pieces of Hamburg steak which are flavoured by special recipes from Pepper Lunch best combine with rich tasted curry.
+
+อธิบาย :  สเต็กเนื้อแฮมเบิร์ก 2 ชิ้นที่ปรุงรสสูตรเฉพาะของเปปเปอร์ ลันช์ เพื่อให้รสชาติที่เข้ากันกับแกงกะหรี่รสเข้ม ผสานรสชาติความเป็นสเต็กและแกงกะหรี่เข้ากันอย่างลงตัว
+
+Price : 205

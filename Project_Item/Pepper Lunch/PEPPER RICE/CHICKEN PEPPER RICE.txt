@@ -1,0 +1,7 @@
+﻿Name : CHICKEN PEPPER RICE / ข้าวเปปเปอร์ไก่
+
+Description : Tender chunks of juicy Chicken thigh served with fragrant Japanese rice which is blended with special pepper and butter form Pepper Lunch
+
+อธิบาย :  เนื้อไก่เนื้อนุ่มชิ้นโตที่คัดสรรมาอย่างดี เสิร์ฟบนอาหารจานร้อน พร้อมกับข้าวญี่ปุ่นที่หอมพริกไทยเลยเนยสูตรพิเศษจากเปปเปอร์ ลันช์
+
+Price : 99

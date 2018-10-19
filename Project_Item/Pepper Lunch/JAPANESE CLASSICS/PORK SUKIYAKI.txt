@@ -1,0 +1,7 @@
+﻿Name : PORK SUKIYAKI / สุกี้ยากี้หมู
+
+Description : Sliced tender Pork divisibly with Sukiyaki sauce Japan style served on hot plate with egg.
+
+อธิบาย :  หมูสไลด์แผ่นบางลงตัวด้วยซอสสุกี้สไตล์ญี่ปุ่น เสิร์ฟร้อนให้เนื้อนุ่มชุ่มลิ้นพร้อมไข่ไก่
+
+Price : 220
