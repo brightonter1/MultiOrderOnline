@@ -1,0 +1,7 @@
+﻿Name : SEAFOOD AGLIO OLIO / พาสต้าซีฟู้ด
+
+Description : Decaration of the favourite Hot&#038;Spicy pasta menu with full of Seafood around the pasta. Team up with Shrimps, Squids and Clams. Served on hot plate. Taste full flavoured of Seafood.
+
+อธิบาย :  ประกาศศักดาความนิยมสูงสุดกับเมนูพาสต้ารสชาติเผ็ดร้อน กับซีฟู้ดที่รายล้อมเส้นพาสต้าแบบจุใจ ทั้งกุ้ง หมึก และหอยลาย ยกก๊วนกันมาบนจานร้อนเสิร์ฟพร้อมกับเส้นพาสต้าเหนียวนุ่มกำลังดี ได้รสชาติที่กลมกล่อมเข้ากัน
+
+Price : 180

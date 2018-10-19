@@ -1,0 +1,7 @@
+﻿Name : BBQ CHICKEN & HAMBURG / สเต็กบาร์บีคิวไก่และแฮมเบิร์ก
+
+Description : Chicken steak and Hamburg steak blended with BBQ sauce. Serve on our special hot plate. Delicious with  full favour.
+
+อธิบาย :  สเต็กไก่ชิ้นโตกับสเต็กแฮมเบิร์กหนานุ่ม คลุกเคล้าด้วยซอส BBQ ผสานกันอย่างลงตัว จัดเสิร์ฟบนจานร้อนให้รสชาติอร่อยร้อนกลมกล่อม
+
+Price : 215
