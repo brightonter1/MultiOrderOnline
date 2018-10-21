@@ -8,8 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+
 public class RoleSelectorActivity extends AppCompatActivity{
 
+    private FirebaseAuth mAuth;
     private Context context;
 
     @Override
@@ -17,6 +21,7 @@ public class RoleSelectorActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_role_selector);
         context = this;
+        mAuth = FirebaseAuth.getInstance();
         suplierButton();
         customerButton();
 
@@ -29,10 +34,10 @@ public class RoleSelectorActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 //
-                Intent intent = new Intent(RoleSelectorActivity.this, LoginActivity.class);
-
-                finish();
-                startActivity(intent);
+//                Intent intent = new Intent(RoleSelectorActivity.this, SuplierRegisterActivity.class);
+//                finish();
+//                startActivity(intent);
+//                go to suplieractivity
             }
         });
     }
@@ -43,9 +48,10 @@ public class RoleSelectorActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(RoleSelectorActivity.this, RegisterActivity.class);
-                finish();
-                startActivity(intent);
+//                Intent intent = new Intent(RoleSelectorActivity.this, RegisterActivity.class);
+//                finish();
+//                startActivity(intent);
+//                go to customer activity
             }
         });
     }
