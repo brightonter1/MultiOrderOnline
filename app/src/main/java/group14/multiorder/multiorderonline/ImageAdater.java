@@ -25,7 +25,7 @@ public class ImageAdater extends RecyclerView.Adapter<ImageAdater.ImageViewHolde
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.image_item, viewGroup, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.fragment_nearby, viewGroup, false);
         return new ImageViewHolder(v);
     }
 
@@ -54,6 +54,7 @@ public class ImageAdater extends RecyclerView.Adapter<ImageAdater.ImageViewHolde
 
             textViewname = itemView.findViewById(R.id.text_view_name);
             imageView = itemView.findViewById(R.id.image_view_upload);
+
         }
     }
 

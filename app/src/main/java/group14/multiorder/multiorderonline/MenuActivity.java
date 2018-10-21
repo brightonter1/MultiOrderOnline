@@ -1,8 +1,10 @@
 package group14.multiorder.multiorderonline;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 
 
@@ -28,6 +30,8 @@ public class MenuActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +51,35 @@ public class MenuActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        verifyPermissions();
+//        verifyPermissions();
+        bottomNavigation();
+    }
+    public void bottomNavigation(){
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.item_recent:
+                        // do this event
+//                        Intent intent = new Intent(MenuActivity.this, SettingActivity.class);
+//                        startActivity(intent);
+
+                        Log.d("Choose", "1");
+                        return true;
+                    case R.id.item_favorite:
+                        Log.d("Choose", "2");
+                        // do this event
+                        return true;
+                    case R.id.item_nearby:
+                        Log.d("Choose", "3");
+                        // do this event
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
 
@@ -66,9 +98,9 @@ public class MenuActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == 0) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -85,17 +117,18 @@ public class MenuActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-
-                    return new RoleSelectorFragment();
+                    return new NearbyFragment();
                 case 1:
-                    return new PostFragment();
+                    return new PromotionFragment();
+                case 2:
+                    return new PopularFragment();
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     }
 

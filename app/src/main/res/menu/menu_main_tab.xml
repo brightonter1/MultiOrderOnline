@@ -2,9 +2,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="group14.multiorder.multiorderonline.MenuActivity">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/action_favorite"
+        android:orderInCategory="300"
+        android:title="Cart"
+        android:icon="@drawable/ic_cart"
+        app:showAsAction="ifRoom"></item>
 </menu>
