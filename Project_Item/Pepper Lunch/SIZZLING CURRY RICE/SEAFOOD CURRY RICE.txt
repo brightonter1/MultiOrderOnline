@@ -1,0 +1,7 @@
+﻿Name : SEAFOOD CURRY RICE / ข้าวแกงกะหรี่ซีฟู้ด
+
+Description : Team up with all Seafood such as Shrimp, Squids and Clams which are cooked with curry. Serve on our special hot plate to you.
+
+อธิบาย :  ยกแก๊งค์กันมาจากทะเลทั้ง กุ้ง ปลาหมึก และหอยลาย กับเมนูข้าวแกงกะหรี่ซีฟู้ดแนวใหม่ที่ทั้งสดและใหม่ อร่อยร้อนส่งตรงถึงมือคุณเอาใจคนรักซีฟู้ดไม่ควรพลาด
+
+Price : 200
