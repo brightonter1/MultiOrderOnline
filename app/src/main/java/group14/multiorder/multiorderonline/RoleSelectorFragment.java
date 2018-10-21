@@ -28,7 +28,7 @@ public class RoleSelectorFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        customerLogin();
+        customerButton();
         suplierButton();
 
 
@@ -36,7 +36,7 @@ public class RoleSelectorFragment extends Fragment {
 
 
     public void suplierButton(){
-        Button _supplierBtn = getView().findViewById(R.id.role_selector_suplier_btn);
+        Button _supplierBtn = getView().findViewById(R.id.role_selector_suplier_btn01);
         _supplierBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -50,8 +50,8 @@ public class RoleSelectorFragment extends Fragment {
         });
     }
 
-    public void customerLogin(){
-        Button _customerBtn = getView().findViewById(R.id.role_selector_customer_btn);
+    public void customerButton(){
+        Button _customerBtn = getView().findViewById(R.id.role_selector_customer_btn01);
         _customerBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
