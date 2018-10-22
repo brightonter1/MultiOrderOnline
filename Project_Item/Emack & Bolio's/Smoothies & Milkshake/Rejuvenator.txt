@@ -1,0 +1,5 @@
+Name : Rejuvenator
+
+Description : apple juice, non-fat vanilla yogurt, banana, strawberries
+
+Price : 170
