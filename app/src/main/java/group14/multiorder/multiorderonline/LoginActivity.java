@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -106,7 +107,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginalready(){
-        if(!mAuth.getCurrentUser().getUid().isEmpty()){
+        FirebaseUser _user = mAuth.getCurrentUser();
+
+        if(_user != null){
             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(intent);
         }
