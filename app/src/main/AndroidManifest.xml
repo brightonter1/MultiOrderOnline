@@ -33,6 +33,7 @@
 
 
         </activity>
+        <activity android:name=".SuplierRegisterActivity"/>
         <activity android:name=".RoleSelectorActivity" />
     </application>
 

@@ -16,9 +16,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth mAuth;
     private Context context;
     @Override
@@ -50,6 +51,10 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onSuccess(AuthResult authResult) {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
+                    firebaseFirestore.collection("UserRole")
+                            .document("customer")
+                            .collection("uid")
+                            .document(mAuth.getCurrentUser().getUid());
                     Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     finish();
