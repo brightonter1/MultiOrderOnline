@@ -35,6 +35,11 @@
 
 
         </activity>
+<<<<<<< HEAD
+=======
+        <activity android:name=".SuplierRegisterActivity"/>
+        <activity android:name=".RoleSelectorActivity" />
+>>>>>>> 2f31c2083905aed2b81f3e05476dc5db52eca94b
     </application>
 
 </manifest>

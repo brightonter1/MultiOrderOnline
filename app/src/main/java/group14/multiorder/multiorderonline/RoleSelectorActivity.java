@@ -49,6 +49,10 @@ public class RoleSelectorActivity extends AppCompatActivity{
             public void onClick(View v) {
 
                 Intent intent = new Intent(RoleSelectorActivity.this, RegisterActivity.class);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2f31c2083905aed2b81f3e05476dc5db52eca94b
                 startActivity(intent);
 //                go to customer activity
             }

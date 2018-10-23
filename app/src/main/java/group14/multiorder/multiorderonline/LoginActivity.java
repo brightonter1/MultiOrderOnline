@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         setFont();
         btnLogin();
         btnRegister();
+        loginalready();
 //        if (savedInstanceState == null){
 //            getSupportFragmentManager()
 //                    .beginTransaction()
@@ -102,5 +103,12 @@ public class LoginActivity extends AppCompatActivity {
         pwd.setTypeface(typeface);
         btn.setTypeface(typeface);
 
+    }
+
+    public void loginalready(){
+        if(!mAuth.getCurrentUser().getUid().isEmpty()){
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            startActivity(intent);
+        }
     }
 }

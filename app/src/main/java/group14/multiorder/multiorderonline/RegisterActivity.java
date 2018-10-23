@@ -17,12 +17,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+<<<<<<< HEAD
 
 import java.util.HashMap;
 import java.util.Map;
+=======
+>>>>>>> 2f31c2083905aed2b81f3e05476dc5db52eca94b
 
 public class RegisterActivity extends AppCompatActivity {
-
+    private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth mAuth;
     private Context context;
     @Override
@@ -54,6 +57,10 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onSuccess(AuthResult authResult) {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
+                    firebaseFirestore.collection("UserRole")
+                            .document("customer")
+                            .collection("uid")
+                            .document(mAuth.getCurrentUser().getUid());
                     Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
                     createDBforUser(mAuth.getCurrentUser().getUid());
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
