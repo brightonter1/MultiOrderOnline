@@ -1,8 +1,10 @@
 package group14.multiorder.multiorderonline;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +32,7 @@ public class ImageAdater extends RecyclerView.Adapter<ImageAdater.ImageViewHolde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ImageViewHolder imageViewHolder, int i) {
+    public void onBindViewHolder(@NonNull ImageViewHolder imageViewHolder, final int i) {
         Post postCurrent = mPosts.get(i);
         imageViewHolder.textViewname.setText(postCurrent.getTitle());
         Picasso.with(mContext)
@@ -39,6 +41,13 @@ public class ImageAdater extends RecyclerView.Adapter<ImageAdater.ImageViewHolde
                 .centerCrop()
                 .into(imageViewHolder.imageView);
 
+        imageViewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), RegisterActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,7 +58,7 @@ public class ImageAdater extends RecyclerView.Adapter<ImageAdater.ImageViewHolde
     public class ImageViewHolder extends RecyclerView.ViewHolder{
         public TextView textViewname;
         public ImageView imageView;
-        public ImageViewHolder(@NonNull View itemView) {
+        public ImageViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             textViewname = itemView.findViewById(R.id.text_view_name);
