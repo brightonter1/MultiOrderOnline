@@ -83,9 +83,9 @@ public class ViewMenuActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new PopularFragment();
+                    return new menuFragment();
                 case 1:
-                    return new PromotionFragment();
+                    return new infoFragment();
             }
             return null;
         }

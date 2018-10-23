@@ -17,12 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-<<<<<<< HEAD
-
 import java.util.HashMap;
 import java.util.Map;
-=======
->>>>>>> 2f31c2083905aed2b81f3e05476dc5db52eca94b
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;

@@ -19,11 +19,7 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_main_tab"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ImageActivity"></activity>
@@ -32,14 +28,16 @@
             android:name=".ViewMenuActivity"
             android:label="@string/title_activity_view_menu"
             android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
-<<<<<<< HEAD
-=======
+
         <activity android:name=".SuplierRegisterActivity"/>
         <activity android:name=".RoleSelectorActivity" />
->>>>>>> 2f31c2083905aed2b81f3e05476dc5db52eca94b
     </application>
 
 </manifest>
