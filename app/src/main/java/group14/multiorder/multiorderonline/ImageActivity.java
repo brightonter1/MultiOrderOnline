@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+//* ใช้ตัว nearbyFragment แทน
 public class ImageActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;

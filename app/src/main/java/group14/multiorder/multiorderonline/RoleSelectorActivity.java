@@ -36,7 +36,6 @@ public class RoleSelectorActivity extends AppCompatActivity{
             public void onClick(View v) {
 //
                 Intent intent = new Intent(RoleSelectorActivity.this, SuplierRegisterActivity.class);
-                finish();
                 startActivity(intent);
 //                go to suplieractivity
             }
@@ -50,7 +49,6 @@ public class RoleSelectorActivity extends AppCompatActivity{
             public void onClick(View v) {
 
                 Intent intent = new Intent(RoleSelectorActivity.this, RegisterActivity.class);
-                finish();
                 startActivity(intent);
 //                go to customer activity
             }

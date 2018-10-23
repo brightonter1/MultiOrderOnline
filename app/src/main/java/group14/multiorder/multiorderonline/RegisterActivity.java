@@ -16,6 +16,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -51,6 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
                     Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
+                    createDBforUser(mAuth.getCurrentUser().getUid());
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     finish();
                     startActivity(intent);
@@ -86,4 +91,27 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void createDBforUser(String _uid){
+        Map<String, String> data = new HashMap<>();
+        data.put("name", "BBBBRIGHT");
+        data.put("lastname", "123456");
+        data.put("age", "21");
+        FirebaseFirestore _fireStore = FirebaseFirestore.getInstance();
+        _fireStore.collection("customer").document(_uid).set(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("System", "Done");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("System", "Faild");
+            }
+        });
+
+
+    }
+
 }
