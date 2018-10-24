@@ -53,10 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onSuccess(AuthResult authResult) {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
-                    firebaseFirestore.collection("UserRole")
-                            .document("customer")
-                            .collection("uid")
-                            .document(mAuth.getCurrentUser().getUid());
+
                     Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
                     createDBforUser(mAuth.getCurrentUser().getUid());
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
@@ -81,11 +78,13 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
     }
-    public void sendVerifiedEmail(FirebaseUser _user) {
+    public void sendVerifiedEmail(final FirebaseUser _user) {
         _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("System", "[Register] Send verifiedEmail ");
+                firebaseFirestore.collection("customer")
+                        .document("sdasd");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
