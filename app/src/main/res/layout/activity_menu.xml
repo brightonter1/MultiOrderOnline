@@ -18,6 +18,7 @@
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -26,13 +27,6 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:allowUndo="true"
-                android:gravity="center"
-                android:text="Restaurants"
-                android:textSize="20dp" />
 
 
 
