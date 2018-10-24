@@ -9,7 +9,7 @@
 
 
         <ImageView
-            android:id="@+id/menu_item_img"
+            android:id="@+id/menuitem_img"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_alignParentStart="true"
@@ -19,16 +19,16 @@
             android:src="@drawable/login_bg" />
 
         <TextView
-            android:id="@+id/menu_item_name"
+            android:id="@+id/menuitem_name"
             android:layout_width="121dp"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/menu_item_img"
+            android:layout_alignTop="@+id/menuitem_img"
             android:layout_centerHorizontal="true"
             android:text="TextView"
-            android:layout_toRightOf="@+id/menu_item_img"/>
+            android:layout_toRightOf="@+id/menuitem_img"/>
 
         <TextView
-            android:id="@+id/menu_item_des"
+            android:id="@+id/menuitem_des"
             android:layout_width="229dp"
             android:layout_height="59dp"
             android:layout_alignParentEnd="true"
@@ -36,11 +36,11 @@
             android:layout_marginEnd="14dp"
             android:layout_marginTop="47dp"
             android:text="TextView"
-            android:layout_toRightOf="@+id/menu_item_img"
-            android:layout_below="@+id/menu_item_name"/>
+            android:layout_toRightOf="@+id/menuitem_img"
+            android:layout_below="@+id/menuitem_name"/>
 
         <Button
-            android:id="@+id/menu_item_price"
+            android:id="@+id/menuitem_price"
             android:layout_width="wrap_content"
             android:layout_height="41dp"
             android:layout_alignParentEnd="true"
