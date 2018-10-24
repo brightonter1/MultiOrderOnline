@@ -20,7 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -50,16 +53,24 @@ public class ViewMenuActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        data();
+        getStoreAndShow();
     }
 
-    public void data(){
+    public void getStoreAndShow(){
         Post post = getIntent().getParcelableExtra("STORE");
         Log.d("POST", ""+post);
-        TextView tv = findViewById(R.id.store_name);
-        tv.setText(post.getTitle());
 
+        ImageView imageView = findViewById(R.id.image_store);
+        TextView storeName = findViewById(R.id.store_name);
+
+        Picasso.with(ViewMenuActivity.this)
+                .load(post.getImage())
+                .fit()
+                .centerCrop()
+                .into(imageView);
+        storeName.setText(post.getTitle());
     }
+
 
 
     @Override
