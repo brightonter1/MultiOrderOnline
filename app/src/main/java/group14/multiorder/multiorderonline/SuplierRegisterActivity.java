@@ -114,6 +114,7 @@ public class SuplierRegisterActivity extends AppCompatActivity {
                 Log.d("System", "Faild");
             }
         });
+//        test
 
 
     }
