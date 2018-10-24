@@ -18,6 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class SuplierRegisterActivity extends AppCompatActivity {
 
@@ -27,7 +30,7 @@ public class SuplierRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_suplier_register);
         mAuth = FirebaseAuth.getInstance();
         context = this;
         btnRegister();
@@ -54,10 +57,8 @@ public class SuplierRegisterActivity extends AppCompatActivity {
                 public void onSuccess(AuthResult authResult) {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
-                    firebaseFirestore.collection("UserRole")
-                            .document("suplier")
-                            .collection("uid")
-                            .document(mAuth.getCurrentUser().getUid());
+
+                    mAuth.signOut();
                     Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SuplierRegisterActivity.this, LoginActivity.class);
                     finish();
@@ -81,11 +82,12 @@ public class SuplierRegisterActivity extends AppCompatActivity {
             return false;
         }
     }
-    public void sendVerifiedEmail(FirebaseUser _user) {
+    public void sendVerifiedEmail(final FirebaseUser _user) {
         _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("System", "[Register] Send verifiedEmail ");
+                createDBforUser(_user.getUid());
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -93,5 +95,26 @@ public class SuplierRegisterActivity extends AppCompatActivity {
                 Toast.makeText(context, "ERROR : " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void createDBforUser(String _uid){
+        Map<String, String> data = new HashMap<>();
+        data.put("name", "BBBBRIGHT");
+        data.put("lastname", "123456");
+        data.put("age", "21");
+        FirebaseFirestore _fireStore = FirebaseFirestore.getInstance();
+        _fireStore.collection("suplier").document(_uid).set(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("System", "Done");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("System", "Faild");
+            }
+        });
+
+
     }
 }
