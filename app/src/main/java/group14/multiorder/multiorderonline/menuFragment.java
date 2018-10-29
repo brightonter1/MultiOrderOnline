@@ -2,6 +2,7 @@ package group14.multiorder.multiorderonline;
 
 
 import android.os.Bundle;
+
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group14.multiorder.multiorderonline.Adapter.MenuAdapter;
+
 
 
 /**
@@ -56,6 +58,7 @@ public class menuFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Post post = getActivity().getIntent().getParcelableExtra("STORE");
+
 //        TextView textView = getView().findViewById(R.id.menu_text);
 //        textView.setText("Store name is "+ post.getTitle());
 
@@ -82,5 +85,6 @@ public class menuFragment extends Fragment {
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }
