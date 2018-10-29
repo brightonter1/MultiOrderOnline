@@ -1,0 +1,5 @@
+Name : Non Dairy All Fruit Smoothies
+
+Description : orange juice, banana, your choice of fruits
+
+Price : 170

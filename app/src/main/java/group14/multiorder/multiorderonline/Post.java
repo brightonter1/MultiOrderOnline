@@ -1,24 +1,27 @@
 package group14.multiorder.multiorderonline;
 
-public class Post {
 
-    private String post_id;
-    private String user_id;
-    private String image;
-    private String title;
-    private String description;
-    private String price;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Post implements Parcelable {
+
+    public String post_id;
+    public String user_id;
+    public String image;
+    public String title;
+    public String description;
+    public String price;
 
     public Post(){}
 
-    public Post(String post_id, String user_id, String image,
-                String title, String description, String price){
-        this.setPost_id(post_id);
-        this.setUser_id(user_id);
-        this.setImage(image);
-        this.setTitle(title);
-        this.setDescription(description);
-        this.setPrice(price);
+    public Post(Parcel in){
+        this.post_id = in.readString();
+        this.user_id = in.readString();
+        this.image = in.readString();
+        this.title = in.readString();
+        this.description = in.readString();
+        this.price = in.readString();
     }
 
 
@@ -81,4 +84,29 @@ public class Post {
                 ", price='" + price + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.post_id);
+        dest.writeString(this.user_id);
+        dest.writeString(this.image);
+        dest.writeString(this.title);
+        dest.writeString(this.description);
+        dest.writeString(this.price);
+    }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
 }

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
         <Button
             android:layout_marginTop="100dp"
-            android:id="@+id/role_selector_suplier_btn"
+            android:id="@+id/role_selector_suplier_btn01"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Suplier"
@@ -21,7 +21,7 @@
 
         <Button
             android:layout_marginTop="25dp"
-            android:id="@+id/role_selector_customer_btn"
+            android:id="@+id/role_selector_customer_btn01"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Customer"

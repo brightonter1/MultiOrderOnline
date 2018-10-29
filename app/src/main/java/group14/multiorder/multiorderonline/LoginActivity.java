@@ -18,12 +18,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+<<<<<<< HEAD
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.Map;
+=======
+import com.google.firebase.auth.FirebaseUser;
+>>>>>>> bf267ada25f149c3acc8dd98373846e6525eaa10
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -44,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         setFont();
         btnLogin();
         btnRegister();
+        loginalready();
 //        if (savedInstanceState == null){
 //            getSupportFragmentManager()
 //                    .beginTransaction()
@@ -62,7 +67,11 @@ public class LoginActivity extends AppCompatActivity {
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+=======
+                Intent intent = new Intent(LoginActivity.this, RoleSelectorActivity.class);
+>>>>>>> bf267ada25f149c3acc8dd98373846e6525eaa10
                 startActivity(intent);
             }
         });
@@ -114,5 +123,14 @@ public class LoginActivity extends AppCompatActivity {
         pwd.setTypeface(typeface);
         btn.setTypeface(typeface);
 
+    }
+
+    public void loginalready(){
+        FirebaseUser _user = mAuth.getCurrentUser();
+
+        if(_user != null){
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            startActivity(intent);
+        }
     }
 }

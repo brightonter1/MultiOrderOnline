@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+<<<<<<< HEAD
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -27,9 +28,14 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import javax.annotation.Nullable;
+=======
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.HashMap;
+import java.util.Map;
+>>>>>>> bf267ada25f149c3acc8dd98373846e6525eaa10
 
 public class RegisterActivity extends AppCompatActivity {
-
+    private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth mAuth;
     private Context context;
     String _emailStr;
@@ -63,7 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onSuccess(AuthResult authResult) {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
+
                     Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
+                    createDBforUser(mAuth.getCurrentUser().getUid());
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     finish();
                     startActivity(intent);
@@ -167,11 +175,13 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
     }
-    public void sendVerifiedEmail(FirebaseUser _user) {
+    public void sendVerifiedEmail(final FirebaseUser _user) {
         _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("System", "[Register] Send verifiedEmail ");
+                firebaseFirestore.collection("customer")
+                        .document("sdasd");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -180,4 +190,27 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void createDBforUser(String _uid){
+        Map<String, String> data = new HashMap<>();
+        data.put("name", "BBBBRIGHT");
+        data.put("lastname", "123456");
+        data.put("age", "21");
+        FirebaseFirestore _fireStore = FirebaseFirestore.getInstance();
+        _fireStore.collection("customer").document(_uid).set(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("System", "Done");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("System", "Faild");
+            }
+        });
+
+
+    }
+
 }
