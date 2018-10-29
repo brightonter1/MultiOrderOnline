@@ -11,16 +11,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import javax.annotation.Nullable;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private Context context;
+    String _emailStr;
+    String _pwdStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
     public void regisNewuser(){
         EditText _email = findViewById(R.id.register_email);
         EditText _pwd = findViewById(R.id.register_password);
-        String _emailStr = _email.getText().toString();
-        String _pwdStr = _pwd.getText().toString();
+        _emailStr = _email.getText().toString();
+        _pwdStr = _pwd.getText().toString();
 
         if (checkPwdCondition(_pwdStr)){
             mAuth.createUserWithEmailAndPassword(_emailStr, _pwdStr).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -54,6 +67,9 @@ public class RegisterActivity extends AppCompatActivity {
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     finish();
                     startActivity(intent);
+                    createDBforUser(mAuth.getCurrentUser().getUid());
+//                    pullDBallUser(mAuth.getCurrentUser().getUid());
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -64,7 +80,85 @@ public class RegisterActivity extends AppCompatActivity {
             });
         }
     }
-    public Boolean checkPwdCondition(String _pwd){
+
+    public void pullDBallUser(String _uid){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        DocumentReference docRef = db.collection("buyer").document(mAuth.getCurrentUser().getUid());
+//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()){
+//                    DocumentSnapshot doc = task.getResult();
+//                    if (doc.exists()){
+//                        Log.d("pull", String.valueOf(doc.getData()));
+//                    }else
+//                        Log.d("pull", "No Such");
+//                }else{
+//                    Log.d("pull", "get failed with ", task.getException());
+//                }
+//            }
+//        });
+
+        db.collection("buyer")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("pull", document.getId() + " => " + document.getData());
+                                test(document.getId());
+                            }
+                        } else {
+                            Log.d("pull", "Error getting documents: ", task.getException());
+                        }
+                    }
+                });
+
+    }
+    public void test(String _uid){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference doc = db.collection("buyer").document(_uid);
+        doc.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w("pull", "Listen failed.", e);
+                    return;
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    if (snapshot.get("name") != null){
+                        Log.d("pull", "Name data: " + snapshot.get("name"));
+                        Log.d("pull", "Lastname data: " + snapshot.get("lastname"));
+                        Log.d("pull", "Age data: " + snapshot.get("age"));
+                    }
+                } else {
+                    Log.d("pull", "Current data: null");
+                }
+            }
+
+        });
+    }
+    public void createDBforUser(String _uid) {
+        User setUser = new User();
+        setUser.setProfile("", "", "", 0, "", "", _emailStr, "", _pwdStr);
+        FirebaseFirestore _fireStore = FirebaseFirestore.getInstance();
+        _fireStore.collection("buyer").document(_uid).set(setUser)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("Register", "Create Success");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Register", "Create Failed");
+            }
+        });
+    }
+
+        public Boolean checkPwdCondition(String _pwd){
         if (_pwd.length() >= 6){
             return true;
         }else{
