@@ -1,7 +1,0 @@
-﻿Name : CLASSIC TOMATO PASTA / พาสต้าไก่ซอสมะเขือเทศ
-
-Description : Original Tomato sauce pasta with thick and tender Chicken combine with delicious Tomato sauce. Well tasted with gooey pasta.
-
-อธิบาย :  พาสต้าไก่สูตรดั้งเดิม ที่นำไก่ชิ้นโตเนื้อนุ่มผสานกับซอสมะเขือเทศรสชาติเยี่ยม และเส้นพาสต้าอันเหนียวนุ่ม กลมกล่อมพอดี
-
-Price : 175

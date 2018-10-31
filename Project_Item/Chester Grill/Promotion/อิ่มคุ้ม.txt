@@ -1,15 +1,0 @@
-﻿Name : อิ่มคุ้ม
-
-Description : Grilled Chicken 5 pcs
- 	      Crispy Chicken & Fish Sauce with Rice
- 	      Spicy Grilled Chicken with Rice
- 	      Chicken Nuggets 4 pcs
- 	      Spicy Grilled Chicken 
-
-อธิบาย :  ไก่ย่าง 5 ชิ้น
-             ข้าวไก่กรอบซอสน้ำปลา
-             ข้าวไก่เผ็ดเชสเตอร์
-             นักเก็ตไก้ 4 ชิ้น
-             ยำไทยไก่ย่าง
-
-Price : 419 

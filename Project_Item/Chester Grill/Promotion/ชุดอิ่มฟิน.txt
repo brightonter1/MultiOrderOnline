@@ -1,13 +1,0 @@
-﻿Name : ชุดอิ่มฟิน
-
-Description : Grilled Chicken with Rice
- 	      Spicy Grilled Chicken with Rice
- 	      Grilled Chicken 2 pcs
- 	      Spicy Grilled Chicken Salad
-
-อธิบาย :  ข้าวอบไก่ย่าง
-             ข้าวไก่เผ็ดเชสเตอร์
-             ไก่ย่าง 2 ชิ้น
-             ยำไทยไก่ย่าง
-
-Price : 289 

@@ -1,7 +1,0 @@
-﻿Name : TERIYAKI CHICKEN WITH EGG / เทริยากิไก่ + ไข่
-
-Description : Original menu form Japan, firmly selected Chicken Teriyaki cooked with pepper. Grill on our special hot plate. Taste is full-flavoured with Japanese rice
-
-อธิบาย :  เมนูสเต็กไก่เทอริยากิสไตล์ญี่ปุ่นแท้ ที่คัดสรรไก่เนื้อแน่นปรุงรสด้วยพริกไทย ย่างบนจานร้อนจนได้ที่ ทานคู่กับซอสเทริยากิรสชาติเข้มข้นกำลังดีและไข่ดาว เพิ่มความอร่อยเต็มอิ่มด้วยข้าวญี่ปุ่นหอมนุ่ม
-
-Price : 199

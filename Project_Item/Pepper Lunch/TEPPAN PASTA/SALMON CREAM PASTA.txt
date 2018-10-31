@@ -1,7 +1,0 @@
-﻿Name : SALMON CREAM PASTA / พาสต้าแซลมอนครีมซอส
-
-Description : Salmon from Norway served with well gooey pasta pour by cream sauce. Enhance taste with Chinese mushroom, Parsley and Parmesan cheese make the dish full of flavour.
-
-อธิบาย :  แซลมอนนอร์เวย์ เสิร์ฟพร้อมกับเส้นพาสต้าเหนียวนุ่มกำลังดี ราดด้วยครีมซอสรสนวล เสริมรสชาติด้วยเห็ดหอม ผักชีฝรั่ง และพาเมซานชีส ให้รสชาติลงตัวจนต้องบอกต่อ
-
-Price : 240

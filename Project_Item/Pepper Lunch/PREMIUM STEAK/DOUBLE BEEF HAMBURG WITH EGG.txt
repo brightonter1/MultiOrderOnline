@@ -1,7 +1,0 @@
-﻿Name : DOUBLE BEEF HAMBURG WITH EGG (BROWN SAUCE / ONION SAUCE) / ดับเบิ้ลแฮมเบิร์กเนื้อ + ไข่ (ซอสบราวน์ / ซอสหัวหอม)
-
-Description : A Japanese Classic featuring tender Australian Steaks smothered with the selection of brown sauce or onion sauce, and complete with a sunny side up egg.
-
-อธิบาย :  การผสมผสานกันระหว่างความเป็นญี่ปุ่นและเนื้อออสซี่เหนียวนุ่ม เลือกราดด้วยซอสบราวน์หรือซอสหัวหอม เสิร์ฟพร้อมกับไข่ดาว
-
-Price : 209

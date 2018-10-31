@@ -1,7 +1,0 @@
-﻿Name : KUROBUTA PORK STEAK / สเต็กหมูคุโรบูตะ
-
-Description : Supreme Kurobuta Pork which is serve on hot plate. Taste Full flavour of Kurobuta Pork style.
-
-อธิบาย :  สเต็กหมูดำเนื้อระดับซูพรีม ที่คัดสรรมาอย่างดี เสิร์ฟบนจานร้อน รสชาติกลมกล่อมสไตล์เนื้อหมูคุโรบูตะ
-
-Price : 240

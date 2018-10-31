@@ -1,13 +1,0 @@
-﻿Name : ชุดอิ่มแก๊งค์
-
-Description : Steak Pla Lui Suan with Rice
- 	      Grilled Chicken with Rice
- 	      Grilled Chicken 4 pcs
- 	      Spicy Grilled Chicken Salad
-
-อธิบาย :  ข้าวสเต็คปลาลุยสวน
-             ข้าวอบไก่ย่าง
-             ไก่ย่าง 4 ชิ้น
-             ยำไทยไก่ย่าง
-
-Price : 379 

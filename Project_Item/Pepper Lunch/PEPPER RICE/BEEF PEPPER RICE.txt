@@ -1,7 +1,0 @@
-﻿Name : BEEF PEPPER RICE / ข้าวเปปเปอร์เนื้อ
-
-Description : Glorious chuck tender imported beef from US. is sliced into proper pieces. This is a special menu from pepper lunch. Let’s try!
-
-อธิบาย :  เนื้อวัวนำเข้าจาก US. คัดเฉพาะส่วนที่เปล่งปลั่ง แน่น เนื้อนุ่ม นำมาสไลด์เป็นชิ้นพอดีคำ ถือเป็นสูตรเฉพาะเมนูอร่อยของข้าวเปปเปอร์ สไตล์เปปเปอร์ ลันช์ ต้องลอง!
-
-Price : 165

@@ -1,9 +1,0 @@
-﻿Name : Plain rice / ข้าวเปล่า
-
-Description :
-Plain rice
-
-อธิบาย :
-ข้าวเปล่า
-
-Price : 15

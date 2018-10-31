@@ -1,9 +1,0 @@
-Name : Cookie Monster
-
-Description : Vanilla Cookie Dough Ice Cream with Chunks of Oreo Cookies and Cookie Dough
-
-Price : 
-Kiddie Scoop	99.-
-1 Scoop (3oz.)	120.-
-2 Scoop (6oz.)	190.-
-3 Scoop (9oz.)	250.-

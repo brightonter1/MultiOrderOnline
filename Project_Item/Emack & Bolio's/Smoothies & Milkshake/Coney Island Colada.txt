@@ -1,5 +1,0 @@
-Name : Coney Island Colada
-
-Description : coconut milk, banana, pineapple, nonfat vanilla yogurt
-
-Price : 170

@@ -1,5 +1,0 @@
-Name : Orange Cream
-
-Description : orange juice, vanilla ice cream or yougurt
-
-Price : 170

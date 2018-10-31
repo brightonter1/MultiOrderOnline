@@ -1,9 +1,0 @@
-Name : Banana
-
-Description : Mellow Yellow Banana, Lots and lots of Bananas. We’re Bananas for Bananas! The best banana ice cream. Real bananas.
-
-Price : 
-Kiddie Scoop	99.-
-1 Scoop (3oz.)	120.-
-2 Scoop (6oz.)	190.-
-3 Scoop (9oz.)	250.-

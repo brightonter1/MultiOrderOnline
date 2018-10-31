@@ -1,7 +1,0 @@
-﻿Name : BEEF SUKIYAKI / สุกี้ยากี้เนื้อ
-
-Description : The favourite menu form the land of samurai. Sliced Beef pair with Sukiyaki Japan style served with egg.
-
-อธิบาย :  เมนูยอดฮิตจากแดนซามูไร กับเนื้อสไลด์แผ่นบางผสมผสานด้วยซอสสุกี้สไตล์ญี่ปุ่น ตัดรสชาติกับไข่ไก่ที่เสิร์ฟมาในจานร้อน
-
-Price : 255

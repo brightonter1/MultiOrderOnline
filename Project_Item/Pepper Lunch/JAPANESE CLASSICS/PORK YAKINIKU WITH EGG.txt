@@ -1,7 +1,0 @@
-﻿Name : PORK YAKINIKU WITH EGG / ยากินิกุหมู + ไข่
-
-Description : Selected the best pork marinated by special sauce form Pepper lunch. Grill on hot plate give away the best flavour.
-
-อธิบาย :  คัดสรรเนื้อหมูคุณภาพดี หมักด้วยซอสสูตรเฉพาะของเปปเปอร์ ลันช์ ย่างบนกระทะร้อน ให้รสสัมผัสที่นุ่มลิ้น อร่อยลงตัว
-
-Price : 199

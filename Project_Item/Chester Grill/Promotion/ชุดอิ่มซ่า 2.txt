@@ -1,11 +1,0 @@
-﻿Name : ชุดอิ่มซ่า 2
-
-Description : Crispy Chicken & Fish Sauce with Rice
- 	      Chicken Bomb
- 	      Pepsi 0.55 Ltr
-
-อธิบาย : ข้าวไก่กรอบซอสน้ำปลา
-            ชิคเก้นบอมบ์
-         เป๊ปซี่ 0.55 ลิตร
-
-Price : 119 

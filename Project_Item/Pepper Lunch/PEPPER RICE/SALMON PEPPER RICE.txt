@@ -1,7 +1,0 @@
-﻿Name : SALMON PEPPER RICE / ข้าวเปปเปอร์แซลมอน
-
-Description : Fresh Salmon from Norway serve around Japanese rice blended with special pepper and butter. Rich tasted, you will love it!
-
-อธิบาย :  แซลมอนสดจากประเทศนอร์เวย์ เสิร์ฟกับข้าวหอมญี่ปุ่น คลุกเคล้าด้วยพริกไทยและเนยสูตรพิเศษ รสชาติกลมกล่อม ลองกี่ครั้งก็ติดใจ!
-
-Price : 209

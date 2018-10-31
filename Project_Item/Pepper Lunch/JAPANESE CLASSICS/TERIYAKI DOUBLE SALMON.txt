@@ -1,7 +1,0 @@
-﻿Name : TERIYAKI DOUBLE SALMON / เทริยากิดับเบิ้ลสเต็กแซลมอน
-
-Description : Fresh premium Salmon imported from Norway cook with Teriyaki sauce originated from Japan. Served on hot plate and Tasty.
-
-อธิบาย :  แซลมอนสดๆจากประเทศนอร์เวย์ นำมาย่างบนจานร้อน พร้อมกับซอสเทอริยากิสูตรดั้งเดิมจากญี่ปุ่น ได้รสชาติที่หอมหวาน อร่อย
-
-Price : 330

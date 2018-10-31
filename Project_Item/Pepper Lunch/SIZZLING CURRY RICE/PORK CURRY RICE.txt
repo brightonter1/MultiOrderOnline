@@ -1,7 +1,0 @@
-﻿Name : PORK CURRY RICE / ข้าวแกงกะหรี่หมู
-
-Description : Who said the Bharat land does not have pork menu? Pepper Lunch bring pork to wear Sari by combine it with curry. The fragrant of spices makes it the best taste.
-
-อธิบาย :  ใครว่าเมนูแกงจากแดนภารตะจะไร้ซึ่งเมนูหมู เปปเปอร์ ลันช์ นำเอาเมนูหมูมาจับใส่สาหรีด้วยแกงกระหรี่ รสชาติหอมละมุ่นด้วยเครื่องเทศแสนอร่อย
-
-Price : 190

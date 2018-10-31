@@ -1,7 +1,0 @@
-﻿Name : SALMON & CHICKEN / สเต็กแซลมอนและไก่
-
-Description : Combination of Salmon steak and Chicken which are fresh and thick. Balance tasted with different 2 style.
-
-อธิบาย :  คอมบิเนชันของสเต็กแซลมอนและสเต็กไก่ ที่ทั้งสดและชิ้นโตเต็มคำ ให้รสชาติในสไตล์ที่แตกต่าง แต่ลงตัว
-
-Price : 260

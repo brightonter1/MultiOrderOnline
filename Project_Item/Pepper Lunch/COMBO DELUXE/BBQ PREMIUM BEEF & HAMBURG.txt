@@ -1,7 +1,0 @@
-﻿Name : BBQ PREMIUM BEEF & HAMBURG / พรีเมี่ยมสเต็กบาร์บีคิวเนื้อและแฮมเบิร์ก
-
-Description : For the beef lover, Hamburg stake comes along with Yakiniku beef serve with BBQ sauce flavour.
-
-อธิบาย :  คนรักเนื้อต้องชอบ สเต็กแฮมเบิร์กหนานุ่มและยากินิกุเนื้อพรีเมียมในจานเดียวกัน เสิร์ฟพร้อมซอส BBQ มาอย่างกลมกล่อม
-
-Price : 255

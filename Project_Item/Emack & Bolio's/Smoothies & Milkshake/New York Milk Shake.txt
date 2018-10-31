@@ -1,5 +1,0 @@
-Name : New York Milk Shake
-
-Description : Milk Frappe Milk Milk.
-
-Price : 199

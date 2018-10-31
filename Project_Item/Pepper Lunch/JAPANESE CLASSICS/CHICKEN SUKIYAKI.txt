@@ -1,7 +1,0 @@
-﻿Name : CHICKEN SUKIYAKI / สุกี้ยากี้ไก่
-
-Description : Thick and firmly Chicken meat cooked with Sukiyaki sauce Japan style served on hot plate with egg. Delicious in every bite!
-
-อธิบาย :  เนื้อไก่ชิ้นโตเนื้อแน่น ปรุงด้วยซอสสุกี้สไตล์ญี่ปุ่น เสิร์ฟร้อนพร้อมไข่ไก่ อร่อยเต็มๆคำ!
-
-Price : 220

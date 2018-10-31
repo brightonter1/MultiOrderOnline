@@ -1,9 +1,0 @@
-﻿Name : ชุดอิ่มซ่า 1
-
-Description : Grilled Chicken with Rice
- 	      Chicken Nuggets 6 pcs
-
-อธิบาย : ข้าวอบไก่ย่าง
-            นักเก็ตไก่ 6 ชิ้น
-
-Price : 119 
