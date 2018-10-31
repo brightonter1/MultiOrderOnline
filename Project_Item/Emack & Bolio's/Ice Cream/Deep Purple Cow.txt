@@ -1,0 +1,9 @@
+Name : Deep Purple Cow
+
+Description : Black Raspberry Ice Cream with White and Dark Chocolate Chips.
+
+Price : 
+Kiddie Scoop	99.-
+1 Scoop (3oz.)	120.-
+2 Scoop (6oz.)	190.-
+3 Scoop (9oz.)	250.-

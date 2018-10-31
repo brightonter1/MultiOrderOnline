@@ -1,0 +1,10 @@
+﻿Name : Hot & Spicy Fried Chicken / ไก่ฮอทแอนด์สไปซี่
+
+Description :
+Freshly prepared with marination of spices blend and breading for
+favorite extra crispy KFC Hot & Spicy chicken.
+
+อธิบาย :
+ไก่สดคัดพิเศษชุบด้วยเกล็ดขนมปัง คลุกเคล้ากับผงพริกและเครื่องเทศ นำไปทอดจนสุกเหลืองกรอบหอมกรุ่นพร้อมเสิร์ฟ
+
+Price : 37

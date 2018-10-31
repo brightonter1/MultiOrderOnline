@@ -1,0 +1,10 @@
+﻿Name : Double Cheese Zinger Burger / ดับเบิลชีส ซิงเกอร์เบอร์เกอร์
+
+Description :
+An irresistible chicken burger with rich taste of double cheddar cheese
+that well blended with hot taste.
+
+อธิบาย :
+ดับเบิ้ลชีส ซิงเกอร์ อร่อยเข้มลงตัว จากเชดด้าชีสชั้นดี ถึงสองแผ่นเต็มๆ ผสานความเผ็ดร้อนลงตัว
+
+Price : 79

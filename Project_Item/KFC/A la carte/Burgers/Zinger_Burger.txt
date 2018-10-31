@@ -1,0 +1,10 @@
+﻿Name : Zinger Burger / ซิงเกอร์เบอร์เกอร์
+
+Description :
+Signature burger with chicken thigh fillet coasted in
+Zinger flavoring combined with lettuce and mayo.
+
+อธิบาย :
+เบอร์เกอร์ไก่ทอดกรอบเนื้อสะโพกรสเข้มข้น เนื้อชุ่มฉ่ำ อร่อยลงตัวกับมายองเนสและผักกาดแก้วกรุบกรอบ
+
+Price : 62

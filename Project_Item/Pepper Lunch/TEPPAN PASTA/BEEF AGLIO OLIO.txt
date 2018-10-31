@@ -1,0 +1,7 @@
+﻿Name : BEEF AGLIO OLIO / พาสต้าเนื้อ
+
+Description : Gooey pasta blended with premium Beef impoprted from US. Special cooked by Pepper Lunch. Delicious in every bite.
+
+อธิบาย :  เส้นพาสต้าเหนียวนุ่ม คลุกเคล้าลงตัวกับเนื้อระดับพรีเมียมนำเข้าจาก US. ปรุงพิเศษจากเปปเปอร์ ลันช์ ให้รสชาติที่อร่อยนุ่มลิ้นทุกคำ
+
+Price : 200

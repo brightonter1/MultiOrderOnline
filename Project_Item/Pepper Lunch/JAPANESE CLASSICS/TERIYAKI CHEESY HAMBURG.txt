@@ -1,0 +1,7 @@
+﻿Name : TERIYAKI CHEESY HAMBURG / เทริยากิชีสซี่แฮมเบิร์ก
+
+Description : Taste the full flavour of Hamburg steak and Cheese and delicate by Teriyaki sauce.
+
+อธิบาย :  ความอร่อยแบบเต็มขั้นของชีสและสเต็กแฮมเบิร์ก กลมกล่อมด้วยซอสเทริยากิ
+
+Price : 220

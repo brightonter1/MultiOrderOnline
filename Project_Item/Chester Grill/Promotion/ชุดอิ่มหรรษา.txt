@@ -1,0 +1,13 @@
+﻿Name : ชุดอิ่มหรรษา
+
+Description : Crispy Chicken & Fish Sauce with Rice
+ 	      Kai Yang Nam Tok with Rice
+ 	      Chicken Bomb
+ 	      Pepsi 0.55 Ltr
+
+อธิบาย : ข้าวไก่กรอบซอสน้ำปลา
+            ข้าวไก่ย่างน้ำตก
+            ชิคเก้นบอมบ์
+            เป๊ปซี่ 0.55 ลิตร
+
+Price : 199 

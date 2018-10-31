@@ -1,0 +1,10 @@
+﻿Name : Spicy Roasted Chicken Rice Bowl / ข้าวไก่ซี้ดโบว์ล
+
+Description :
+KFC Zeed rice bowl, loaded with spicy roasted chicken,
+mixed well with hot sauce and white jelly mushroom.
+
+อธิบาย :
+อร่อยเต็มโบว์ลกับ ไก่อบเนื้อนุ่มชิ้นพอดีคำ คลุกเคล้าน้ำยำสุดซี้ด พร้อมผักโรยและเห็ดหูหนูขาว เสิร์ฟพร้อมข้าวสวยร้อนๆ
+
+Price : 59

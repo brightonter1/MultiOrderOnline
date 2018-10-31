@@ -1,0 +1,11 @@
+﻿Name : ชุดอิ่มกับปลา
+
+Description : Seabass $ Fish Sauce with Rice
+ 	      Steak Pla Lul Suan with Rice
+ 	      Chicken Nuggets 4 pcs
+
+อธิบาย : ข้าวปลากระพงซอสน้ำปลา
+            ข้าวสเต็คปลาลุยสวย
+            นักเก็ตไก่ 4 ชิ้น
+
+Price : 259 

@@ -1,0 +1,7 @@
+﻿Name : SPICY CHICKEN WITH EGG / สเต็กไก่สไปซี่ + ไข่
+
+Description : Thick and tender Chicken steak marinated by ground dried chillies and pepper enhance spicy taste. Grill on special hot plate Pepper Lunch style and served with egg. Spicy and delicious in one plate.
+
+อธิบาย :  สเต็กไก่เนื้อนุ่มชิ้นโต หมักด้วยพริกป่นและพริกไทยเพิ่มรสเผ็ด ย่างบนจานร้อนสไตล์เปปเปอร์ ลันช์ เสิร์ฟพร้อมไข่ไก่ ทั้งเผ็ดทั้งเด็ดในจานเดียว
+
+Price : 199

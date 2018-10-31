@@ -1,0 +1,7 @@
+﻿Name : BBQ CHICKEN & PORK / สเต็กบาร์บีคิวไก่และหมู
+
+Description : Chicken steak pair with Pork steak which are thick and tender. Full flavour by BBQ sauce. 
+
+อธิบาย :  สเต็กไก่ชิ้นโตเข้าคู่กันกับสเต็กเนื้อหมูชั้นยอด อร่อยนุ่มชุ่มลิ้น รสชาติกลมกล่อมด้วยซอส BBQ
+
+Price : 215
