@@ -37,6 +37,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import group14.multiorder.multiorderonline.obj.Store;
 import group14.multiorder.multiorderonline.util.UniversalImageLoader;
 
 
@@ -73,8 +74,8 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
     private byte[] mUploadBytes;
     private double mProgress = 0;
 
-
-    Post post = new Post();
+    Store post = new Store();
+    //Post post = new Post();
     DatabaseReference reference;
 
 
@@ -86,7 +87,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
         mPostImage = view.findViewById(R.id.post_image);
         mTitle = view.findViewById(R.id.input_title);
         mDescription = view.findViewById(R.id.input_description);
-        mPrice = view.findViewById(R.id.input_price);
+        //mPrice = view.findViewById(R.id.input_price);
 
         mPost = view.findViewById(R.id.btn_post);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
@@ -122,7 +123,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
                 Log.d(TAG, "onClick: Post image ");
                 if(!isEmpty(mTitle.getText().toString())
                         && !isEmpty(mDescription.getText().toString())
-                        && !isEmpty(mPrice.getText().toString())
+//                        && !isEmpty(mPrice.getText().toString())
                         ){
                     //have Bitmap no Uri
                     if(mSelectedBitmap != null && mSelectedUri == null){
@@ -204,7 +205,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
         final String postId = FirebaseDatabase.getInstance().getReference().push().getKey();
 
         final StorageReference  storageReference = FirebaseStorage.getInstance().getReference()
-                .child("posts/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() +
+                .child("Stores/"+mTitle.getText().toString()+"/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() +
                 "/" + postId + "/post_image");
 
         UploadTask uploadTask = storageReference.putBytes(mUploadBytes);
@@ -226,12 +227,13 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
                         post.setImage(UI);
                         post.setDescription(mDescription.getText().toString());
                         post.setPost_id(postId);
-                        post.setPrice(mPrice.getText().toString());
+                        //post.setPrice(mPrice.getText().toString());
                         post.setTitle(mTitle.getText().toString());
                         post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-                        reference.child(getString(R.string.node_post))
-                                .child(postId)
+                        reference.child("Stores")
+                                .child(mTitle.getText().toString())
+                                //.child(postId);
                                 .setValue(post);
                         resetFields();
                         Log.d(TAG, "OnSuccess: firebase download url"+ UI);
@@ -283,7 +285,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
         UniversalImageLoader.setImage("", mPostImage);
         mTitle.setText("");
         mDescription.setText("");
-        mPrice.setText("");
+        //mPrice.setText("");
 
     }
 

@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import group14.multiorder.multiorderonline.obj.Store;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +36,7 @@ public class menuFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Post post = getActivity().getIntent().getParcelableExtra("STORE");
+        Store post = getActivity().getIntent().getParcelableExtra("STORE");
         Log.d("boom", "Wow "+post);
         TextView textView = getView().findViewById(R.id.menu);
         textView.setText(post.getTitle());

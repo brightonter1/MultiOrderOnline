@@ -23,6 +23,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import group14.multiorder.multiorderonline.obj.Store;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,7 +36,8 @@ public class NearbyFragment extends Fragment {
     private ImageAdater mAdater;
 
     private DatabaseReference mDatabaseRef;
-    private List<Post> mPosts;
+    //private List<Post> mPosts;
+    private List<Store> mPosts;
 
 
     public NearbyFragment() {
@@ -59,14 +62,16 @@ public class NearbyFragment extends Fragment {
 
         mPosts = new ArrayList<>();
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("posts");
+        //mDatabaseRef = FirebaseDatabase.getInstance().getReference("posts");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Stores");
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Post post = postSnapshot.getValue(Post.class);
-                    mPosts.add(post);
+                    //Post post = postSnapshot.getValue(Post.class);
+                    Store store = postSnapshot.getValue(Store.class);
+                    mPosts.add(store);
                 }
                 mAdater = new ImageAdater(getActivity(), mPosts);
                 mRecyclerView.setAdapter(mAdater);

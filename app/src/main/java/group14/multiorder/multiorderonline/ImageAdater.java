@@ -18,11 +18,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import group14.multiorder.multiorderonline.obj.Store;
+
 public class ImageAdater extends RecyclerView.Adapter<ImageAdater.ImageViewHolder> {
     private Context mContext;
-    private List<Post> mPosts;
+    private List<Store> mPosts;
 
-    public  ImageAdater(Context context, List<Post> uploads){
+    public  ImageAdater(Context context, List<Store> uploads){
         mContext = context;
         mPosts = uploads;
     }
@@ -35,7 +37,7 @@ public class ImageAdater extends RecyclerView.Adapter<ImageAdater.ImageViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder imageViewHolder, final int i) {
-        final Post postCurrent = mPosts.get(i);
+        final Store postCurrent = mPosts.get(i);
         imageViewHolder.textViewname.setText(postCurrent.getTitle());
         Picasso.with(mContext)
                 .load(postCurrent.getImage())

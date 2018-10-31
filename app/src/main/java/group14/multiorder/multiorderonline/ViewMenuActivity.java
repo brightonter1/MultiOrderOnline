@@ -20,9 +20,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.w3c.dom.Text;
+
+import group14.multiorder.multiorderonline.obj.Store;
 
 public class ViewMenuActivity extends AppCompatActivity {
 
@@ -54,10 +59,19 @@ public class ViewMenuActivity extends AppCompatActivity {
     }
 
     public void data(){
-        Post post = getIntent().getParcelableExtra("STORE");
+        Store post = getIntent().getParcelableExtra("STORE");
         Log.d("POST", ""+post);
-        TextView tv = findViewById(R.id.store_name);
-        tv.setText(post.getTitle());
+//        TextView tv = findViewById(R.id.store_name);
+//        tv.setText(post.getTitle());
+        ImageView imageView = findViewById(R.id.image_store);
+        TextView storeName = findViewById(R.id.store_name);
+
+        Picasso.with(ViewMenuActivity.this)
+                .load(post.getImage())
+                .fit()
+                .centerCrop()
+                .into(imageView);
+        storeName.setText(post.getTitle());
 
     }
 

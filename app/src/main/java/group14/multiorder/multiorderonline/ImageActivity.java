@@ -18,6 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import group14.multiorder.multiorderonline.obj.Store;
+
 //* ใช้ตัว nearbyFragment แทน
 public class ImageActivity extends AppCompatActivity {
 
@@ -25,7 +27,7 @@ public class ImageActivity extends AppCompatActivity {
     private ImageAdater mAdater;
 
     private DatabaseReference mDatabaseRef;
-    private List<Post> mPosts;
+    private List<Store> mPosts;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,13 +40,14 @@ public class ImageActivity extends AppCompatActivity {
 
         mPosts = new ArrayList<>();
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("posts");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Stores");
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot postSnapshot : dataSnapshot.getChildren()){
-                    Post post = postSnapshot.getValue(Post.class);
+                    //Post post = postSnapshot.getValue(Post.class);
+                    Store post = postSnapshot.getValue(Store.class);
                     mPosts.add(post);
                 }
                 mAdater = new ImageAdater(ImageActivity.this, mPosts);

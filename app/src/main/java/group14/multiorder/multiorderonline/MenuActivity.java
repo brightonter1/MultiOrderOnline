@@ -119,7 +119,7 @@ public class MenuActivity extends AppCompatActivity {
                 case 0:
                     return new NearbyFragment();
                 case 1:
-                    return new PromotionFragment();
+                    return new PostFragment();
                 case 2:
                     return new PopularFragment();
             }
