@@ -205,8 +205,9 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
         final String postId = FirebaseDatabase.getInstance().getReference().push().getKey();
 
         final StorageReference  storageReference = FirebaseStorage.getInstance().getReference()
-                .child("Stores/"+mTitle.getText().toString()+"/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() +
-                "/" + postId + "/post_image");
+//                .child("Stores/"+mTitle.getText().toString()+"/users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() +
+//                "/" + postId + "/post_image");
+                  .child("Menus/MK/"+mTitle.getText().toString());
 
         UploadTask uploadTask = storageReference.putBytes(mUploadBytes);
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -231,7 +232,8 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
                         post.setTitle(mTitle.getText().toString());
                         post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-                        reference.child("Stores")
+                        reference.child("Menus")
+                                .child("MK")
                                 .child(mTitle.getText().toString())
                                 //.child(postId);
                                 .setValue(post);

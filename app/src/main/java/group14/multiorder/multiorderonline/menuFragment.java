@@ -2,13 +2,29 @@ package group14.multiorder.multiorderonline;
 
 
 import android.os.Bundle;
+
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import group14.multiorder.multiorderonline.Adpter.MenuAdapter;
 
 import org.w3c.dom.Text;
 
@@ -19,6 +35,11 @@ import group14.multiorder.multiorderonline.obj.Store;
  * A simple {@link Fragment} subclass.
  */
 public class menuFragment extends Fragment {
+    RecyclerView _recylerView;
+    MenuAdapter _imageAdapter;
+
+    private DatabaseReference _databaseRef;
+    private List<Post> _post;
 
 
     public menuFragment() {
@@ -36,9 +57,37 @@ public class menuFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Store post = getActivity().getIntent().getParcelableExtra("STORE");
-        Log.d("boom", "Wow "+post);
-        TextView textView = getView().findViewById(R.id.menu);
-        textView.setText(post.getTitle());
+//        Store post = getActivity().getIntent().getParcelableExtra("STORE");
+//        Log.d("boom", "Wow "+post);
+//        TextView textView = getView().findViewById(R.id.menu);
+//        textView.setText(post.getTitle());
+        //Post post = getActivity().getIntent().getParcelableExtra("STORE");
+
+//        TextView textView = getView().findViewById(R.id.menu_text);
+//        textView.setText("Store name is "+ post.getTitle());
+
+        _recylerView = getView().findViewById(R.id.menu_recycler_view);
+        _recylerView.setHasFixedSize(true);
+        _recylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        _post = new ArrayList<>();
+        _databaseRef = FirebaseDatabase.getInstance().getReference("posts");
+
+        _databaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot menuSnapshot : dataSnapshot.getChildren()){
+                    Post menu = menuSnapshot.getValue(Post.class);
+                    _post.add(menu);
+                }
+                _imageAdapter = new MenuAdapter(getActivity(), _post);
+                _recylerView.setAdapter(_imageAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
