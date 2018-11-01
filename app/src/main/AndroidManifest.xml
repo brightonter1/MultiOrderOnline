@@ -29,12 +29,10 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ImageActivity" />
-        <activity android:name=".RoleSelectorActivity" />
         <activity
             android:name=".ViewMenuActivity"
             android:label="@string/title_activity_view_menu"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".SuplierRegisterActivity" />
         <activity android:name=".RoleSelectorActivity" />
     </application>
 

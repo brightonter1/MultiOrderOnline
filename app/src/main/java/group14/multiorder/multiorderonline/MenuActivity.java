@@ -54,6 +54,7 @@ public class MenuActivity extends AppCompatActivity {
 //        verifyPermissions();
         bottomNavigation();
     }
+
     public void bottomNavigation(){
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
 

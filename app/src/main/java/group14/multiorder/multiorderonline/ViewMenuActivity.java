@@ -37,13 +37,13 @@ public class ViewMenuActivity extends AppCompatActivity {
 
 
     private ViewPager mViewPager;
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_menu);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_back);
         // Create the adapter that will return a fragment for each of the three
@@ -57,8 +57,19 @@ public class ViewMenuActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-        data();
 
+        data();
+        BackBtn();
+    }
+
+    public void BackBtn(){
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewMenuActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void data(){
