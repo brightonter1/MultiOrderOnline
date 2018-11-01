@@ -9,10 +9,5 @@
         android:title="Cart"
         android:icon="@drawable/ic_cart"
         app:showAsAction="ifRoom"></item>
-    <item
-        android:id="@+id/action_back"
-        android:title="Back"
-        app:showAsAction="ifRoom"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_back"></item>
+
 </menu>

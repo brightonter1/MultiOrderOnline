@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorAccent"
+            app:contentScrim="@color/toolbar"
             app:expandedTitleMarginBottom="32dp"
             app:expandedTitleMarginEnd="64dp"
             app:expandedTitleMarginStart="48dp"
@@ -45,11 +45,13 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
 
+
             <TextView
                 android:id="@+id/store_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginLeft="5dp"
                 android:text="Store name"
                 android:textSize="25dp" />
 
