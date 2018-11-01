@@ -28,6 +28,7 @@ import group14.multiorder.multiorderonline.Adpter.MenuAdapter;
 
 import org.w3c.dom.Text;
 
+import group14.multiorder.multiorderonline.obj.Menu;
 import group14.multiorder.multiorderonline.obj.Store;
 
 
@@ -39,7 +40,7 @@ public class menuFragment extends Fragment {
     MenuAdapter _imageAdapter;
 
     private DatabaseReference _databaseRef;
-    private List<Post> _post;
+    private List<Menu> _post;
 
 
     public menuFragment() {
@@ -57,7 +58,7 @@ public class menuFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        Store post = getActivity().getIntent().getParcelableExtra("STORE");
+        Store post = getActivity().getIntent().getParcelableExtra("STORE");
 //        Log.d("boom", "Wow "+post);
 //        TextView textView = getView().findViewById(R.id.menu);
 //        textView.setText(post.getTitle());
@@ -71,13 +72,13 @@ public class menuFragment extends Fragment {
         _recylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         _post = new ArrayList<>();
-        _databaseRef = FirebaseDatabase.getInstance().getReference("posts");
+        _databaseRef = FirebaseDatabase.getInstance().getReference("Menus/"+post.getTitle());
 
         _databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot menuSnapshot : dataSnapshot.getChildren()){
-                    Post menu = menuSnapshot.getValue(Post.class);
+                    Menu menu = menuSnapshot.getValue(Menu.class);
                     _post.add(menu);
                 }
                 _imageAdapter = new MenuAdapter(getActivity(), _post);

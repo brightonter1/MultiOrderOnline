@@ -37,6 +37,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import group14.multiorder.multiorderonline.obj.Menu;
 import group14.multiorder.multiorderonline.obj.Store;
 import group14.multiorder.multiorderonline.util.UniversalImageLoader;
 
@@ -74,7 +75,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
     private byte[] mUploadBytes;
     private double mProgress = 0;
 
-    Store post = new Store();
+    Menu post = new Menu();
     //Post post = new Post();
     DatabaseReference reference;
 
@@ -87,7 +88,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
         mPostImage = view.findViewById(R.id.post_image);
         mTitle = view.findViewById(R.id.input_title);
         mDescription = view.findViewById(R.id.input_description);
-        //mPrice = view.findViewById(R.id.input_price);
+        mPrice = view.findViewById(R.id.input_price);
 
         mPost = view.findViewById(R.id.btn_post);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progressBar);
@@ -228,7 +229,8 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
                         post.setImage(UI);
                         post.setDescription(mDescription.getText().toString());
                         post.setPost_id(postId);
-                        //post.setPrice(mPrice.getText().toString());
+
+                        post.setPrice(mPrice.getText().toString());
                         post.setTitle(mTitle.getText().toString());
                         post.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
@@ -287,7 +289,7 @@ public class PostFragment extends Fragment implements SelectPhotoDialog.OnPhotoS
         UniversalImageLoader.setImage("", mPostImage);
         mTitle.setText("");
         mDescription.setText("");
-        //mPrice.setText("");
+        mPrice.setText("");
 
     }
 

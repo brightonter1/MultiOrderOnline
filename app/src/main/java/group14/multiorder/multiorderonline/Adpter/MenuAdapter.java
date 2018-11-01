@@ -23,7 +23,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
 
 
     private Context _context;
-    private List<Post> _menus;
+    private List<Menu> _menus;
 
     public MenuAdapter(Context context , List uploads){
         _context = context;
@@ -39,7 +39,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder imageViewHolder, int i) {
-        final Post _menuCurrent = _menus.get(i);
+        final Menu _menuCurrent = _menus.get(i);
         imageViewHolder._menuName.setText(_menuCurrent.getTitle());
         imageViewHolder._menuDes.setText(_menuCurrent.getDescription());
         imageViewHolder._menuPrice.setText(_menuCurrent.getPrice());
