@@ -14,9 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuActivity">
-
-        </activity>
+        <activity android:name=".MenuActivity"></activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_main_tab"
@@ -32,8 +30,9 @@
         <activity
             android:name=".ViewMenuActivity"
             android:label="@string/title_activity_view_menu"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".RoleSelectorActivity" />
+        <activity android:name=".Account.AccountActivity"></activity>
     </application>
 
 </manifest>
