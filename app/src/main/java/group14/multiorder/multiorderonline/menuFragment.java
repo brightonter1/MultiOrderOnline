@@ -59,13 +59,6 @@ public class menuFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Store post = getActivity().getIntent().getParcelableExtra("STORE");
-//        Log.d("boom", "Wow "+post);
-//        TextView textView = getView().findViewById(R.id.menu);
-//        textView.setText(post.getTitle());
-        //Post post = getActivity().getIntent().getParcelableExtra("STORE");
-
-//        TextView textView = getView().findViewById(R.id.menu_text);
-//        textView.setText("Store name is "+ post.getTitle());
 
         _recylerView = getView().findViewById(R.id.menu_recycler_view);
         _recylerView.setHasFixedSize(true);

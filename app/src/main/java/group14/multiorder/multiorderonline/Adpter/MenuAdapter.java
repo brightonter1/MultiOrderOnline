@@ -42,7 +42,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
         final Menu _menuCurrent = _menus.get(i);
         imageViewHolder._menuName.setText(_menuCurrent.getTitle());
         imageViewHolder._menuDes.setText(_menuCurrent.getDescription());
-        imageViewHolder._menuPrice.setText(_menuCurrent.getPrice());
+        imageViewHolder._menuPrice.setText(_menuCurrent.getPrice() + "฿");
         Picasso.with(_context)
                 .load(_menuCurrent.getImage())
                 .fit()

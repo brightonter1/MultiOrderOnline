@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +35,7 @@ public class NearbyFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private ImageAdater mAdater;
-
+    private ProgressBar progressBar;
     private DatabaseReference mDatabaseRef;
     //private List<Post> mPosts;
     private List<Store> mPosts;
@@ -59,12 +60,13 @@ public class NearbyFragment extends Fragment {
         mRecyclerView = getView().findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        progressBar = getView().findViewById(R.id.progress_circle);
         mPosts = new ArrayList<>();
 
         //mDatabaseRef = FirebaseDatabase.getInstance().getReference("posts");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Stores");
-
+        mRecyclerView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -75,6 +77,9 @@ public class NearbyFragment extends Fragment {
                 }
                 mAdater = new ImageAdater(getActivity(), mPosts);
                 mRecyclerView.setAdapter(mAdater);
+                mRecyclerView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+
             }
 
             @Override

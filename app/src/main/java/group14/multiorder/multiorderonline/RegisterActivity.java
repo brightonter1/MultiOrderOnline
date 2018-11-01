@@ -24,6 +24,8 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth mAuth;
     private Context context;
+    private String _emailStr;
+    private String _pwdStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +46,8 @@ public class RegisterActivity extends AppCompatActivity {
     public void regisNewuser(){
         EditText _email = findViewById(R.id.register_email);
         EditText _pwd = findViewById(R.id.register_password);
-        String _emailStr = _email.getText().toString();
-        String _pwdStr = _pwd.getText().toString();
+        _emailStr = _email.getText().toString();
+        _pwdStr = _pwd.getText().toString();
 
         if (checkPwdCondition(_pwdStr)){
             mAuth.createUserWithEmailAndPassword(_emailStr, _pwdStr).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -54,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
                     Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
-                    createDBforUser(mAuth.getCurrentUser().getUid());
+//                    createDBforUser(mAuth.getCurrentUser().getUid());
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     mAuth.signOut();
                     startActivity(intent);
@@ -94,9 +96,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void createDBforUser(String _uid){
         Map<String, String> data = new HashMap<>();
-        data.put("name", "8888888888888888888");
-        data.put("lastname", "123456");
-        data.put("age", "21");
+        data.put("email", _emailStr);
+        data.put("password", _pwdStr);
         FirebaseFirestore _fireStore = FirebaseFirestore.getInstance();
         _fireStore.collection("customer").document(_uid).set(data)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

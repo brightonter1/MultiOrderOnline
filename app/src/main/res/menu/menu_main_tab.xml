@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="group14.multiorder.multiorderonline.MenuActivity">
 
+
     <item
         android:id="@+id/action_favorite"
         android:orderInCategory="300"

@@ -121,7 +121,7 @@ public class MenuActivity extends AppCompatActivity {
                 case 1:
                     return new PostFragment();
                 case 2:
-                    return new PopularFragment();
+                    return new PromotionFragment();
             }
             return null;
         }
