@@ -22,6 +22,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import group14.multiorder.multiorderonline.Account.AccountActivity;
+
 
 public class MenuActivity extends AppCompatActivity {
     private static final String TAG = "MenuActivity";
@@ -54,6 +56,7 @@ public class MenuActivity extends AppCompatActivity {
 //        verifyPermissions();
         bottomNavigation();
     }
+
     public void bottomNavigation(){
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
 
@@ -62,25 +65,22 @@ public class MenuActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.item_recent:
-                        // do this event
-//                        Intent intent = new Intent(MenuActivity.this, SettingActivity.class);
-//                        startActivity(intent);
-
                         Log.d("Choose", "1");
-                        return true;
+                        break;
                     case R.id.item_favorite:
                         Log.d("Choose", "2");
-                        // do this event
-                        return true;
+                        break;
+
                     case R.id.item_nearby:
                         Log.d("Choose", "3");
-                        // do this event
-                        return true;
+                        break;
+
                 }
                 return false;
             }
         });
     }
+
 
 
     @Override
@@ -104,6 +104,7 @@ public class MenuActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

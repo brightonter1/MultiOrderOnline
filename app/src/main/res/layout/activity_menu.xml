@@ -28,6 +28,13 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Restaurants"
+                android:layout_marginLeft="50dp"
+                android:textSize="25dp" />
 
 
 

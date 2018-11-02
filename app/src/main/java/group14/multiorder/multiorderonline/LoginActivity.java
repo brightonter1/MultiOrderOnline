@@ -40,12 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin();
         btnRegister();
         loginalready();
-//        if (savedInstanceState == null){
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.main_view, new RoleSelectorFragment())
-//                    .commit();
-//        }
+
     }
     public void btnRegister(){
         TextView btnReg = findViewById(R.id.login_register);
