@@ -23,6 +23,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import group14.multiorder.multiorderonline.Account.AccountActivity;
+import group14.multiorder.multiorderonline.Store.DessertFragment;
+import group14.multiorder.multiorderonline.Store.FastfoodFragment;
 
 
 public class MenuActivity extends AppCompatActivity {
@@ -120,9 +122,9 @@ public class MenuActivity extends AppCompatActivity {
                 case 0:
                     return new NearbyFragment();
                 case 1:
-                    return new PostFragment();
+                    return new FastfoodFragment();
                 case 2:
-                    return new PromotionFragment();
+                    return new DessertFragment();
             }
             return null;
         }

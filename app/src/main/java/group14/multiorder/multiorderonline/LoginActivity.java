@@ -1,6 +1,7 @@
 package group14.multiorder.multiorderonline;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -71,8 +72,9 @@ public class LoginActivity extends AppCompatActivity {
                             if (authResult.getUser().isEmailVerified()){
                                 Log.d("System", "[Login] login complete");
                                 Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                                finish();
                                 startActivity(intent);
+
+
                             }
                             else if (authResult.getUser().isEmailVerified() == false){
                                 Log.d("System", "[Login] email not verified");

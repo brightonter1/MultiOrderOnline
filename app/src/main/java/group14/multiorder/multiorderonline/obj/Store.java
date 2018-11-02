@@ -9,6 +9,7 @@ public class Store implements Parcelable {
     private String image;
     private String title;
     private String description;
+    private String Tag;
 
     public Store(){}
 
@@ -100,5 +101,13 @@ public class Store implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getTag() {
+        return Tag;
+    }
+
+    public void setTag(String tag) {
+        Tag = tag;
     }
 }
