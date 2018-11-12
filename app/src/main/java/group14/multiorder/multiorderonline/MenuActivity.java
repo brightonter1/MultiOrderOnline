@@ -21,6 +21,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import group14.multiorder.multiorderonline.Account.AccountActivity;
 import group14.multiorder.multiorderonline.Store.DessertFragment;
@@ -57,7 +59,9 @@ public class MenuActivity extends AppCompatActivity {
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 //        verifyPermissions();
         bottomNavigation();
+
     }
+
 
     public void bottomNavigation(){
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
@@ -66,19 +70,16 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.item_recent:
+                    case R.id.item_notify:
                         Log.d("Choose", "1");
-                        break;
                     case R.id.item_favorite:
                         Log.d("Choose", "2");
-                        break;
-
-                    case R.id.item_nearby:
+                    case R.id.item_account:
                         Log.d("Choose", "3");
-                        break;
-
+                        Intent intent = new Intent(MenuActivity.this, AccountActivity.class);
+                        startActivity(intent);
                 }
-                return false;
+                return true;
             }
         });
     }
@@ -94,15 +95,13 @@ public class MenuActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-//        if (id == 0) {
-//            return true;
-//        }
+        switch (item.getItemId()){
+            case R.id.action_cart:
+                Intent intent = new Intent(MenuActivity.this, RegisterActivity.class);
+                startActivity(intent);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

@@ -1,7 +1,6 @@
 package group14.multiorder.multiorderonline;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -36,8 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        context = this;
-        setFont();
         btnLogin();
         btnRegister();
         loginalready();
@@ -72,7 +69,9 @@ public class LoginActivity extends AppCompatActivity {
                             if (authResult.getUser().isEmailVerified()){
                                 Log.d("System", "[Login] login complete");
                                 Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                                 startActivity(intent);
+                                finish();
 
 
                             }
@@ -92,16 +91,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    public void setFont(){
-        typeface = Typeface.createFromAsset(getAssets(), "font/Franchise-Bold.ttf");
-        userName = findViewById(R.id.login_username);
-        pwd = findViewById(R.id.login_pwd);
-        btn = findViewById(R.id.login_login);
-        userName.setTypeface(typeface);
-        pwd.setTypeface(typeface);
-        btn.setTypeface(typeface);
 
-    }
 
     public void loginalready(){
         FirebaseUser _user = mAuth.getCurrentUser();

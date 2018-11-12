@@ -66,8 +66,7 @@ public class ViewMenuActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ViewMenuActivity.this, MenuActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
