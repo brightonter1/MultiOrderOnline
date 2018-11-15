@@ -1,14 +1,12 @@
-package group14.multiorder.multiorderonline;
+package group14.multiorder.multiorderonline.Store;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,13 +22,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import group14.multiorder.multiorderonline.Adpter.ImageAdater;
+import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.Store;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NearbyFragment extends Fragment {
+public class AllFragment extends Fragment {
 
 
     private RecyclerView mRecyclerView;
@@ -41,7 +41,7 @@ public class NearbyFragment extends Fragment {
     private List<Store> mPosts;
 
 
-    public NearbyFragment() {
+    public AllFragment() {
         // Required empty public constructor
     }
 

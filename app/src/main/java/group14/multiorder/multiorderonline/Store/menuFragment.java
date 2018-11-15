@@ -1,4 +1,4 @@
-package group14.multiorder.multiorderonline;
+package group14.multiorder.multiorderonline.Store;
 
 
 import android.os.Bundle;
@@ -28,6 +28,7 @@ import group14.multiorder.multiorderonline.Adpter.MenuAdapter;
 
 import org.w3c.dom.Text;
 
+import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.Menu;
 import group14.multiorder.multiorderonline.obj.Store;
 

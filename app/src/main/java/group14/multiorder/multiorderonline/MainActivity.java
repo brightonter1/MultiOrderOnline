@@ -21,16 +21,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import group14.multiorder.multiorderonline.Account.AccountActivity;
 import group14.multiorder.multiorderonline.Store.DessertFragment;
 import group14.multiorder.multiorderonline.Store.FastfoodFragment;
+import group14.multiorder.multiorderonline.Store.AllFragment;
 
 
-public class MenuActivity extends AppCompatActivity {
-    private static final String TAG = "MenuActivity";
+public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private static final int REQUEST_CODE = 1;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -76,7 +75,7 @@ public class MenuActivity extends AppCompatActivity {
                         Log.d("Choose", "2");
                     case R.id.item_account:
                         Log.d("Choose", "3");
-                        Intent intent = new Intent(MenuActivity.this, AccountActivity.class);
+                        Intent intent = new Intent(MainActivity.this, AccountActivity.class);
                         startActivity(intent);
                 }
                 return true;
@@ -98,7 +97,7 @@ public class MenuActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.action_cart:
-                Intent intent = new Intent(MenuActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 startActivity(intent);
         }
 
@@ -119,7 +118,7 @@ public class MenuActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new NearbyFragment();
+                    return new AllFragment();
                 case 1:
                     return new FastfoodFragment();
                 case 2:
@@ -148,7 +147,7 @@ public class MenuActivity extends AppCompatActivity {
                 permissions[2]) == PackageManager.PERMISSION_GRANTED){
 
         }else{
-            ActivityCompat.requestPermissions(MenuActivity.this,
+            ActivityCompat.requestPermissions(MainActivity.this,
                     permissions,
                     REQUEST_CODE);
         }

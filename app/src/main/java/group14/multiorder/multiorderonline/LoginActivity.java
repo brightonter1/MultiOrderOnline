@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(AuthResult authResult) {
                             if (authResult.getUser().isEmailVerified()){
                                 Log.d("System", "[Login] login complete");
-                                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                                 startActivity(intent);
                                 finish();
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser _user = mAuth.getCurrentUser();
 
         if(_user != null){
-            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
     }
