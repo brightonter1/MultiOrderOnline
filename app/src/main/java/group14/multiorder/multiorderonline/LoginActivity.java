@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         btnLogin();
         btnRegister();
-        loginalready();
+        UserExist();
 
     }
     public void btnRegister(){
@@ -72,8 +72,6 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                                 startActivity(intent);
                                 finish();
-
-
                             }
                             else if (authResult.getUser().isEmailVerified() == false){
                                 Log.d("System", "[Login] email not verified");
@@ -93,10 +91,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    public void loginalready(){
+    public void UserExist(){
         FirebaseUser _user = mAuth.getCurrentUser();
 
-        if(_user != null){
+
+        if(_user != null && _user.isEmailVerified() == true){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
