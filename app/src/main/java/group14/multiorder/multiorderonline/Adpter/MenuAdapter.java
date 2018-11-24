@@ -61,6 +61,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
         imageViewHolder._menuName.setText(_menuCurrent.getTitle());
         imageViewHolder._menuDes.setText(_menuCurrent.getDescription());
         imageViewHolder._menuPrice.setText(_menuCurrent.getPrice() + "฿");
+        imageViewHolder._menuImgDes.setText(_menuCurrent.getImage());
         Picasso.with(_context)
                 .load(_menuCurrent.getImage())
                 .fit()
@@ -69,43 +70,42 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
         imageViewHolder._menuPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("MenuAdapter", imageViewHolder._menuName.getText().toString());
-                addToCart(_menuCurrent);
+                //Log.d("MenuAdapter", "Menu = "+ imageViewHolder._menuName.getText().toString());
+                Menu me = new Menu();
+                me.setTitle(imageViewHolder._menuName.getText().toString());
+                me.setDescription(imageViewHolder._menuDes.getText().toString());
+                me.setImage(imageViewHolder._menuImgDes.getText().toString());
+                me.setPrice(imageViewHolder._menuPrice.getText().toString());
+                Log.d("MenuAdapter", me.getTitle());
+                addToCart(me);
             }
         });
     }
 
     private void addToCart(final Menu mm){
         cart = new Cart();
-        Log.d("MenuAdapter", "add ");
         _fileStore.collection("carts").document(_mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if(documentSnapshot.exists()){
-
                         cart = documentSnapshot.toObject(Cart.class);
-                        Log.d("MenuAdapter", "TITLE = "+cart.get_menuList().get(0).getTitle());
-                        cart.addMenu(mm);
-                        Log.d("MenuAdapter", "SIZE = "+String.valueOf(cart.getSize()));
-                                _fileStore.collection("carts")
-                .document(_mAuth.getCurrentUser().getUid())
-                .set(cart).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Log.d("MenuAdapter", "add "+ mm.getTitle());
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("MenuAdapter", e.getMessage());
-            }
-        });
-
-
-                    }else {
-                        Log.d("MenuAdapter", "TT");
                     }
+                        cart.addMenu(mm);
+                        _fileStore.collection("carts")
+                                .document(_mAuth.getCurrentUser().getUid())
+                                .set(cart).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("MenuAdapter", "add "+ mm.getTitle());
+                                Log.d("MenuAdapter", "SIZE = "+String.valueOf(cart.getSize()));
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("MenuAdapter", e.getMessage());
+                            }
+                        });
             }
         });
 
@@ -122,6 +122,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
         public TextView _menuDes;
         public ImageView _menuImg;
         public Button _menuPrice;
+        public TextView _menuImgDes;
 
 
         public ImageViewHolder(@NonNull View itemView) {
@@ -130,6 +131,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
             _menuDes = itemView.findViewById(R.id.menuitem_des);
             _menuImg = itemView.findViewById(R.id.menuitem_img);
             _menuPrice = itemView.findViewById(R.id.menuitem_price);
+            _menuImgDes = itemView.findViewById(R.id.menuitem_imagedes);
         }
     }
 
