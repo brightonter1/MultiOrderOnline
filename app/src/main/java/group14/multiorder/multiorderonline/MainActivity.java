@@ -59,6 +59,19 @@ public class MainActivity extends AppCompatActivity {
 //        verifyPermissions();
         bottomNavigation();
 
+
+
+//        HashMap<String, Account> db = new HashMap<>();
+//        Account data = new Account("ThisisEmail", "ThisisType");
+//        Account data1 = new Account("EmailThisis", "TypeThisis");
+//
+//        db.put("uid1", data);
+//        db.put("uid2", data1);
+//
+//        for (Map.Entry<String, Account> i : db.entrySet()){
+//            System.out.println(i.getKey() + " : " + i.getValue().toString());
+//        }
+
     }
 
 

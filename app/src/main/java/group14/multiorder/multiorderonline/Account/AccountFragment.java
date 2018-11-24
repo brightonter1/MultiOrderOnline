@@ -88,13 +88,13 @@ public class AccountFragment extends Fragment {
         String mUid = mAuth.getCurrentUser().getUid();
         _Email = mAuth.getCurrentUser().getEmail();
         Log.d("System", mUid);
-        mDB.collection("buyer")
+        mDB.collection("customer")
                 .document(mUid)
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@javax.annotation.Nullable DocumentSnapshot snapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
                         if (snapshot.exists()){
-                            _Name = snapshot.getString("name");
+                            _Name = snapshot.getString("email");
                             setProfile();
                         }
                     }
