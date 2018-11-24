@@ -77,14 +77,30 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
 
     private void addToCart(final Menu mm){
         cart = new Cart();
-        Log.d("MenuAdapter", "add "+ mm.getTitle());
+        Log.d("MenuAdapter", "add ");
         _fileStore.collection("carts").document(_mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if(documentSnapshot.exists()){
 
                         cart = documentSnapshot.toObject(Cart.class);
-                        Log.d("MenuAdapter", "SIZE = "+cart.get_menuList().get(0).getTitle());
+                        Log.d("MenuAdapter", "TITLE = "+cart.get_menuList().get(0).getTitle());
+                        cart.addMenu(mm);
+                        Log.d("MenuAdapter", "SIZE = "+String.valueOf(cart.getSize()));
+                                _fileStore.collection("carts")
+                .document(_mAuth.getCurrentUser().getUid())
+                .set(cart).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("MenuAdapter", "add "+ mm.getTitle());
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("MenuAdapter", e.getMessage());
+            }
+        });
 
 
                     }else {
@@ -92,21 +108,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
                     }
             }
         });
-//        cart.addMenu(mm);
-//        _fileStore.collection("carts")
-//                .document(_mAuth.getCurrentUser().getUid())
-//                .set(cart).addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//                Log.d("MenuAdapter", "add "+ mm.getTitle());
-//
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                Log.d("MenuAdapter", e.getMessage());
-//            }
-//        });
+
+
     }
 
     @Override
