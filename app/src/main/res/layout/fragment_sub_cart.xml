@@ -38,12 +38,12 @@
         app:layout_constraintStart_toStartOf="@+id/sub_cart_name"
         app:layout_constraintTop_toBottomOf="@+id/sub_cart_name" />
 
-    <Button
+    <ImageButton
         android:id="@+id/sub_cart_add"
-        android:layout_width="24sp"
-        android:layout_height="24sp"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
         android:layout_marginStart="24dp"
-        android:text="Button"
+        android:src="@drawable/ic_action_add"
         app:layout_constraintBottom_toBottomOf="@+id/sub_cart_price"
         app:layout_constraintStart_toEndOf="@+id/sub_cart_price" />
 
@@ -56,11 +56,12 @@
         app:layout_constraintBottom_toBottomOf="@+id/sub_cart_add"
         app:layout_constraintStart_toEndOf="@+id/sub_cart_add" />
 
-    <Button
+    <ImageButton
         android:id="@+id/sub_cart_minus"
-        android:layout_width="24sp"
-        android:layout_height="24sp"
+        android:layout_width="20sp"
+        android:layout_height="20sp"
         android:layout_marginStart="8dp"
+        android:src="@drawable/ic_action_minus"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="@+id/sub_cart_qty"
         app:layout_constraintStart_toEndOf="@+id/sub_cart_qty" />
