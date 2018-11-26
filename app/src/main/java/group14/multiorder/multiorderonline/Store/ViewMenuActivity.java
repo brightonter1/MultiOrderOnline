@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import group14.multiorder.multiorderonline.R;
+import group14.multiorder.multiorderonline.carttest.CartFragment;
 import group14.multiorder.multiorderonline.obj.Store;
 
 public class ViewMenuActivity extends AppCompatActivity {
@@ -117,7 +118,7 @@ public class ViewMenuActivity extends AppCompatActivity {
                     
                     return new menuFragment();
                 case 1:
-                    return new infoFragment();
+                    return new CartFragment();
             }
             return null;
         }
