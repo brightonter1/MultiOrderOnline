@@ -52,6 +52,7 @@ public class ImageAdater extends RecyclerView.Adapter<ImageAdater.ImageViewHolde
                 v.getContext().startActivity(intent);
             }
         });
+
     }
 
     @Override
