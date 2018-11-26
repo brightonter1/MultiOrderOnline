@@ -20,6 +20,7 @@
         android:id="@+id/login_username"
         android:textSize="20dp"
         android:gravity="center"
+        android:fontFamily="@font/lamoon_regular"
         android:layout_gravity="center"
         android:hint="E-mail"
         android:background="@drawable/border_radian"
@@ -29,6 +30,7 @@
     <EditText
         android:id="@+id/login_pwd"
         android:textSize="20dp"
+        android:fontFamily="@font/lamoon_regular"
         android:gravity="center"
         android:hint="password"
         android:inputType="textPassword"
@@ -43,6 +45,7 @@
         android:text="Login"
         android:textColor="@android:color/black"
         android:textSize="30dp"
+        android:fontFamily="@font/lamoon_bold"
         android:layout_marginTop="10dp"
         android:background="@drawable/borderbold"
         android:layout_width="200dp"
@@ -50,6 +53,7 @@
     <TextView
         android:id="@+id/login_register"
         android:gravity="center"
+        android:fontFamily="@font/lamoon_regular"
         android:textColor="@color/Yellow"
         android:text="@string/register"
         android:layout_width="match_parent"

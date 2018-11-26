@@ -43,7 +43,7 @@ public class AccountFragment extends Fragment {
     private String _Email;
     private TextView vName;
     private TextView vEmail;
-
+    private Toolbar toolbar;
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -59,20 +59,28 @@ public class AccountFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Toolbar toolbar = getActivity().findViewById(R.id.account_bar);
+        toolbar = getActivity().findViewById(R.id.account_bar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        getActivity().setTitle("My Profile");
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        TextView title = getActivity().findViewById(R.id.title_bar);
+        title.setText("My Profile");
         mAuth = FirebaseAuth.getInstance();
         mDB = FirebaseFirestore.getInstance();
         getProfile();
         ListOption();
         initLogout();
+        backBtn();
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        getActivity().getMenuInflater().inflate(R.menu.menu_bottom, menu);
+    private void backBtn(){
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccountFragment.this.getActivity().finish();
+            }
+        });
     }
+
 
 
     private void ListOption(){
@@ -87,7 +95,6 @@ public class AccountFragment extends Fragment {
     private void getProfile(){
         String mUid = mAuth.getCurrentUser().getUid();
         _Email = mAuth.getCurrentUser().getEmail();
-        Log.d("System", mUid);
         mDB.collection("customer")
                 .document(mUid)
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {

@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import group14.multiorder.multiorderonline.Account.AccountActivity;
+import group14.multiorder.multiorderonline.Cart.CartActivity;
 import group14.multiorder.multiorderonline.Store.DessertFragment;
 import group14.multiorder.multiorderonline.Store.FastfoodFragment;
 import group14.multiorder.multiorderonline.Store.AllFragment;
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_tab, menu);
+        getMenuInflater().inflate(R.menu.menu_cart, menu);
         return true;
     }
 
@@ -110,10 +111,9 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.action_cart:
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(MainActivity.this, CartActivity.class);
                 startActivity(intent);
         }
-
 
         return super.onOptionsItemSelected(item);
     }
