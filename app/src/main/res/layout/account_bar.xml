@@ -7,6 +7,17 @@
     app:theme = "@style/AccountBar">
 
 
+    <TextView
+        android:id="@+id/title_bar"
+        android:text="Profile"
+        android:textSize="30dp"
+        android:fontFamily="@font/lamoon_regular"
+        android:gravity="left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
 
 
 </android.support.v7.widget.Toolbar>

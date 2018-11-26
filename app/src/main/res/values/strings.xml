@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MultiOrderOnline</string>
+    <string name="app_name">App</string>
     <string name="register">Already have an account? <u>Sing in now</u>.</string>
     <string name="title_activity_main_tab">MainTabActivity</string>
     <string name="tab_text_1">Login</string>
