@@ -48,6 +48,7 @@
                         android:layout_marginLeft="10dp"
                         android:background="@null"
                         android:maxLines="2"
+                        android:fontFamily="@font/lamoon_regular"
                         android:hint="Title"
                         android:textColor="@color/Black"
                         android:padding="10dp"/>
@@ -74,6 +75,7 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
+                            android:fontFamily="@font/lamoon_regular"
                             android:id="@+id/input_description"
                             android:layout_centerVertical="true"
                             android:maxLines="20"
@@ -101,6 +103,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/input_price"
+                            android:fontFamily="@font/lamoon_regular"
                             android:layout_centerVertical="true"
                             android:background="@null"
                             android:inputType="numberDecimal"
@@ -121,6 +124,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="35dp"
+                            android:fontFamily="@font/lamoon_bold"
                             android:layout_marginBottom="35dp"
                             android:text="post"
 

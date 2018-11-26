@@ -51,6 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:fontFamily="@font/lamoon_regular"
                 android:layout_marginLeft="5dp"
                 android:text="Store name"
                 android:textSize="25dp" />

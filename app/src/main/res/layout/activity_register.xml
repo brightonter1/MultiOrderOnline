@@ -12,6 +12,7 @@
         android:id="@+id/register_back"
         android:layout_width="50dp"
         android:layout_height="60dp"
+        android:fontFamily="@font/lamoon_regular"
         android:layout_marginLeft="10dp"
         android:drawableLeft="@drawable/ic_back" />
 
@@ -26,6 +27,7 @@
         android:drawableLeft="@drawable/ic_account"
         android:layout_marginTop="10dp"
         android:padding="10dp"
+        android:fontFamily="@font/lamoon_regular"
         android:hint="Email"
         android:layout_gravity="center"
         android:textSize="20dp"
@@ -38,6 +40,7 @@
         android:drawableLeft="@drawable/ic_pwd"
         android:inputType="textPassword"
         android:hint="Password"
+        android:fontFamily="@font/lamoon_regular"
         android:padding="10dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/border_rec"
@@ -49,7 +52,7 @@
     <EditText
         android:id="@+id/register_repassword"
         android:drawableLeft="@drawable/ic_pwd"
-
+        android:fontFamily="@font/lamoon_regular"
         android:inputType="textPassword"
         android:padding="10dp"
         android:hint="Confirm Password"
@@ -66,6 +69,7 @@
         android:layout_width="match_parent"
         android:gravity="center"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/lamoon_regular"
         android:textSize="20dp"
         android:layout_height="wrap_content" />
 
@@ -99,6 +103,7 @@
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
+        android:fontFamily="@font/lamoon_bold"
         android:layout_marginTop="15dp"
         android:background="@drawable/borderbold"
         android:gravity="center"

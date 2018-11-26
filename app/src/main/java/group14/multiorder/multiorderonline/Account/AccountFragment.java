@@ -61,7 +61,7 @@ public class AccountFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Toolbar toolbar = getActivity().findViewById(R.id.account_bar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        getActivity().setTitle("My Profile");
+//        getActivity().setTitle("My Profile");
         mAuth = FirebaseAuth.getInstance();
         mDB = FirebaseFirestore.getInstance();
         getProfile();
