@@ -1,7 +1,6 @@
 package group14.multiorder.multiorderonline;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -36,11 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        context = this;
-        setFont();
         btnLogin();
         btnRegister();
-        loginalready();
+        UserExist();
 
     }
     public void btnRegister(){
@@ -71,10 +68,10 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(AuthResult authResult) {
                             if (authResult.getUser().isEmailVerified()){
                                 Log.d("System", "[Login] login complete");
-                                Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                                 startActivity(intent);
-
-
+                                finish();
                             }
                             else if (authResult.getUser().isEmailVerified() == false){
                                 Log.d("System", "[Login] email not verified");
@@ -92,22 +89,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    public void setFont(){
-        typeface = Typeface.createFromAsset(getAssets(), "font/Franchise-Bold.ttf");
-        userName = findViewById(R.id.login_username);
-        pwd = findViewById(R.id.login_pwd);
-        btn = findViewById(R.id.login_login);
-        userName.setTypeface(typeface);
-        pwd.setTypeface(typeface);
-        btn.setTypeface(typeface);
 
-    }
 
-    public void loginalready(){
+    public void UserExist(){
         FirebaseUser _user = mAuth.getCurrentUser();
 
-        if(_user != null){
-            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+
+        if(_user != null && _user.isEmailVerified() == true){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
     }

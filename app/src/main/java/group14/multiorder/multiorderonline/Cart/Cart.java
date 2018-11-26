@@ -1,50 +1,28 @@
 package group14.multiorder.multiorderonline.Cart;
 
+import java.util.ArrayList;
+
+import group14.multiorder.multiorderonline.obj.Menu;
+
 public class Cart {
+    private ArrayList<Menu> _menuList = new ArrayList<Menu>();
 
-    private String imgPath;
-    private String name;
-    private String price;
-    private String piece;
+    public Cart(){}
 
-    public Cart(String imgPath, String name, String price, String piece) {
-        this.imgPath = imgPath;
-        this.name = name;
-        this.price = price;
-        this.piece = piece;
+    public void addMenu(Menu mm){
+        _menuList.add(mm);
     }
 
-    public Cart() { }
 
-    public String getImgPath() {
-        return imgPath;
+    public ArrayList<Menu> get_menuList() {
+        return _menuList;
     }
 
-    public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
+    public void set_menuList(ArrayList<Menu> _menuList) {
+        this._menuList = _menuList;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getPiece() {
-        return piece;
-    }
-
-    public void setPiece(String piece) {
-        this.piece = piece;
+    public int getSize(){
+        return _menuList.size();
     }
 }

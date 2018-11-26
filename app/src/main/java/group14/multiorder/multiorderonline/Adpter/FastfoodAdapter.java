@@ -14,9 +14,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import group14.multiorder.multiorderonline.ImageAdater;
 import group14.multiorder.multiorderonline.R;
-import group14.multiorder.multiorderonline.ViewMenuActivity;
+import group14.multiorder.multiorderonline.Store.ViewMenuActivity;
 import group14.multiorder.multiorderonline.obj.Store;
 
 public class FastfoodAdapter extends RecyclerView.Adapter<FastfoodAdapter.ImageViewHolder>{
@@ -32,7 +31,7 @@ public class FastfoodAdapter extends RecyclerView.Adapter<FastfoodAdapter.ImageV
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(_context).inflate(R.layout.fragment_nearby, viewGroup, false);
+        View v = LayoutInflater.from(_context).inflate(R.layout.fragment_all, viewGroup, false);
         return new ImageViewHolder(v);
     }
 

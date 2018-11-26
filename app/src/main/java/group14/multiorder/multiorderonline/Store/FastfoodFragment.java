@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group14.multiorder.multiorderonline.Adpter.FastfoodAdapter;
-import group14.multiorder.multiorderonline.ImageAdater;
 import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.Store;
 

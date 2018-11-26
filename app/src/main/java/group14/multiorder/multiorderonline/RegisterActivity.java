@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
-import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
@@ -34,16 +33,19 @@ public class RegisterActivity extends AppCompatActivity {
     private String _emailStr;
     private String _pwdStr;
     private Toolbar toolbar;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-
+        firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         context = this;
         btnRegister();
         BackBtn();
+
+
     }
 
     public void BackBtn(){
@@ -51,8 +53,6 @@ public class RegisterActivity extends AppCompatActivity {
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -80,9 +80,8 @@ public class RegisterActivity extends AppCompatActivity {
                     sendVerifiedEmail(authResult.getUser());
                     Log.d("System", "[Register] Register Complete");
                     Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
-//                    createDBforUser(mAuth.getCurrentUser().getUid());
+                    createDBforUser(mAuth.getCurrentUser().getUid());
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    mAuth.signOut();
                     startActivity(intent);
                     finish();
                 }
@@ -104,6 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
             return false;
         }
     }
+
     public void sendVerifiedEmail(final FirebaseUser _user) {
         _user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -119,11 +119,15 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void createDBforUser(String _uid){
-        Map<String, String> data = new HashMap<>();
-        data.put("email", _emailStr);
-        data.put("password", _pwdStr);
-        FirebaseFirestore _fireStore = FirebaseFirestore.getInstance();
-        _fireStore.collection("customer").document(_uid).set(data)
+        radioGroup = findViewById(R.id.select_radio);
+        radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+        String type = (String) radioButton.getText();
+
+        HashMap<String,String> mAccount = new HashMap<>();
+        mAccount.put("email", _emailStr);
+        mAccount.put("type", type.toLowerCase());
+
+        firebaseFirestore.collection(type).document(_uid).set(mAccount)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -136,6 +140,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

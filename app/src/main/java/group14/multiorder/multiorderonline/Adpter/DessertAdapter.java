@@ -15,9 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import group14.multiorder.multiorderonline.ImageAdater;
 import group14.multiorder.multiorderonline.R;
-import group14.multiorder.multiorderonline.ViewMenuActivity;
+import group14.multiorder.multiorderonline.Store.ViewMenuActivity;
 import group14.multiorder.multiorderonline.obj.Store;
 
 public class DessertAdapter extends RecyclerView.Adapter<DessertAdapter.ImageViewHolder> {

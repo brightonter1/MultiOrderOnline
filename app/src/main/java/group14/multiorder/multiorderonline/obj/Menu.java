@@ -11,16 +11,18 @@ public class Menu implements Parcelable {
     private String title;
     private String description;
     private String price;
+    private String amount = "1";
 
     @Override
     public String toString() {
         return "Menu{" +
-                "post_id='" + getPost_id() + '\'' +
-                ", user_id='" + getUser_id() + '\'' +
-                ", image='" + getImage() + '\'' +
-                ", title='" + getTitle() + '\'' +
-                ", description='" + getDescription() + '\'' +
-                ", price='" + getPrice() + '\'' +
+                "post_id='" + post_id + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", image='" + image + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price='" + price + '\'' +
+                ", amount='" + amount + '\'' +
                 '}';
     }
 
@@ -35,9 +37,16 @@ public class Menu implements Parcelable {
         this.title = in.readString();
         this.description = in.readString();
         this.price = in.readString();
+        this.amount = in.readString();
     }
 
+    public String getAmount() {
+        return amount;
+    }
 
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 
     @Override
     public int describeContents() {
