@@ -66,4 +66,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/sub_cart_qty"
         app:layout_constraintStart_toEndOf="@+id/sub_cart_qty" />
 
+    <ImageButton
+        android:id="@+id/sub_cart_delete"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/ic_action_delete"
+        app:layout_constraintEnd_toEndOf="@+id/sub_cart_minus"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
