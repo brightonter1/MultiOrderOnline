@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private static final int REQUEST_CODE = 1;
 
+    private Intent intent;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private BottomNavigationView bottomNavigationView;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public void bottomNavigation(){
         bottomNavigationView = findViewById(R.id.bottom_nav_view);
         ChangeSize();
@@ -82,11 +84,13 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.item_order_history:
                         Log.d("Choose", "2");
+                        intent = new Intent(MainActivity.this, OrderHistoryActivity.class);
+                        startActivity(intent);
                         break;
 
                     case R.id.item_account:
                         Log.d("Choose", "3");
-                        Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+                        intent = new Intent(MainActivity.this, AccountActivity.class);
                         startActivity(intent);
                         break;
                 }
