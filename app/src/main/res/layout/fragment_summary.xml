@@ -59,4 +59,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_bar" />
 
+    <TextView
+        android:id="@+id/summary_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="316dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/font_bold"
+        android:text="Total 50 Baht"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/summary_items"
+        app:layout_constraintTop_toTopOf="@+id/summary_items" />
+
 </android.support.constraint.ConstraintLayout>
