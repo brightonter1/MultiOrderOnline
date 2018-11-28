@@ -11,8 +11,8 @@
         android:id="@+id/imageView"
         android:layout_width="69dp"
         android:layout_height="78dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -21,11 +21,11 @@
         android:id="@+id/sub_summary_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="36dp"
         android:fontFamily="@font/font_regular"
         android:text="ชื่ออาหาร"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        tools:layout_editor_absoluteY="40dp" />
+        tools:layout_editor_absoluteY="41dp" />
 
     <TextView
         android:id="@+id/sub_summary_qty"
@@ -41,8 +41,9 @@
         android:id="@+id/sub_summary_sub_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/font_regular"
-        android:layout_marginTop="8dp"
         android:text="sub total 50 บาท"
         app:layout_constraintStart_toStartOf="@+id/sub_summary_qty"
         app:layout_constraintTop_toBottomOf="@+id/sub_summary_qty" />
