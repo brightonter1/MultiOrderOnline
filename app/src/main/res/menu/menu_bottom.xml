@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/item_notify"
+        android:id="@+id/item_ongoing_order"
         android:enabled="true"
-        android:icon="@drawable/ic_notify"/>
+        android:icon="@drawable/ic_action_ongoing"/>
     <item
-        android:id="@+id/item_favorite"
+        android:id="@+id/item_order_history"
         android:enabled="true"
-        android:icon="@drawable/ic_favorite"/>
+        android:icon="@drawable/ic_action_history"/>
     <item
         android:id="@+id/item_account"
         android:enabled="true"
-        android:icon="@drawable/ic_account"/>
+        android:icon="@drawable/ic_action_account"/>
 
 </menu>

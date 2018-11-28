@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
-
+    private BottomNavigationView bottomNavigationView;
 
 
     @Override
@@ -66,8 +66,37 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation();
 
 
+    }
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav_view);
+
+    public void bottomNavigation(){
+        bottomNavigationView = findViewById(R.id.bottom_nav_view);
+        ChangeSize();
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.item_ongoing_order:
+                        Log.d("Choose", "1");
+                        break;
+
+                    case R.id.item_order_history:
+                        Log.d("Choose", "2");
+                        break;
+
+                    case R.id.item_account:
+                        Log.d("Choose", "3");
+                        Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+    private void ChangeSize(){
+        bottomNavigationView = findViewById(R.id.bottom_nav_view);
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
         for (int i = 0; i < menuView.getChildCount(); i++) {
             final View iconView = menuView.getChildAt(i).findViewById(android.support.design.R.id.icon);
@@ -79,29 +108,6 @@ public class MainActivity extends AppCompatActivity {
             layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
             iconView.setLayoutParams(layoutParams);
         }
-
-    }
-
-
-    public void bottomNavigation(){
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.item_notify:
-                        Log.d("Choose", "1");
-                    case R.id.item_favorite:
-                        Log.d("Choose", "2");
-                    case R.id.item_account:
-                        Log.d("Choose", "3");
-                        Intent intent = new Intent(MainActivity.this, AccountActivity.class);
-                        startActivity(intent);
-                }
-                return true;
-            }
-        });
     }
 
 

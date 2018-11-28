@@ -24,6 +24,7 @@ public class AccountActivity extends AppCompatActivity {
         if (mAuth.getCurrentUser() == null){
             Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
             startActivity(intent);
+            finish();
         }else{
             getSupportFragmentManager()
                     .beginTransaction()
