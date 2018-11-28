@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +71,20 @@ public class CartFragment extends Fragment {
         title.setText("Shopping Cart");
         backBtn();
         showMenu();
+        processBtn();
+    }
+
+    private void processBtn(){
+        Button btn = getActivity().findViewById(R.id.cart_process);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_cart, new CartSummaryFragment())
+                        .commit();
+            }
+        });
     }
 
     private void showMenu(){
