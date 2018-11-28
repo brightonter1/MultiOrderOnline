@@ -74,7 +74,7 @@ public class CartFragment extends Fragment {
     }
 
     private void showMenu(){
-
+        final TextView _totalPrice = getView().findViewById(R.id.account_total);
 //        Toast.makeText(getActivity(), "asdasdsad", Toast.LENGTH_SHORT).show();
         _cartView = getView().findViewById(R.id.cart_recycler);
         _cartView.setHasFixedSize(true);
@@ -85,7 +85,7 @@ public class CartFragment extends Fragment {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
 
                 if(documentSnapshot.exists()){
-                    Toast.makeText(getActivity(), "asssssssssssssss", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "asssssssssssssss", Toast.LENGTH_SHORT).show();
                     cart = documentSnapshot.toObject(Cart.class);
                     Log.d("CART", String.valueOf(cart.getSize()));
                     ArrayList<Menu> mm = cart.get_menuList();
@@ -93,11 +93,13 @@ public class CartFragment extends Fragment {
                         Log.d("CART","Add "+ aaa.getTitle());
                         _menuList.add(aaa);
                     }
-                    _cartAdapter = new CartAdapter(getActivity(), _menuList);
+                    _cartAdapter = new CartAdapter(getActivity(), _menuList, cart.getTotal(), _totalPrice);
                     _cartView.setAdapter(_cartAdapter);
                     ProgressBar cartProgress = getView().findViewById(R.id.cart_progress);
                     cartProgress.setVisibility(View.INVISIBLE);
                     _cartAdapter.notifyDataSetChanged();
+                    _totalPrice.setText(String.valueOf(cart.getTotal())+"฿");
+
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {

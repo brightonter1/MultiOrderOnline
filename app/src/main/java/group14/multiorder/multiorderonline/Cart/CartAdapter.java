@@ -29,10 +29,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private Context _context;
     private List<Menu> _cart;
     Cart cart;
+    private int _Total;
+    private TextView to;
 
-    public CartAdapter(Context _context, List _cart) {
+    public CartAdapter(Context _context, List _cart, int total, TextView totalP) {
         this._context = _context;
         this._cart = _cart;
+        this._Total = total;
+        this.to = totalP;
     }
 
     @NonNull
@@ -69,6 +73,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         cartViewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Menu um = _cart.get(cartViewHolder.getAdapterPosition());
+                _Total = (_Total)-(Integer.parseInt(um.getPrice().replace("฿", "")) * Integer.parseInt(cartViewHolder.amount.getText().toString()));
+                to.setText(String.valueOf(_Total));
                 _cart.remove(cartViewHolder.getAdapterPosition());
                 notifyItemRemoved(cartViewHolder.getAdapterPosition());
                 notifyItemRangeChanged(cartViewHolder.getAdapterPosition(), _cart.size());
@@ -84,6 +91,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     private void plus(TextView pText, TextView priceText, Menu upM){
 
+
         int am = Integer.parseInt(pText.getText().toString())+1;
 
 
@@ -91,6 +99,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         int _price = Integer.parseInt(_stringPrice)*am;
         pText.setText(String.valueOf(am));
         priceText.setText(String.valueOf(_price)+"฿");
+
+        _Total = (_Total-((am-1)*Integer.parseInt(_stringPrice)))+_price;
+        to.setText(String.valueOf((_Total))+"฿");
+
+
 
 
 
@@ -103,6 +116,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             int _price = Integer.parseInt(_stringPrice)*am;
             pText.setText(String.valueOf(am));
             priceText.setText(String.valueOf(_price)+"฿");
+
+            _Total = (_Total-((am+1)*Integer.parseInt(_stringPrice)))+_price;
+            to.setText(String.valueOf((_Total))+"฿");
         }
 
 
@@ -131,6 +147,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     public class CartViewHolder extends RecyclerView.ViewHolder{
+        public TextView totalP;
         public ImageView menuImg;
         public TextView menuTitle;
         public TextView menuPrice;
@@ -148,6 +165,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             minus = itemView.findViewById(R.id.sub_cart_minus);
             amount = itemView.findViewById(R.id.sub_cart_qty);
             delete = itemView.findViewById(R.id.sub_cart_delete);
+            totalP = itemView.findViewById(R.id.account_total);
 //            menuImg =  itemView.findViewById();
 //            menuTitle = itemView.findViewById(R.id)
         }
