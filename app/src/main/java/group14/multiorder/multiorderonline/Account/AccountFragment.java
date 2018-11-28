@@ -109,9 +109,7 @@ public class AccountFragment extends Fragment {
     }
 
     private void setProfile(){
-        vName = getActivity().findViewById(R.id.account_name);
         vEmail = getActivity().findViewById(R.id.account_email);
-        vName.setText(_Name);
         vEmail.setText(_Email);
     }
     private void initLogout(){
