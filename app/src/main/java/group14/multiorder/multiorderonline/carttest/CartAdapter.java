@@ -83,18 +83,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ImageViewHolde
 
     }
 
-    public void getCart(){
-        cart = new Cart();
-        _fileStore.collection("carts").document(_mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
-                    cart = documentSnapshot.toObject(Cart.class);
-                }
-            }
-        });
-    }
-
     @Override
     public int getItemCount() {
         return _cart.size();

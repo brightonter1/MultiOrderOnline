@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,6 +17,7 @@
         android:layout_height="86dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:paddingBottom="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
@@ -67,3 +72,4 @@
         app:layout_constraintStart_toEndOf="@+id/sub_cart_qty" />
 
 </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
