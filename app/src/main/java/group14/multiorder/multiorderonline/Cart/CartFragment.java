@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -94,7 +95,9 @@ public class CartFragment extends Fragment {
                     }
                     _cartAdapter = new CartAdapter(getActivity(), _menuList);
                     _cartView.setAdapter(_cartAdapter);
-                    //_cartAdapter.notifyDataSetChanged();
+                    ProgressBar cartProgress = getView().findViewById(R.id.cart_progress);
+                    cartProgress.setVisibility(View.INVISIBLE);
+                    _cartAdapter.notifyDataSetChanged();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {

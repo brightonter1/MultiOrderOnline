@@ -25,4 +25,10 @@ public class Cart {
     public int getSize(){
         return _menuList.size();
     }
+
+    void plus_amount(int posi){
+        Menu cMenu = _menuList.get(posi);
+        cMenu.setAmount(String.valueOf(Integer.parseInt(cMenu.getAmount())+1));
+        _menuList.set(posi, cMenu);
+    }
 }
