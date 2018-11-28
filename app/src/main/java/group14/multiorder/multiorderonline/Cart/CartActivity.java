@@ -38,7 +38,7 @@ public class CartActivity extends AppCompatActivity {
             Log.d("System", "Go to CartFrag");
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.main_cart, new CartFragment())
+                    .replace(R.id.main_cart, new CartFragment(), "Cart")
                     .commit();
         }
     }

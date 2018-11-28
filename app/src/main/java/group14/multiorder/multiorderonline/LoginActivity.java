@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         UserExist();
 
     }
+
     public void btnRegister(){
         TextView btnReg = findViewById(R.id.login_register);
         btnReg.setOnClickListener(new View.OnClickListener() {
