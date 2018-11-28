@@ -28,7 +28,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private FirebaseAuth _mAuth = FirebaseAuth.getInstance();
     private Context _context;
     private List<Menu> _cart;
-    Cart cart;
+    //Cart cart;
     private int _Total;
     private TextView to;
 
@@ -50,7 +50,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(@NonNull final CartViewHolder cartViewHolder, int i) {
         final Menu _currentMenu = _cart.get(i);
         cartViewHolder.menuTitle.setText(_currentMenu.getTitle());
-        cartViewHolder.menuPrice.setText(_currentMenu.getPrice());
+        cartViewHolder.menuPrice.setText(String.valueOf(Integer.parseInt(_currentMenu.getPrice().replace("฿", ""))*Integer.parseInt(_currentMenu.getAmount()))+"฿");
         cartViewHolder.amount.setText(_currentMenu.getAmount());
         Picasso.with(_context)
                 .load(_currentMenu.getImage())
@@ -60,14 +60,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         cartViewHolder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                plus(cartViewHolder.amount, cartViewHolder.menuPrice, _cart.get(cartViewHolder.getAdapterPosition()));
+                plus(cartViewHolder.amount, cartViewHolder.menuPrice, _cart.get(cartViewHolder.getAdapterPosition()), cartViewHolder.getAdapterPosition());
             }
         });
 
         cartViewHolder.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                minus(cartViewHolder.amount, cartViewHolder.menuPrice, _cart.get(cartViewHolder.getAdapterPosition()));
+                minus(cartViewHolder.amount, cartViewHolder.menuPrice, _cart.get(cartViewHolder.getAdapterPosition()), cartViewHolder.getAdapterPosition());
             }
         });
         cartViewHolder.delete.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             public void onClick(View v) {
                 Menu um = _cart.get(cartViewHolder.getAdapterPosition());
                 _Total = (_Total)-(Integer.parseInt(um.getPrice().replace("฿", "")) * Integer.parseInt(cartViewHolder.amount.getText().toString()));
-                to.setText(String.valueOf(_Total));
+                to.setText(String.valueOf(_Total)+"฿");
                 _cart.remove(cartViewHolder.getAdapterPosition());
                 notifyItemRemoved(cartViewHolder.getAdapterPosition());
                 notifyItemRangeChanged(cartViewHolder.getAdapterPosition(), _cart.size());
@@ -89,7 +89,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         });
     }
 
-    private void plus(TextView pText, TextView priceText, Menu upM){
+    private void plus(TextView pText, TextView priceText, Menu upM, int position){
 
 
         int am = Integer.parseInt(pText.getText().toString())+1;
@@ -102,13 +102,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         _Total = (_Total-((am-1)*Integer.parseInt(_stringPrice)))+_price;
         to.setText(String.valueOf((_Total))+"฿");
-
-
-
-
+        Menu _newMenu = new Menu();
+        _newMenu.setAmount(String.valueOf(am));
+        _newMenu.setTitle(upM.getTitle());
+        _newMenu.setPrice(_stringPrice);
+        _newMenu.setImage(upM.getImage());
+        _newMenu.setDescription(upM.getDescription());
+        _cart.set(position, _newMenu);
+        Cart updateCart = new Cart();
+        for(Menu ct : _cart){
+            updateCart.addMenu(ct);
+        }
+        UpdateCart(updateCart);
 
     }
-    private void minus(TextView pText, TextView priceText, Menu upM){
+    private void minus(TextView pText, TextView priceText, Menu upM, int position){
         int am = Integer.parseInt(pText.getText().toString());
         if(am > 1){
             am = am-1;
@@ -147,7 +155,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
     public class CartViewHolder extends RecyclerView.ViewHolder{
-        public TextView totalP;
         public ImageView menuImg;
         public TextView menuTitle;
         public TextView menuPrice;
@@ -165,9 +172,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             minus = itemView.findViewById(R.id.sub_cart_minus);
             amount = itemView.findViewById(R.id.sub_cart_qty);
             delete = itemView.findViewById(R.id.sub_cart_delete);
-            totalP = itemView.findViewById(R.id.account_total);
-//            menuImg =  itemView.findViewById();
-//            menuTitle = itemView.findViewById(R.id)
+
+
         }
     }
 }

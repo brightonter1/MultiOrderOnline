@@ -92,6 +92,7 @@ public class CartFragment extends Fragment {
     }
 
     private void showMenu(){
+        final Button _processOrder = getView().findViewById(R.id.cart_process);
         final TextView _totalPrice = getView().findViewById(R.id.account_total);
 //        Toast.makeText(getActivity(), "asdasdsad", Toast.LENGTH_SHORT).show();
         _cartView = getView().findViewById(R.id.cart_recycler);
@@ -116,7 +117,13 @@ public class CartFragment extends Fragment {
                     ProgressBar cartProgress = getView().findViewById(R.id.cart_progress);
                     cartProgress.setVisibility(View.INVISIBLE);
                     _cartAdapter.notifyDataSetChanged();
-                    _totalPrice.setText(String.valueOf(cart.getTotal())+"฿");
+                    if(cart.getSize() > 0){
+                        _totalPrice.setText(String.valueOf(cart.getTotal())+"฿");
+                        _totalPrice.setVisibility(View.VISIBLE);
+                        _processOrder.setVisibility(View.VISIBLE);
+                    }else{
+
+                    }
 
                 }
             }
