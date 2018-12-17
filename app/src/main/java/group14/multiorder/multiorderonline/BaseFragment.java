@@ -12,11 +12,12 @@ public abstract class BaseFragment extends Fragment {
 
     public abstract void backBtn();
 
-    public void setToolbar(String nPager){
+    public Toolbar setToolbar(String nPager){
         toolbar = getActivity().findViewById(R.id.account_bar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_back);
         TextView title = getActivity().findViewById(R.id.title_bar);
         title.setText(nPager);
+        return toolbar;
     }
 }

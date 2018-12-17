@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.R;
@@ -16,12 +15,11 @@ import group14.multiorder.multiorderonline.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MenuFragment extends BaseFragment {
-
+public class MenuForm extends BaseFragment {
 
     private Toolbar toolbar;
 
-    public MenuFragment() {
+    public MenuForm() {
         // Required empty public constructor
     }
 
@@ -30,29 +28,14 @@ public class MenuFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu2, container, false);
+        return inflater.inflate(R.layout.fragment_menu_form, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        toolbar = setToolbar("My Profile");
+        toolbar = setToolbar("Add Menu");
         backBtn();
-        addBtn();
-    }
-
-    public void addBtn(){
-        Button addBtn = getActivity().findViewById(R.id.menu_add);
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_account, new MenuForm())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
     }
 
     @Override
@@ -62,7 +45,7 @@ public class MenuFragment extends BaseFragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_account, new AccountFragment())
+                        .replace(R.id.main_account, new MenuFragment())
                         .addToBackStack(null)
                         .commit();
             }

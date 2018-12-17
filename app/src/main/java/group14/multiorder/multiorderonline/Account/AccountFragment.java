@@ -75,7 +75,7 @@ public class AccountFragment extends Fragment {
         backBtn();
     }
 
-    private void backBtn() {
+    private void backBtn(){
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,17 +86,16 @@ public class AccountFragment extends Fragment {
 
 
 
-    private void ListOption(){
-
+    private void ListOption() {
         SharedPreferences sp = getActivity().getSharedPreferences("center", Context.MODE_PRIVATE);
         String type = sp.getString("type", "not found");
         Log.d("System", "get type : " + type);
 
-        if (type.equals("customer")){
+        if (type.equals("customer")) {
             option.add("Notification");
             option.add("Track Order");
             option.add("History Order");
-        }else {
+        } else {
             option.add("Info");
             option.add("Menu");
             option.add("Delete Store");
@@ -108,7 +107,7 @@ public class AccountFragment extends Fragment {
         _optionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (_optionAdapter.getItem(position)){
+                switch (_optionAdapter.getItem(position)) {
                     case "Notification":
                         Log.d("System", "Notification");
                         break;
@@ -135,6 +134,8 @@ public class AccountFragment extends Fragment {
                 }
             }
         });
+
+
     }
 
     private void getProfile(){
@@ -169,7 +170,5 @@ public class AccountFragment extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
-
-
     }
 }

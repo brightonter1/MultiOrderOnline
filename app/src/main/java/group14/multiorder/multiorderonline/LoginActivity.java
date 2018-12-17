@@ -31,11 +31,11 @@ public class LoginActivity extends AppCompatActivity {
     private EditText pwd;
     private Button btn;
     private String _userStr;
-    private String _type;
     private String _pwdStr;
     private Typeface typeface;
     private FirebaseAuth mAuth;
     private Context context;
+    private String _type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(AuthResult authResult) {
                             if (authResult.getUser().isEmailVerified()){
                                 Log.d("System", "[Login] login complete");
-                                shareTypeUser();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                                 startActivity(intent);
@@ -119,8 +118,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
 
-
     }
+
 
 
     public void UserExist(){
