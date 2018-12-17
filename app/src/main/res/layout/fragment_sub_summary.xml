@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,11 +14,14 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/sub_summary_img"
         android:layout_width="69dp"
         android:layout_height="78dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="32dp"
+
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="28dp"
+        android:paddingBottom="12dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -21,11 +30,14 @@
         android:id="@+id/sub_summary_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/font_regular"
         android:text="ชื่ออาหาร"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        tools:layout_editor_absoluteY="41dp" />
+        app:layout_constraintStart_toEndOf="@+id/sub_summary_img"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/sub_summary_qty"
@@ -48,3 +60,4 @@
         app:layout_constraintStart_toStartOf="@+id/sub_summary_qty"
         app:layout_constraintTop_toBottomOf="@+id/sub_summary_qty" />
 </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

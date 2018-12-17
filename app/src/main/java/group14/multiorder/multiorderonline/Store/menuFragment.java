@@ -71,6 +71,7 @@ public class menuFragment extends Fragment {
         _databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Toast.makeText(getActivity(), String.valueOf(dataSnapshot.getChildrenCount()), Toast.LENGTH_SHORT).show();
                 for(DataSnapshot menuSnapshot : dataSnapshot.getChildren()){
                     Menu menu = menuSnapshot.getValue(Menu.class);
                     _post.add(menu);

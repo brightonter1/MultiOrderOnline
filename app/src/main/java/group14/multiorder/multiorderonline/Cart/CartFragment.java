@@ -91,6 +91,9 @@ public class CartFragment extends Fragment{
     }
 
     private void showMenu(){
+
+        final TextView _nocart = getView().findViewById(R.id.cart_text_hide);
+        final Button _noCartBtn = getView().findViewById(R.id.cart_btn_hide);
         final Button _processOrder = getView().findViewById(R.id.cart_process);
         final TextView _totalPrice = getView().findViewById(R.id.account_total);
 //        Toast.makeText(getActivity(), "asdasdsad", Toast.LENGTH_SHORT).show();
@@ -121,7 +124,14 @@ public class CartFragment extends Fragment{
                         _totalPrice.setVisibility(View.VISIBLE);
                         _processOrder.setVisibility(View.VISIBLE);
                     }else{
-
+                        _nocart.setVisibility(View.VISIBLE);
+                        _noCartBtn.setVisibility(View.VISIBLE);
+                        _noCartBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                CartFragment.this.getActivity().finish();
+                            }
+                        });
                     }
 
                 }
@@ -133,6 +143,8 @@ public class CartFragment extends Fragment{
             }
         });
     }
+
+
 
     public void backBtn(){
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
