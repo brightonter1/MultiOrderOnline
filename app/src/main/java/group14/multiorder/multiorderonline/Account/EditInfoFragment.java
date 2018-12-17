@@ -46,7 +46,8 @@ public class EditInfoFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         radioGroup = getView().findViewById(R.id.edit_info_radiogroup);
-
+        radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+        String type = (String) radioButton.getText();
 
 
         _address = getView().findViewById(R.id.edit_info_address);

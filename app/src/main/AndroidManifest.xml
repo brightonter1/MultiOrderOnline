@@ -33,7 +33,6 @@
         <activity android:name=".Account.AccountActivity"></activity>
 
         <activity android:name=".Cart.CartActivity"/>
-        <activity android:name=".OrderHistoryActivity"/>
     </application>
 
 </manifest>

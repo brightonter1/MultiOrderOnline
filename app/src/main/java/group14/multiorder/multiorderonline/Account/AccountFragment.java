@@ -118,6 +118,11 @@ public class AccountFragment extends Fragment {
                         break;
                     case "History Order":
                         Log.d("System", "History Order");
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_view, new Order)
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case "Info":
                         Log.d("System", "Edit info");
