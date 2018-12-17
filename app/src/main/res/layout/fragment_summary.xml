@@ -13,7 +13,7 @@
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/summary_address"
         android:layout_width="368dp"
         android:layout_height="53dp"
         android:layout_marginBottom="16dp"
@@ -31,7 +31,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/font_regular"
         android:text="Address :"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/summary_address"
         app:layout_constraintStart_toStartOf="@+id/summary_items" />
 
     <Button

@@ -12,6 +12,15 @@ public class Menu implements Parcelable {
     private String description;
     private String price;
     private String amount = "1";
+    private int shop_id;
+
+    public int getShop_id() {
+        return shop_id;
+    }
+
+    public void setShop_id(int shop_id) {
+        this.shop_id = shop_id;
+    }
 
     @Override
     public String toString() {

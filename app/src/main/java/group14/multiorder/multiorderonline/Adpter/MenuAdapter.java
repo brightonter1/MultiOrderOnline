@@ -76,6 +76,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
                 me.setDescription(imageViewHolder._menuDes.getText().toString());
                 me.setImage(imageViewHolder._menuImgDes.getText().toString());
                 me.setPrice(imageViewHolder._menuPrice.getText().toString());
+                me.setShop_id(_menuCurrent.getShop_id());
                 Log.d("MenuAdapter", me.getTitle());
                 addToCart(me);
             }
