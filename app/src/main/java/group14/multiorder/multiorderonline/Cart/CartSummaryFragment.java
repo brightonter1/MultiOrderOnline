@@ -28,7 +28,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -53,6 +55,8 @@ public class CartSummaryFragment extends Fragment{
     private Toolbar toolbar;
     public CartSummaryFragment(){}
 
+    String value;
+
     private ArrayList<Menu> _order;
 
     private DatabaseReference _databaseRef;
@@ -74,11 +78,30 @@ public class CartSummaryFragment extends Fragment{
         title.setText("Summary");
         backBtn();
         showMenu();
+
+
+        _databaseRefs = FirebaseDatabase.getInstance().getReference("Corder");
+        _databaseRefs.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Map map = (Map) dataSnapshot.getValue();
+                coder = Integer.parseInt(String.valueOf(map.get("count")))+1;
+                Log.d("System", String.valueOf(map.get("count")));
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         Button btn = getView().findViewById(R.id.summary_comfirm);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmOrder();
+                confirmOrder(String.valueOf(coder));
             }
         });
     }
@@ -115,48 +138,15 @@ public class CartSummaryFragment extends Fragment{
     }
     DatabaseReference _databaseRefs;
     int coder;
-    private void confirmOrder(){
-        _databaseRefs = FirebaseDatabase.getInstance().getReference("Corder");
-        _databaseRefs.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+    FirebaseFirestore firebaseFirestore;
 
-                Map map = (Map) dataSnapshot.getValue();
-                coder = Integer.parseInt(String.valueOf(map.get("count")));
-                Log.d("System", String.valueOf(map.get("count")));
-                coder++;
-                Log.d("System", "This is code : " + coder);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+    private void confirmOrder(String coder){
 
         Map<String,Object> value = new HashMap<String,Object>();
         value.put("count", coder);
         Log.d("System", "coder kuy :  " + coder);
         _databaseRefs.updateChildren(value);
 
-////        Corder corder = new Corder();
-////        corder.setCount(0);
-//        DatabaseReference _refC = FirebaseDatabase.getInstance().getReference("Corder");
-//        //_refC.setValue(corder);
-//        _refC.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for(DataSnapshot menuSnapshot : dataSnapshot.getChildren()){
-//                    Corder a = menuSnapshot.getValue(Corder.class);
-//                    orderCount = a.getCount()+1;
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
 
 
         EditText address = getView().findViewById(R.id.summary_address);
