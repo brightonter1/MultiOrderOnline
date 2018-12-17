@@ -13,6 +13,7 @@ public class Cart {
     public void addMenu(Menu mm){
         _menuList.add(mm);
         String ppp = mm.getPrice().replace("฿", "");
+        
         total += Integer.parseInt(ppp)*Integer.parseInt(mm.getAmount());
     }
 

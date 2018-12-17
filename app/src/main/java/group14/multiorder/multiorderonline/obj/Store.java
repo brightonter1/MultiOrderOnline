@@ -11,53 +11,41 @@ public class Store implements Parcelable {
     private String description;
     private String Tag;
     private int shop_id;
+    private String openClose;
+    private String address;
+    private String phoneNumber;
 
-    public int getShop_id() {
-        return shop_id;
+
+    protected Store(Parcel in) {
+        post_id = in.readString();
+        user_id = in.readString();
+        image = in.readString();
+        title = in.readString();
+        description = in.readString();
+        Tag = in.readString();
+        shop_id = in.readInt();
+        openClose = in.readString();
+        address = in.readString();
+        phoneNumber = in.readString();
     }
-
-    public void setShop_id(int shop_id) {
-        this.shop_id = shop_id;
-    }
-
-    public Store(){}
-
-    public Store(Parcel in){
-        this.post_id = in.readString();
-        this.user_id = in.readString();
-        this.image = in.readString();
-        this.title = in.readString();
-        this.setDescription(in.readString());
-
-    }
-
-
 
     @Override
-    public String toString() {
-        return "Store{" +
-                "post_id='" + getPost_id() + '\'' +
-                ", user_id='" + getUser_id() + '\'' +
-                ", image='" + getImage() + '\'' +
-                ", title='" + getTitle() + '\'' +
-                ", description='" + getDescription() + '\'' +
-                '}';
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(post_id);
+        dest.writeString(user_id);
+        dest.writeString(image);
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeString(Tag);
+        dest.writeInt(shop_id);
+        dest.writeString(openClose);
+        dest.writeString(address);
+        dest.writeString(phoneNumber);
     }
 
     @Override
     public int describeContents() {
         return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-
-        dest.writeString(getPost_id());
-        dest.writeString(getUser_id());
-        dest.writeString(getImage());
-        dest.writeString(getTitle());
-        dest.writeString(getDescription());
     }
 
     public static final Creator<Store> CREATOR = new Creator<Store>() {
@@ -71,6 +59,43 @@ public class Store implements Parcelable {
             return new Store[size];
         }
     };
+
+    public String getOpenClose() {
+        return openClose;
+    }
+
+    public void setOpenClose(String openClose) {
+        this.openClose = openClose;
+    }
+
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public int getShop_id() {
+        return shop_id;
+    }
+
+    public void setShop_id(int shop_id) {
+        this.shop_id = shop_id;
+    }
+
+    public Store(){}
+
 
     public String getPost_id() {
         return post_id;
@@ -118,5 +143,21 @@ public class Store implements Parcelable {
 
     public void setTag(String tag) {
         Tag = tag;
+    }
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "post_id='" + post_id + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", image='" + image + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", Tag='" + Tag + '\'' +
+                ", shop_id=" + shop_id +
+                ", openClose='" + openClose + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
     }
 }

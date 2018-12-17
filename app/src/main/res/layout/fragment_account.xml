@@ -31,6 +31,7 @@
         android:fontFamily="@font/lamoon_bold"
         android:background="@color/green1"
         android:text="Logout"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

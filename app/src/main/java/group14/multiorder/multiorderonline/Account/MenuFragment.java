@@ -62,7 +62,7 @@ public class MenuFragment extends BaseFragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_account, new AccountFragment())
+                        .replace(R.id.main_view, new AccountFragment())
                         .addToBackStack(null)
                         .commit();
             }
