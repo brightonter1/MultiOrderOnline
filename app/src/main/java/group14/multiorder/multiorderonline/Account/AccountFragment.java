@@ -64,8 +64,10 @@ public class AccountFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         toolbar = getActivity().findViewById(R.id.account_bar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
         toolbar.setNavigationIcon(R.drawable.ic_back);
         TextView title = getActivity().findViewById(R.id.title_bar);
+
         title.setText("My Profile");
         mAuth = FirebaseAuth.getInstance();
         mDB = FirebaseFirestore.getInstance();
@@ -119,6 +121,11 @@ public class AccountFragment extends Fragment {
                         break;
                     case "Info":
                         Log.d("System", "Edit info");
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_view, new EditInfoFragment())
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case "Menu":
                         Log.d("System", "Add Menu");

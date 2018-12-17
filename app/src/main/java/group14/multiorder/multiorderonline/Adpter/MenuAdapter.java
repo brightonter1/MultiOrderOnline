@@ -91,7 +91,21 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
                     if(documentSnapshot.exists()){
                         cart = documentSnapshot.toObject(Cart.class);
                     }
+
+                    ArrayList<Menu> me = cart.get_menuList();
+                    int check = 0;
+                    for(int i = 0; i < cart.get_menuList().size(); i++){
+                        if(me.get(i).getTitle().equals(mm.getTitle()) && me.get(i).getShop_id() == mm.getShop_id()){
+                            Menu temo = me.get(i);
+                            cart.get_menuList().get(i).setAmount(String.valueOf(Integer.parseInt(temo.getAmount())+1));
+                            cart.setTotal(cart.getTotal()+Integer.parseInt(me.get(i).getPrice().replace("฿","")));
+                            check = 1;
+
+                        }
+                    }
+                    if(check == 0){
                         cart.addMenu(mm);
+                    }
                         _fileStore.collection("carts")
                                 .document(_mAuth.getCurrentUser().getUid())
                                 .set(cart).addOnSuccessListener(new OnSuccessListener<Void>() {
