@@ -106,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(MainActivity.this, OnGoingOrder.class);
                         break;
 
-                    case R.id.item_order_history:
-                        Log.d("Choose", "2");
-                        intent = new Intent(MainActivity.this, OrderHistoryActivity.class);
-                        startActivity(intent);
-                        break;
+//                    case R.id.item_order_history:
+//                        Log.d("Choose", "2");
+//                        intent = new Intent(MainActivity.this, OrderHistoryActivity.class);
+//                        startActivity(intent);
+//                        break;
 
                     case R.id.item_account:
                         Log.d("Choose", "3");

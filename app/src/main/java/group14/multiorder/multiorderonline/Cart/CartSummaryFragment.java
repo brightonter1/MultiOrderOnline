@@ -33,7 +33,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +44,7 @@ import java.util.Map;
 import group14.multiorder.multiorderonline.R;
 
 import group14.multiorder.multiorderonline.obj.Menu;
+import group14.multiorder.multiorderonline.obj.OrderCustomer;
 import group14.multiorder.multiorderonline.obj.OrderDealer;
 
 public class CartSummaryFragment extends Fragment{
@@ -142,12 +146,9 @@ public class CartSummaryFragment extends Fragment{
 
     private void confirmOrder(String coder){
 
-        Map<String,Object> value = new HashMap<String,Object>();
-        value.put("count", coder);
-        Log.d("System", "coder kuy :  " + coder);
-        _databaseRefs.updateChildren(value);
-
-
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
+        String _datenow = dateFormat.format(date);
 
         EditText address = getView().findViewById(R.id.summary_address);
         String addressStr = address.getText().toString();
@@ -163,6 +164,7 @@ public class CartSummaryFragment extends Fragment{
                     od.setShop_id(_order.get(i).getShop_id());
                     menuOrder.add(_order.get(i));
                     od.setMenu(menuOrder);
+                    od.setDate(_datenow);
                     od.setTotal(Integer.parseInt(_order.get(i).getPrice().replace("฿", ""))*Integer.parseInt(_order.get(i).getAmount())+od.getTotal());
                 }else{
                     od.setAddress(addressStr);
@@ -170,9 +172,10 @@ public class CartSummaryFragment extends Fragment{
                     od.setShop_id(_order.get(i).getShop_id());
                     menuOrder.add(_order.get(i));
                     od.setMenu(menuOrder);
+                    od.setDate(_datenow);
                     od.setTotal(Integer.parseInt(_order.get(i).getPrice().replace("฿", ""))*Integer.parseInt(_order.get(i).getAmount())+od.getTotal());
                     _databaseRef.child("shop id :"+ String.valueOf(_order.get(i).getShop_id()))
-                            .child("order id :"+String.valueOf(coder))
+                            .child("order id :"+coder)
                             .setValue(od);
                     od = new OrderDealer();
                     menuOrder = new ArrayList<>();
@@ -184,14 +187,30 @@ public class CartSummaryFragment extends Fragment{
                 od.setShop_id(_order.get(i).getShop_id());
                 menuOrder.add(_order.get(i));
                 od.setMenu(menuOrder);
+                od.setDate(_datenow);
                 od.setTotal(Integer.parseInt(_order.get(i).getPrice().replace("฿", ""))*Integer.parseInt(_order.get(i).getAmount())+od.getTotal());
                 _databaseRef.child("shop id :"+ String.valueOf(_order.get(i).getShop_id()))
-                        .child("order id :"+String.valueOf(coder))
+                        .child("order id :"+coder)
                         .setValue(od);
                 od = new OrderDealer();
                 menuOrder = new ArrayList<>();
             }
         }
+
+        OrderCustomer ordercus = new OrderCustomer();
+        ordercus.setMenu(_order);
+        ordercus.setOrder_id(Integer.parseInt(coder));
+        ordercus.setStatus("inprogress");
+        ordercus.setDate(_datenow);
+        ordercus.updateTotal();
+        DatabaseReference orderCus = FirebaseDatabase.getInstance().getReference("OrderCustomer/");
+        orderCus.child(_mAuth.getCurrentUser().getUid())
+                .child("order id :"+coder)
+                .setValue(ordercus);
+        Map<String,Object> value = new HashMap<String,Object>();
+        value.put("count", coder);
+        //Log.d("System", "coder kuy :  " + coder);
+        _databaseRefs.updateChildren(value);
 
 
 
