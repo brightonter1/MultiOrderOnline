@@ -3,6 +3,7 @@ package group14.multiorder.multiorderonline;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -26,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText pwd;
     private Button btn;
     private String _userStr;
+    private String _type;
     private String _pwdStr;
     private Typeface typeface;
     private FirebaseAuth mAuth;
@@ -35,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+        context = LoginActivity.this;
         btnLogin();
         btnRegister();
         UserExist();
@@ -69,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onSuccess(AuthResult authResult) {
                             if (authResult.getUser().isEmailVerified()){
                                 Log.d("System", "[Login] login complete");
+                                shareTypeUser();
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_TASK_ON_HOME);
                                 startActivity(intent);
@@ -89,6 +97,29 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void shareTypeUser(){
+        String _Email;
+        FirebaseFirestore mDB;
+        String mUid = mAuth.getCurrentUser().getUid();
+        mDB = FirebaseFirestore.getInstance();
+        _Email = mAuth.getCurrentUser().getEmail();
+        mDB.collection("customer")
+                .document(mUid)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@javax.annotation.Nullable DocumentSnapshot snapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                        if (snapshot.exists()){
+                            _type = snapshot.getString("type");
+                            SharedPreferences sp = getSharedPreferences("center", Context.MODE_PRIVATE);
+                            sp.edit().putString("type", _type).apply();
+                            Log.d("System", "User type : " + _type);
+                        }
+                    }
+                });
+
+
     }
 
 

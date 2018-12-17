@@ -26,6 +26,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import group14.multiorder.multiorderonline.Account.AccountActivity;
 import group14.multiorder.multiorderonline.Cart.CartActivity;
@@ -64,8 +66,29 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 //        verifyPermissions();
-        bottomNavigation();
+//        bottomNavigation();
+        navigationBtn();
 
+    }
+
+    public void navigationBtn(){
+        ImageView accountBtn = findViewById(R.id.main_account);
+        accountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(MainActivity.this, AccountActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ImageView cartBtn = findViewById(R.id.main_cart);
+        cartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -80,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.item_ongoing_order:
                         Log.d("Choose", "1");
+                        intent = new Intent(MainActivity.this, OnGoingOrder.class);
                         break;
 
                     case R.id.item_order_history:
@@ -123,17 +147,17 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.action_cart:
-                Intent intent = new Intent(MainActivity.this, CartActivity.class);
-                startActivity(intent);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        switch (item.getItemId()){
+//            case R.id.action_cart:
+//                Intent intent = new Intent(MainActivity.this, CartActivity.class);
+//                startActivity(intent);
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 

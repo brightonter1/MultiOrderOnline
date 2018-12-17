@@ -1,7 +1,9 @@
 package group14.multiorder.multiorderonline.Account;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -72,7 +75,7 @@ public class AccountFragment extends Fragment {
         backBtn();
     }
 
-    private void backBtn(){
+    private void backBtn() {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,12 +87,54 @@ public class AccountFragment extends Fragment {
 
 
     private void ListOption(){
-        option.add("Notification");
-        option.add("Track Order");
-        option.add("Past Order");
-        ListView _optionList = getView().findViewById(R.id.account_list);
-        ArrayAdapter<String> _optionAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, option);
+
+        SharedPreferences sp = getActivity().getSharedPreferences("center", Context.MODE_PRIVATE);
+        String type = sp.getString("type", "not found");
+        Log.d("System", "get type : " + type);
+
+        if (type.equals("customer")){
+            option.add("Notification");
+            option.add("Track Order");
+            option.add("History Order");
+        }else {
+            option.add("Info");
+            option.add("Menu");
+            option.add("Delete Store");
+        }
+        final ListView _optionList = getView().findViewById(R.id.account_list);
+        final ArrayAdapter<String> _optionAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, option);
         _optionList.setAdapter(_optionAdapter);
+
+        _optionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (_optionAdapter.getItem(position)){
+                    case "Notification":
+                        Log.d("System", "Notification");
+                        break;
+                    case "Track Order":
+                        Log.d("System", "Track Order");
+                        break;
+                    case "History Order":
+                        Log.d("System", "History Order");
+                        break;
+                    case "Info":
+                        Log.d("System", "Edit info");
+                        break;
+                    case "Menu":
+                        Log.d("System", "Add Menu");
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_view, new MenuFragment())
+                                .addToBackStack(null)
+                                .commit();
+                        break;
+                    case "Delete Store":
+                        Log.d("System", "Edit Menu");
+                        break;
+                }
+            }
+        });
     }
 
     private void getProfile(){
@@ -117,10 +162,14 @@ public class AccountFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sp = getActivity().getSharedPreferences("center", Context.MODE_PRIVATE);
+                sp.edit().putString("type", "not found").apply();
                 mAuth.signOut();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 getActivity().startActivity(intent);
             }
         });
+
+
     }
 }
