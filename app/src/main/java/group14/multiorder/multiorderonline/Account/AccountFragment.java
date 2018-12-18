@@ -30,6 +30,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import java.util.ArrayList;
 
 import group14.multiorder.multiorderonline.MainActivity;
+import group14.multiorder.multiorderonline.OrderHistory;
 import group14.multiorder.multiorderonline.R;
 
 /**
@@ -120,7 +121,7 @@ public class AccountFragment extends Fragment {
                         Log.d("System", "History Order");
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.main_view, new Order)
+                                .replace(R.id.main_view, new OrderHistory())
                                 .addToBackStack(null)
                                 .commit();
                         break;
@@ -128,7 +129,7 @@ public class AccountFragment extends Fragment {
                         Log.d("System", "Edit info");
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.main_view, new EditInfoFragment())
+                                .replace(R.id.main_view, new OrderHistory()) // chang back to edit info duay
                                 .addToBackStack(null)
                                 .commit();
                         break;

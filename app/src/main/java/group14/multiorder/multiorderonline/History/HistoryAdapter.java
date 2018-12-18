@@ -2,6 +2,7 @@ package group14.multiorder.multiorderonline.History;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +33,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder historyViewHolder, int i) {
         OrderCustomer odc = cusorder.get(i);
+        List _menu = odc.getMenu();
         historyViewHolder.order_id.setText(String.valueOf(odc.getOrder_id()));
         historyViewHolder.order_date.setText(odc.getDate());
         historyViewHolder.order_status.setText(odc.getStatus());
         historyViewHolder.order_total.setText(String.valueOf(odc.getTotal()));
+        historyViewHolder.his_sub_list.setHasFixedSize(true);
+        historyViewHolder.his_sub_list.setLayoutManager(new LinearLayoutManager(_context));
+        HistorySubAdapter sunAdapter = new HistorySubAdapter(_menu, _context);
+        historyViewHolder.his_sub_list.setAdapter(sunAdapter);
+
     }
 
     @Override
@@ -46,12 +53,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     public class HistoryViewHolder extends RecyclerView.ViewHolder {
 
         public TextView order_id, order_date, order_status, order_total;
+        public RecyclerView his_sub_list;
         public HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
             order_id = itemView.findViewById(R.id.order_his_sub_orderid);
             order_date = itemView.findViewById(R.id.order_his_sub_orderdate);
             order_status = itemView.findViewById(R.id.order_his_sub_status);
             order_total = itemView.findViewById(R.id.order_his_sub_total);
+            his_sub_list = itemView.findViewById(R.id.order_his_sub_list);
         }
     }
 }
