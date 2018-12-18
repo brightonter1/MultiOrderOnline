@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">App</string>
-    <string name="register">Already have an account? <u>Sing in now</u>.</string>
+    <string name="register">Already have an account?</string>
     <string name="title_activity_main_tab">MainTabActivity</string>
     <string name="tab_text_1">Login</string>
     <string name="tab_text_2">Register</string>
@@ -19,4 +19,5 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_register">Register</string>
 </resources>

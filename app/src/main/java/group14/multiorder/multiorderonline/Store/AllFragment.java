@@ -74,7 +74,8 @@ public class AllFragment extends Fragment {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //Post post = postSnapshot.getValue(Post.class);
                     Store store = postSnapshot.getValue(Store.class);
-                    mPosts.add(store);
+                    if(!store.getImage().equals("none")){mPosts.add(store);}
+
                 }
                 mAdater = new ImageAdater(getActivity(), mPosts);
                 mRecyclerView.setAdapter(mAdater);

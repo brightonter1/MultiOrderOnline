@@ -9,15 +9,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.R;
+import group14.multiorder.multiorderonline.obj.Menu;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MenuFragment extends BaseFragment {
 
+    ArrayList<Menu> menuArrayList = new ArrayList<>();
+    ListView editList;
+    menuAdapter menuAdapter;
 
     private Toolbar toolbar;
 
@@ -36,7 +43,11 @@ public class MenuFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        toolbar = setToolbar("My Profile");
+        editList = getView().findViewById(R.id.menu_edit_list);
+        menuAdapter = new menuAdapter(getActivity(),R.layout.fragment_menu2, menuArrayList);
+
+        
+        toolbar = setToolbar("Menu");
         backBtn();
         addBtn();
     }

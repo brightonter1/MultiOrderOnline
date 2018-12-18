@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,10 +27,11 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
+import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.Store;
 
-public class EditInfoFragment extends Fragment {
+public class EditInfoFragment extends BaseFragment {
     private DatabaseReference _databaseRefs;
     private FirebaseAuth mAuth;
     Store myStore = new Store();
@@ -53,7 +55,8 @@ public class EditInfoFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
-
+        toolbar = setToolbar("Edit Info");
+        backBtn();
         Log.d("System", "onActivity " + status);
         _address = getView().findViewById(R.id.edit_info_address);
         _openClose = getView().findViewById(R.id.edit_info_openclose);
@@ -163,5 +166,19 @@ public class EditInfoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_edit_info, container, false);
 
+    }
+
+    @Override
+    public void backBtn() {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_view, new AccountFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public Toolbar setToolbar(String nPager) {
+        return super.setToolbar(nPager);
     }
 }

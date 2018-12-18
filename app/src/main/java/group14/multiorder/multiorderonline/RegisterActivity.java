@@ -54,6 +54,26 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister();
         BackBtn();
 
+        radioGroup = findViewById(R.id.select_radio);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+                // This will get the radiobutton that has changed in its check state
+                RadioButton checkedRadioButton = group.findViewById(checkedId);
+                // This puts the value (true/false) into the variable
+                boolean isChecked = checkedRadioButton.isChecked();
+                // If the radiobutton that has changed in check state is now checked...
+                if (checkedId == 2131296508){
+                    EditText hide = findViewById(R.id.register_name_store);
+                    hide.setVisibility(View.VISIBLE);
+                }else{
+                    EditText hide = findViewById(R.id.register_name_store);
+                    hide.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
 
     }
 
@@ -82,35 +102,70 @@ public class RegisterActivity extends AppCompatActivity {
         _emailStr = _email.getText().toString();
         _pwdStr = _pwd.getText().toString();
 
+
         if (checkPwdCondition(_pwdStr)){
-            mAuth.createUserWithEmailAndPassword(_emailStr, _pwdStr).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                @Override
-                public void onSuccess(AuthResult authResult) {
-                    sendVerifiedEmail(authResult.getUser());
-                    Log.d("System", "[Register] Register Complete");
-                    Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
-                    createDBforUser(mAuth.getCurrentUser().getUid());
-                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d("System", "[Register] Register failed");
-                    Toast.makeText(context, "ERROR : " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            if(ifSeller()){
+                mAuth.createUserWithEmailAndPassword(_emailStr, _pwdStr).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        sendVerifiedEmail(authResult.getUser());
+                        Log.d("System", "[Register] Register Complete");
+                        Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
+                        createDBforUser(mAuth.getCurrentUser().getUid());
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("System", "[Register] Register failed");
+                        Toast.makeText(context, "ERROR : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }else{
+                Toast.makeText(context, "Please fill name store", Toast.LENGTH_LONG).show();
+            }
+
+
         }
     }
     public Boolean checkPwdCondition(String _pwd){
         if (_pwd.length() >= 6){
             return true;
+
         }else{
             Log.d("System", "[Register] pwd at least 6 character");
             Toast.makeText(context, "pass word must be at least 6 character", Toast.LENGTH_SHORT).show();
             return false;
         }
+
+    }
+    boolean isSeller;
+
+    public boolean ifSeller(){
+        Log.d("System", "isseller method");
+
+        radioGroup = findViewById(R.id.select_radio);
+        radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+        if(radioButton.getId() == R.id.seller){
+            isSeller = true;
+        }else{
+            isSeller = false;
+        }
+        if (isSeller){
+            EditText _registerNameStore = findViewById(R.id.register_name_store);
+            Log.d("System", "Game : " + _registerNameStore.getText().toString()+ " " + _registerNameStore.getText().toString().isEmpty());
+            if (_registerNameStore.getText().toString().isEmpty()) {
+                Log.d("System", "name store is emtpy");
+                return false;
+            }else{
+                return true;
+            }
+        }else{
+            return true;
+        }
+
     }
 
     public void sendVerifiedEmail(final FirebaseUser _user) {
@@ -127,7 +182,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    int count = 0;
+    int i = 0;
     public void createDBforUser(String _uid){
         radioGroup = findViewById(R.id.select_radio);
         radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
@@ -141,10 +196,21 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d("System", "Done");
-                        if (type.toLowerCase().equals("supplier")){
-                            Log.d("System", "123");
+                        Log.d("System", "Done" + type.toLowerCase());
+                        switch (type.toLowerCase()){
+                            case "customer":
+                                Log.d("System", "This cus");
+                                break;
+                            case "supplier":
+                                Log.d("System", "This sup");
+                                createDBforSuppiler(type);
+                                break;
+                            default:
+                                Log.d("System", "This Default");
+                                break;
+
                         }
+                        mAuth.signOut();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -152,18 +218,32 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d("System", "Faild");
             }
         });
+    }
 
-        count = 0;
+    public void createDBforSuppiler(String type){
         if (type.toLowerCase().equals("supplier")){
             myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot store : dataSnapshot.getChildren()){
-                        Store st = store.getValue(Store.class);
-                        Log.d("System", st.getTitle());
-                        count++;
-                    }
+                    i = (int) dataSnapshot.getChildrenCount();
+                    Log.d("System", "child "+String.valueOf(dataSnapshot.getChildrenCount()));
+                    EditText name = findViewById(R.id.register_name_store);
+                    String Sname = name.getText().toString();
 
+                        Toast.makeText(context, "Please fill name store ", Toast.LENGTH_LONG).show();
+                        Store newStoreInfo = new Store();
+                        newStoreInfo.setAddress("");
+                        newStoreInfo.setOpenClose("");
+                        newStoreInfo.setDescription("");
+                        newStoreInfo.setPhoneNumber("");
+                        newStoreInfo.setTag("");
+                        newStoreInfo.setTitle(Sname);
+                        newStoreInfo.setImage("none");
+                        newStoreInfo.setUser_id("");
+                        newStoreInfo.setPost_id("");
+                        newStoreInfo.setShop_id(i);
+                        myRef.child(newStoreInfo.getTitle()).setValue(newStoreInfo);
+                    mAuth.signOut();
                 }
 
                 @Override
@@ -171,21 +251,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }
             });
-
-            Log.d("System", "COunt + " + count);
-//            Store newStoreInfo = new Store();
-//            newStoreInfo.setAddress("");
-//            newStoreInfo.setOpenClose("");
-//            newStoreInfo.setDescription("");
-//            newStoreInfo.setPhoneNumber("");
-//            newStoreInfo.setTag("");
-//            newStoreInfo.setTitle("");
-//            newStoreInfo.setImage("");
-//            newStoreInfo.setUser_id("");
-//            newStoreInfo.setPost_id("");
-//            newStoreInfo.setShop_id("");
-//
-//            _databaseRefs.child(myStore.getTitle()).setValue(newStoreInfo);
         }
     }
 
