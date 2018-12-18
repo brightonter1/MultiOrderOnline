@@ -119,6 +119,10 @@ public class AccountFragment extends BaseFragment {
                         break;
                     case "Track Order":
                         Log.d("System", "Track Order");
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_view, new TrackOrderFragment())
+                                .commit();
                         break;
                     case "History Order":
                         Log.d("System", "History Order");

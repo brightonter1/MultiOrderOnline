@@ -1,5 +1,4 @@
-package group14.multiorder.multiorderonline;
-
+package group14.multiorder.multiorderonline.Account;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,19 +21,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group14.multiorder.multiorderonline.History.HistoryAdapter;
+import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.OrderCustomer;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
-public class OrderHistory extends Fragment {
+public class TrackOrderFragment extends Fragment{
     FirebaseAuth _mAuth = FirebaseAuth.getInstance();
     DatabaseReference _daatabaseRef;
     List<OrderCustomer> _CustomerOrder = new ArrayList<>();
     HistoryAdapter _hisAdapter;
 
-    public OrderHistory() {
+    public TrackOrderFragment() {
         // Required empty public constructor
     }
 
@@ -63,10 +59,9 @@ public class OrderHistory extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot orderhis: dataSnapshot.getChildren()){
                     OrderCustomer ordercus = orderhis.getValue(OrderCustomer.class);
-                    if(ordercus.getStatus().equals("shipped") || ordercus.getStatus().equals("canceled")){
+                    if(!ordercus.getStatus().equals("shipped")){
                         _CustomerOrder.add(ordercus);
                     }
-
                 }
                 _hisAdapter = new HistoryAdapter(getActivity(), _CustomerOrder);
                 orderHisList.setAdapter(_hisAdapter);
