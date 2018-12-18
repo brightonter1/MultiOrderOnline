@@ -142,7 +142,7 @@ public class CartSummaryFragment extends Fragment{
     }
     DatabaseReference _databaseRefs;
     int coder;
-    FirebaseFirestore firebaseFirestore;
+    //FirebaseFirestore firebaseFirestore;
 
     private void confirmOrder(String coder){
 
@@ -160,7 +160,7 @@ public class CartSummaryFragment extends Fragment{
             if(i+1 < _order.size()){
                 if(_order.get(i).getShop_id() == _order.get(i+1).getShop_id()){
                     od.setAddress(addressStr);
-                    od.setOrderid(orderCount);
+                    od.setOrderid(Integer.parseInt(coder));
                     od.setShop_id(_order.get(i).getShop_id());
                     menuOrder.add(_order.get(i));
                     od.setMenu(menuOrder);
@@ -168,7 +168,7 @@ public class CartSummaryFragment extends Fragment{
                     od.setTotal(Integer.parseInt(_order.get(i).getPrice().replace("฿", ""))*Integer.parseInt(_order.get(i).getAmount())+od.getTotal());
                 }else{
                     od.setAddress(addressStr);
-                    od.setOrderid(1);
+                    od.setOrderid(Integer.parseInt(coder));
                     od.setShop_id(_order.get(i).getShop_id());
                     menuOrder.add(_order.get(i));
                     od.setMenu(menuOrder);
@@ -183,7 +183,7 @@ public class CartSummaryFragment extends Fragment{
 
             }else{
                 od.setAddress(addressStr);
-                od.setOrderid(1);
+                od.setOrderid(Integer.parseInt(coder));
                 od.setShop_id(_order.get(i).getShop_id());
                 menuOrder.add(_order.get(i));
                 od.setMenu(menuOrder);
@@ -210,7 +210,29 @@ public class CartSummaryFragment extends Fragment{
         Map<String,Object> value = new HashMap<String,Object>();
         value.put("count", coder);
         //Log.d("System", "coder kuy :  " + coder);
-        _databaseRefs.updateChildren(value);
+        _databaseRefs.updateChildren(value).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Cart cat = new Cart();
+                _fileStore.collection("carts")
+                        .document(_mAuth.getCurrentUser().getUid())
+                        .set(cat).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("CartAdapter", "up date cart success");
+                        CartSummaryFragment.this.getActivity().finish();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("CartAdapter", "Fial to update CART "+ e.getMessage());
+                    }
+                });
+            }
+        });
+
+
 
 
 
