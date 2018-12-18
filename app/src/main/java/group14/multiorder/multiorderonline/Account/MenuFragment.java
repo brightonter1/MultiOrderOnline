@@ -46,7 +46,7 @@ public class MenuFragment extends BaseFragment {
         editList = getView().findViewById(R.id.menu_edit_list);
         menuAdapter = new menuAdapter(getActivity(),R.layout.fragment_menu2, menuArrayList);
 
-        
+
         toolbar = setToolbar("Menu");
         backBtn();
         addBtn();

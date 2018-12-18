@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/sub_image"
         android:layout_width="118dp"
         android:layout_height="93dp"
         android:layout_marginStart="28dp"
@@ -17,17 +17,17 @@
         app:srcCompat="@drawable/image_default" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/sub_name"
         android:layout_width="193dp"
         android:layout_height="20dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/font_regular"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/sub_image"
         tools:layout_editor_absoluteY="23dp" />
 
     <TextView
-        android:id="@+id/edit_text"
+        android:id="@+id/sub_text"
         android:layout_width="193dp"
         android:layout_height="47dp"
         android:layout_marginTop="8dp"
@@ -35,18 +35,18 @@
         android:gravity="top"
         android:inputType="text|textMultiLine"
         android:text="sdsdsdsdsdsadmqwbejqwbejqwbejqwbejqwbejqwbejqbwejbqwebqwqejbqweqwejqwbejb"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/sub_name"
         tools:layout_editor_absoluteX="166dp" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/sub_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/font_regular"
         android:text="69 THB"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text" />
+        app:layout_constraintStart_toEndOf="@+id/sub_image"
+        app:layout_constraintTop_toBottomOf="@+id/sub_text" />
 
 </android.support.constraint.ConstraintLayout>
