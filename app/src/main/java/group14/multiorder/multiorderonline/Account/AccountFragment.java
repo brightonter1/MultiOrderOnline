@@ -146,6 +146,11 @@ public class AccountFragment extends BaseFragment {
                                 .commit();
                         break;
                     case "Delete Store":
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.main_view, new HistorySuplier())
+                                .addToBackStack(null)
+                                .commit();
                         Log.d("System", "Edit Menu");
                         break;
                 }

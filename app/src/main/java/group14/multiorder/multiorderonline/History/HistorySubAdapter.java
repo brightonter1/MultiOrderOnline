@@ -56,10 +56,10 @@ public class HistorySubAdapter extends RecyclerView.Adapter<HistorySubAdapter.Su
         public ImageView _img;
         public SubHisViewHolder(@NonNull View itemView) {
             super(itemView);
-            _name = itemView.findViewById(R.id.viewdetail_name);
+            _name = itemView.findViewById(R.id.history_item_name);
             _each = itemView.findViewById(R.id.viewdetail_each);
-            _price = itemView.findViewById(R.id.viewdetail_price);
-            _img = itemView.findViewById(R.id.viewdetail_img);
+            _price = itemView.findViewById(R.id.history_item_price);
+            _img = itemView.findViewById(R.id.history_item_img);
 
 
         }

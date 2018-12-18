@@ -1,5 +1,6 @@
 package group14.multiorder.multiorderonline.Store;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -19,6 +20,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import group14.multiorder.multiorderonline.Cart.CartActivity;
+import group14.multiorder.multiorderonline.Cart.CartFragment;
+import group14.multiorder.multiorderonline.MainActivity;
 import group14.multiorder.multiorderonline.R;
 
 import group14.multiorder.multiorderonline.obj.Store;
@@ -95,10 +99,11 @@ public class ViewMenuActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
+        if (id == R.id.action_cart){
+            Intent intent = new Intent(ViewMenuActivity.this, CartActivity.class);
+            startActivity(intent);
+
+        }
 
         return super.onOptionsItemSelected(item);
     }

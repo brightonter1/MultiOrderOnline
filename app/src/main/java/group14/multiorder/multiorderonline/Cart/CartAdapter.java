@@ -108,6 +108,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         _newMenu.setPrice(_stringPrice);
         _newMenu.setImage(upM.getImage());
         _newMenu.setDescription(upM.getDescription());
+        _newMenu.setShop_id(upM.getShop_id());
+        //_newMenu.setShop_id();
         _cart.set(position, _newMenu);
         Cart updateCart = new Cart();
         for(Menu ct : _cart){

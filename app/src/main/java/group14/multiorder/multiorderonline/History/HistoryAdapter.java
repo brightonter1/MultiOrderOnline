@@ -56,11 +56,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         public RecyclerView his_sub_list;
         public HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            order_id = itemView.findViewById(R.id.order_his_sub_orderid);
+            order_id = itemView.findViewById(R.id.suplier_sub_orderid);
             order_date = itemView.findViewById(R.id.order_his_sub_orderdate);
             order_status = itemView.findViewById(R.id.order_his_sub_status);
-            order_total = itemView.findViewById(R.id.order_his_sub_total);
-            his_sub_list = itemView.findViewById(R.id.order_his_sub_list);
+            order_total = itemView.findViewById(R.id.suplier_sub_total);
+            his_sub_list = itemView.findViewById(R.id.suplier_sub_list);
         }
     }
 }

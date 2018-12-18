@@ -21,7 +21,7 @@
             android:fontFamily="@font/font_regular"
             android:text="02-12-61"
             app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/order_his_sub_orderid" />
+            app:layout_constraintTop_toBottomOf="@+id/suplier_sub_orderid" />
 
         <TextView
             android:id="@+id/textView3"
@@ -31,11 +31,11 @@
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/font_regular"
             android:text="TOTAL : "
-            app:layout_constraintEnd_toStartOf="@+id/order_his_sub_total"
-            app:layout_constraintTop_toBottomOf="@+id/order_his_sub_list" />
+            app:layout_constraintEnd_toStartOf="@+id/suplier_sub_total"
+            app:layout_constraintTop_toBottomOf="@+id/suplier_sub_list" />
 
         <TextView
-            android:id="@+id/order_his_sub_total"
+            android:id="@+id/suplier_sub_total"
             android:layout_width="0dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
@@ -43,7 +43,7 @@
             android:fontFamily="@font/font_regular"
             android:text="2,590 THB"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_his_sub_list" />
+            app:layout_constraintTop_toBottomOf="@+id/suplier_sub_list" />
 
         <TextView
             android:id="@+id/order_his_sub_status"
@@ -78,7 +78,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/order_his_sub_orderid"
+            android:id="@+id/suplier_sub_orderid"
             android:layout_width="0dp"
             android:layout_height="18dp"
             android:layout_marginStart="8dp"
@@ -89,7 +89,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/order_his_sub_list"
+            android:id="@+id/suplier_sub_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
