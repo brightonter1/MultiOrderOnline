@@ -29,13 +29,15 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 
+import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.MainActivity;
+import group14.multiorder.multiorderonline.OrderHistory;
 import group14.multiorder.multiorderonline.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AccountFragment extends Fragment {
+public class AccountFragment extends BaseFragment {
 
 
 
@@ -74,10 +76,12 @@ public class AccountFragment extends Fragment {
         getProfile();
         ListOption();
         initLogout();
+        toolbar = setToolbar("My Profile");
         backBtn();
     }
 
-    private void backBtn(){
+    @Override
+    public void backBtn(){
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +124,7 @@ public class AccountFragment extends Fragment {
                         Log.d("System", "History Order");
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.main_view, new Order)
+                                .replace(R.id.main_view, new OrderHistory())
                                 .addToBackStack(null)
                                 .commit();
                         break;

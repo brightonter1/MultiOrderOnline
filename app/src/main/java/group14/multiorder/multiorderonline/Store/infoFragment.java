@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
 
+import group14.multiorder.multiorderonline.Account.AccountFragment;
+import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.Menu;
 import group14.multiorder.multiorderonline.obj.Store;
@@ -31,7 +35,7 @@ import group14.multiorder.multiorderonline.obj.Store;
 public class infoFragment extends Fragment {
 
     private DatabaseReference _databaseRefs;
-
+    private Toolbar toolbar;
 
     public infoFragment() {
         // Required empty public constructor
@@ -48,6 +52,9 @@ public class infoFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+
         Store post = getActivity().getIntent().getParcelableExtra("STORE");
         Log.d("System", post.getTitle() + post.getPhoneNumber());
         //Toast.makeText(getActivity(), post.getTitle(), Toast.LENGTH_SHORT).show();
@@ -59,5 +66,7 @@ public class infoFragment extends Fragment {
 
         TextView openClose = getView().findViewById(R.id.info_open_close);
         openClose.setText("Opened - Closed : " + post.getOpenClose());
+
     }
+
 }

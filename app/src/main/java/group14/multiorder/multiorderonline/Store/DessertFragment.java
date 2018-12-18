@@ -55,12 +55,13 @@ public class DessertFragment extends Fragment {
         mPosts = new ArrayList<>();
 
         //mDatabaseRef = FirebaseDatabase.getInstance().getReference("posts");
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Stores");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Store");
         mRecyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mPosts.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //Post post = postSnapshot.getValue(Post.class);
                     Store store = postSnapshot.getValue(Store.class);

@@ -34,13 +34,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
+import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.Menu;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CartFragment extends Fragment{
+public class CartFragment extends BaseFragment {
 
     private Toolbar toolbar;
     Cart cart;
@@ -66,14 +67,15 @@ public class CartFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        toolbar = getActivity().findViewById(R.id.account_bar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        TextView title = getActivity().findViewById(R.id.title_bar);
-        title.setText("Cart");
+        toolbar = setToolbar("Cart");
         backBtn();
         showMenu();
         processBtn();
+    }
+
+    @Override
+    public Toolbar setToolbar(String nPager) {
+        return super.setToolbar(nPager);
     }
 
     private void processBtn(){
@@ -145,7 +147,7 @@ public class CartFragment extends Fragment{
     }
 
 
-
+    @Override
     public void backBtn(){
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

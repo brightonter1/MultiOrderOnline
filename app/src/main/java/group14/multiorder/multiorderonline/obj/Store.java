@@ -2,6 +2,7 @@ package group14.multiorder.multiorderonline.obj;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 public class Store implements Parcelable {
     private String post_id;
@@ -9,7 +10,7 @@ public class Store implements Parcelable {
     private String image;
     private String title;
     private String description;
-    private String Tag;
+    private String tag;
     private int shop_id;
     private String openClose;
     private String address;
@@ -22,7 +23,7 @@ public class Store implements Parcelable {
         image = in.readString();
         title = in.readString();
         description = in.readString();
-        Tag = in.readString();
+        tag = in.readString();
         shop_id = in.readInt();
         openClose = in.readString();
         address = in.readString();
@@ -36,7 +37,7 @@ public class Store implements Parcelable {
         dest.writeString(image);
         dest.writeString(title);
         dest.writeString(description);
-        dest.writeString(Tag);
+        dest.writeString(tag);
         dest.writeInt(shop_id);
         dest.writeString(openClose);
         dest.writeString(address);
@@ -138,11 +139,11 @@ public class Store implements Parcelable {
     }
 
     public String getTag() {
-        return Tag;
+        return tag;
     }
 
-    public void setTag(String tag) {
-        Tag = tag;
+    public void setTag(String Tag) {
+        this.tag = Tag;
     }
 
     @Override
@@ -153,7 +154,7 @@ public class Store implements Parcelable {
                 ", image='" + image + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", Tag='" + Tag + '\'' +
+                ", tag='" + tag + '\'' +
                 ", shop_id=" + shop_id +
                 ", openClose='" + openClose + '\'' +
                 ", address='" + address + '\'' +

@@ -127,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAccount.put("email", _emailStr);
         mAccount.put("type", type.toLowerCase());
 
-        firebaseFirestore.collection(type).document(_uid).set(mAccount)
+        firebaseFirestore.collection(type.toLowerCase()).document(_uid).set(mAccount)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
