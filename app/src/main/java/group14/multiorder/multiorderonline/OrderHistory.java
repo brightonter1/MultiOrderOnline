@@ -31,7 +31,7 @@ import group14.multiorder.multiorderonline.obj.OrderCustomer;
 public class OrderHistory extends Fragment {
     FirebaseAuth _mAuth = FirebaseAuth.getInstance();
     DatabaseReference _daatabaseRef;
-    List<OrderCustomer> _CustomerOrder;
+    List<OrderCustomer> _CustomerOrder = new ArrayList<>();
     HistoryAdapter _hisAdapter;
 
     public OrderHistory() {
@@ -49,6 +49,7 @@ public class OrderHistory extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        ShowHis();
     }
 
     private void ShowHis(){
