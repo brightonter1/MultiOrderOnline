@@ -23,12 +23,23 @@ public class menuAdapter extends ArrayAdapter<Menu> {
         this.menus = obj;
     }
 
-    @androidx.annotation.NonNull
+
     @Override
-    public View getView(int position, @androidx.annotation.Nullable View convertView, @androidx.annotation.NonNull ViewGroup parent) {
-        View v = LayoutInflater.from(context).inflate(R.layout.fragment_menu_sub);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View v = LayoutInflater.from(context).inflate(R.layout.fragment_menu_sub, parent, false);
         TextView tName, tDes, tPrice, tImage;
-        
+
+        tName = v.findViewById(R.id.sub_name);
+        tDes = v.findViewById(R.id.sub_des);
+        tPrice = v.findViewById(R.id.sub_price);
+//        tImage = v.findViewById(R.id.sub_image);
+
+        Menu _row = menus.get(position);
+        tName.setText(_row.getTitle());
+        tDes.setText(_row.getDescription());
+        tPrice.setText(_row.getPrice());
+//        tImage.setText(_row.getImage());
+
         return v;
     }
 }
