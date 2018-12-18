@@ -58,6 +58,8 @@ public class EditInfoFragment extends BaseFragment {
         toolbar = setToolbar("Edit Info");
         backBtn();
         Log.d("System", "onActivity " + status);
+
+
         _address = getView().findViewById(R.id.edit_info_address);
         _openClose = getView().findViewById(R.id.edit_info_openclose);
         _description = getView().findViewById(R.id.edit_info_description);
