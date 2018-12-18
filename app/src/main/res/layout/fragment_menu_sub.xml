@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/edit_image"
         android:layout_width="118dp"
         android:layout_height="93dp"
         android:layout_marginStart="28dp"
@@ -18,25 +18,26 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="193dp"
+        android:layout_width="0dp"
         android:layout_height="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/font_regular"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        tools:layout_editor_absoluteY="23dp" />
+        app:layout_constraintStart_toEndOf="@+id/edit_image"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/edit_text"
         android:layout_width="193dp"
         android:layout_height="47dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
         android:fontFamily="@font/font_regular"
         android:gravity="top"
         android:inputType="text|textMultiLine"
         android:text="sdsdsdsdsdsadmqwbejqwbejqwbejqwbejqwbejqwbejqbwejbqwebqwqejbqweqwejqwbejb"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:layout_editor_absoluteX="166dp" />
+        app:layout_constraintStart_toEndOf="@+id/edit_image"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView8"
@@ -46,7 +47,28 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/font_regular"
         android:text="69 THB"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/edit_image"
         app:layout_constraintTop_toBottomOf="@+id/edit_text" />
+
+    <Button
+        android:id="@+id/edit_edit"
+        android:layout_width="47dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="144dp"
+        android:text="Edit"
+        android:textSize="8dp"
+        app:layout_constraintStart_toStartOf="@+id/edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text" />
+
+    <TextView
+        android:id="@+id/edit_delete"
+        android:layout_width="18dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="132dp"
+        android:text="X"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_text"
+        app:layout_constraintStart_toEndOf="@+id/textView6" />
 
 </android.support.constraint.ConstraintLayout>
