@@ -11,8 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -31,7 +29,6 @@ import java.util.ArrayList;
 
 import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.MainActivity;
-import group14.multiorder.multiorderonline.OrderHistory;
 import group14.multiorder.multiorderonline.R;
 
 /**

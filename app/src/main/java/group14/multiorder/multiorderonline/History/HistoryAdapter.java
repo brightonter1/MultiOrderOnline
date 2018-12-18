@@ -34,7 +34,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     public void onBindViewHolder(@NonNull HistoryViewHolder historyViewHolder, int i) {
         OrderCustomer odc = cusorder.get(i);
         List _menu = odc.getMenu();
-        historyViewHolder.order_id.setText(String.valueOf(odc.getOrder_id()));
+        historyViewHolder.order_id.setText(String.format("#ITEM123%03d", odc.getOrder_id()));
         historyViewHolder.order_date.setText(odc.getDate());
         historyViewHolder.order_status.setText(odc.getStatus());
         historyViewHolder.order_total.setText(String.valueOf(odc.getTotal()));

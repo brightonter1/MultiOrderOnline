@@ -22,9 +22,16 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+
+import group14.multiorder.multiorderonline.obj.Store;
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
@@ -35,12 +42,14 @@ public class RegisterActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RadioGroup radioGroup;
     private RadioButton radioButton;
+    private DatabaseReference myRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        myRef = FirebaseDatabase.getInstance().getReference("Store");
         context = this;
         btnRegister();
         BackBtn();
@@ -118,20 +127,24 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    int count = 0;
     public void createDBforUser(String _uid){
         radioGroup = findViewById(R.id.select_radio);
         radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
-        String type = (String) radioButton.getText();
+        final String type = (String) radioButton.getText();
 
         HashMap<String,String> mAccount = new HashMap<>();
         mAccount.put("email", _emailStr);
         mAccount.put("type", type.toLowerCase());
 
-        firebaseFirestore.collection(type.toLowerCase()).document(_uid).set(mAccount)
+        firebaseFirestore.collection("customer").document(_uid).set(mAccount)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("System", "Done");
+                        if (type.toLowerCase().equals("supplier")){
+                            Log.d("System", "123");
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -139,6 +152,41 @@ public class RegisterActivity extends AppCompatActivity {
                 Log.d("System", "Faild");
             }
         });
+
+        count = 0;
+        if (type.toLowerCase().equals("supplier")){
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot store : dataSnapshot.getChildren()){
+                        Store st = store.getValue(Store.class);
+                        Log.d("System", st.getTitle());
+                        count++;
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            Log.d("System", "COunt + " + count);
+//            Store newStoreInfo = new Store();
+//            newStoreInfo.setAddress("");
+//            newStoreInfo.setOpenClose("");
+//            newStoreInfo.setDescription("");
+//            newStoreInfo.setPhoneNumber("");
+//            newStoreInfo.setTag("");
+//            newStoreInfo.setTitle("");
+//            newStoreInfo.setImage("");
+//            newStoreInfo.setUser_id("");
+//            newStoreInfo.setPost_id("");
+//            newStoreInfo.setShop_id("");
+//
+//            _databaseRefs.child(myStore.getTitle()).setValue(newStoreInfo);
+        }
     }
 
 
@@ -148,5 +196,7 @@ public class RegisterActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_view_menu, menu);
         return true;
     }
+
+
 
 }
