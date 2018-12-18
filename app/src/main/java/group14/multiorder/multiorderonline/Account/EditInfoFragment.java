@@ -139,15 +139,14 @@ public class EditInfoFragment extends Fragment {
     public void getFromDB(){
         if(myStore.getTag().equals("dessert")){
             radioButton = getView().findViewById(R.id.edit_info_radio_dessert);
-//            radioButton.setChecked(true);
+            radioButton.setChecked(true);
             Log.d("System", "Checked Dessert");
 
         }else if(myStore.getTag().equals("fastfood")){
             radioButton = getView().findViewById(R.id.edit_info_radio_fast);
-//            radioButton.setChecked(true);
+            radioButton.setChecked(true);
             Log.d("System", "Checked Fastfood");
         }
-        radioButton.setChecked(true);
         _address.setText(myStore.getAddress());
         _openClose.setText(myStore.getOpenClose());
         _description.setText(myStore.getDescription());
