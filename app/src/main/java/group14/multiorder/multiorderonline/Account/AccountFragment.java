@@ -133,7 +133,7 @@ public class AccountFragment extends BaseFragment {
                         Log.d("System", "Edit info");
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.main_view, new OrderHistory()) // chang back to edit info duay
+                                .replace(R.id.main_view, new EditInfoFragment()) // chang back to edit info duay
                                 .addToBackStack(null)
                                 .commit();
                         break;

@@ -65,7 +65,7 @@ public class DessertFragment extends Fragment {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //Post post = postSnapshot.getValue(Post.class);
                     Store store = postSnapshot.getValue(Store.class);
-                    if(store.getTag().equals("dessert")){mPosts.add(store);}
+                    if(store.getTag().equals("dessert")&&!store.getImage().equals("none")){mPosts.add(store);}
 
                 }
                 mAdater = new FastfoodAdapter(getActivity(), mPosts);
