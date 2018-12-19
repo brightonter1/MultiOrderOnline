@@ -12,16 +12,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <Button
+            android:id="@+id/suplier_sub_history_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/red1"
+            android:fontFamily="@font/font_regular"
+            android:text="CANCLE"
+            app:layout_constraintBottom_toBottomOf="@+id/suplier_sub_history_confirm"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/suplier_sub_history_confirm"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/suplier_sub_history_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/green2"
+            android:fontFamily="@font/font_regular"
+            android:text="CONFIRM"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <TextView
             android:id="@+id/suplier_sub_orderdate"
             android:layout_width="0dp"
             android:layout_height="19dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/font_regular"
             android:text="02-12-61"
             app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/textView3"
@@ -33,11 +63,12 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/font_regular"
             android:text="TOTAL : "
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/suplier_sub_history_confirm"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintHorizontal_bias="0.74"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/suplier_sub_list" />
+            app:layout_constraintTop_toBottomOf="@+id/suplier_sub_list"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/suplier_sub_total"
@@ -51,25 +82,26 @@
 
         <TextView
             android:id="@+id/suplier_sub_status"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="18dp"
-            android:layout_marginStart="244dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/font_regular"
             android:text="Shipped"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/suplier_sub_orderid" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="0dp"
             android:layout_height="19dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/font_regular"
             android:text="ORDER DATE"
-            app:layout_constraintStart_toEndOf="@+id/suplier_sub_orderid"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
             android:id="@+id/textView10"
@@ -87,16 +119,16 @@
             android:layout_width="0dp"
             android:layout_height="18dp"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/font_regular"
             android:text="#0007"
             app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/textView10" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/font_regular"
             android:text="Address :"
             app:layout_constraintStart_toStartOf="@+id/textView10"
@@ -110,15 +142,15 @@
             android:fontFamily="@font/font_regular"
             android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/textView12"
-            app:layout_constraintTop_toBottomOf="@+id/suplier_sub_orderid" />
+            app:layout_constraintTop_toTopOf="@+id/textView12" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/suplier_sub_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

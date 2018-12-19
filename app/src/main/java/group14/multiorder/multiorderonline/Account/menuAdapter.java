@@ -5,7 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,8 +31,10 @@ public class menuAdapter extends ArrayAdapter<Menu> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = LayoutInflater.from(context).inflate(R.layout.fragment_menu_sub, parent, false);
-        TextView tName, tDes, tPrice, tImage;
+        TextView tName, tDes, tPrice;
+        ImageView tImg;
 
+        tImg = v.findViewById(R.id.sub_image);
         tName = v.findViewById(R.id.sub_name);
         tDes = v.findViewById(R.id.sub_des);
         tPrice = v.findViewById(R.id.sub_price);
@@ -38,6 +44,11 @@ public class menuAdapter extends ArrayAdapter<Menu> {
         tName.setText(_row.getTitle());
         tDes.setText(_row.getDescription());
         tPrice.setText(_row.getPrice());
+        Picasso.with(context)
+                .load(_row.getImage())
+                .fit()
+                .centerCrop()
+                .into(tImg);
 //        tImage.setText(_row.getImage());
 
         return v;

@@ -148,7 +148,7 @@ public class MenuForm extends BaseFragment implements SelectPhotoDialog.OnPhotoS
             public void onClick(View v) {
                 Log.d(TAG, "onClick: Post image ");
                 if(!_name.getText().toString().isEmpty()
-                        &&!_name.getText().toString().isEmpty()
+                        &&!_description.getText().toString().isEmpty()
                         &&!_price.getText().toString().isEmpty()){
                     if(mSelectedBitmap != null && mSelectedUri == null){
                         UploadImage(mSelectedBitmap);
