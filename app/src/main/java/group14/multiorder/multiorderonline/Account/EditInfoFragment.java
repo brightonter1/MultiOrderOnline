@@ -142,16 +142,16 @@ public class EditInfoFragment extends BaseFragment {
     }
 
     public void getFromDB(){
-//        if(myStore.getTag().equals("dessert")){
-//            radioButton = getView().findViewById(R.id.edit_info_radio_dessert);
-//            radioButton.setChecked(true);
-//            Log.d("System", "Checked Dessert");
-//
-//        }else if(myStore.getTag().equals("fastfood")){
-//            radioButton = getView().findViewById(R.id.edit_info_radio_fast);
-//            radioButton.setChecked(true);
-//            Log.d("System", "Checked Fastfood");
-//        }
+        if(myStore.getTag().equals("dessert")){
+            radioButton = getView().findViewById(R.id.edit_info_radio_dessert);
+            radioButton.setChecked(true);
+            Log.d("System", "Checked Dessert");
+
+        }else if(myStore.getTag().equals("fastfood")){
+            radioButton = getView().findViewById(R.id.edit_info_radio_fast);
+            radioButton.setChecked(true);
+            Log.d("System", "Checked Fastfood");
+        }
 
         _address.setText(myStore.getAddress());
         _openClose.setText(myStore.getOpenClose());
@@ -173,11 +173,16 @@ public class EditInfoFragment extends BaseFragment {
 
     @Override
     public void backBtn() {
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_view, new AccountFragment())
-                .addToBackStack(null)
-                .commit();
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view, new AccountFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     @Override
