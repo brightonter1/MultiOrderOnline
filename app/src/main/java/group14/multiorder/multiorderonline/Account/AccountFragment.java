@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.MainActivity;
 import group14.multiorder.multiorderonline.R;
+import group14.multiorder.multiorderonline.ViewOrderedActivity;
 import group14.multiorder.multiorderonline.obj.Store;
 
 /**
@@ -104,13 +105,12 @@ public class AccountFragment extends BaseFragment {
         Log.d("System", "get type : " + type);
 
         if (type.equals("customer")) {
-            option.add("Notification");
             option.add("Track Order");
             option.add("History Order");
         } else {
-            option.add("Info");
+            option.add("Edit Info");
             option.add("Menu");
-            option.add("Delete Store");
+            option.add("View Ordered");
         }
         final ListView _optionList = getView().findViewById(R.id.account_list);
         final ArrayAdapter<String> _optionAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, option);
@@ -120,9 +120,7 @@ public class AccountFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (_optionAdapter.getItem(position)) {
-                    case "Notification":
-                        Log.d("System", "Notification");
-                        break;
+
                     case "Track Order":
                         Log.d("System", "Track Order");
                         getActivity().getSupportFragmentManager()
@@ -138,7 +136,7 @@ public class AccountFragment extends BaseFragment {
                                 .addToBackStack(null)
                                 .commit();
                         break;
-                    case "Info":
+                    case "Edit Info":
                         Log.d("System", "Edit info");
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
@@ -147,19 +145,16 @@ public class AccountFragment extends BaseFragment {
                                 .commit();
                         break;
                     case "Menu":
-                        Log.d("System", "Add Menu");
+                        Log.d("System", "Menu");
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.main_view, new MenuFragment())
                                 .addToBackStack(null)
                                 .commit();
                         break;
-                    case "Delete Store":
-                        getActivity().getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.main_view, new HistorySuplier())
-                                .addToBackStack(null)
-                                .commit();
+                    case "View Ordered":
+                        Intent intent = new Intent(getActivity() ,ViewOrderedActivity.class);
+                        startActivity(intent);
                         Log.d("System", "Edit Menu");
                         break;
                 }
@@ -169,6 +164,7 @@ public class AccountFragment extends BaseFragment {
 
     }
 
+    String name;
     private void getProfile(){
         final String mUid = mAuth.getCurrentUser().getUid();
         _Email = mAuth.getCurrentUser().getEmail();
@@ -180,6 +176,8 @@ public class AccountFragment extends BaseFragment {
                 for(DataSnapshot dat : dataSnapshot.getChildren()){
                     Store myStore  = dat.getValue(Store.class);
                     if(myStore.getUser_id().equals(mAuth.getCurrentUser().getUid())){
+                        name = myStore.getTitle();
+                        Log.d("System", "title " + name);
                         Picasso.with(getContext())
                                 .load(myStore.getImage())
                                 .fit()

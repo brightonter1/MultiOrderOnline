@@ -28,7 +28,7 @@ import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.OrderDealer;
 import group14.multiorder.multiorderonline.obj.Store;
 
-public class HistorySuplier extends BaseFragment {
+public class HistorySuplier extends Fragment {
     FirebaseAuth _mAuth = FirebaseAuth.getInstance();
     DatabaseReference _daatabaseRef;
     List<OrderDealer> _SuplierOrder = new ArrayList<>();
@@ -44,8 +44,7 @@ public class HistorySuplier extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        toolbar = setToolbar("Ordered History");
-        backBtn();
+
         showOrder();
     }
 
@@ -92,22 +91,4 @@ public class HistorySuplier extends BaseFragment {
         });
     }
 
-    @Override
-    public Toolbar setToolbar(String nPager) {
-        return super.setToolbar(nPager);
-    }
-
-    @Override
-    public void backBtn() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_view,new AccountFragment())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-    }
 }

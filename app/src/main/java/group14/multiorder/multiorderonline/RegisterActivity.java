@@ -64,13 +64,15 @@ public class RegisterActivity extends AppCompatActivity {
                 // This puts the value (true/false) into the variable
                 boolean isChecked = checkedRadioButton.isChecked();
                 // If the radiobutton that has changed in check state is now checked...
-                if (checkedId == 2131296508){
+                if (checkedId == 2131296514){
                     EditText hide = findViewById(R.id.register_name_store);
                     hide.setVisibility(View.VISIBLE);
                 }else{
                     EditText hide = findViewById(R.id.register_name_store);
                     hide.setVisibility(View.INVISIBLE);
                 }
+//                Log.d("System", String.valueOf(checkedId));
+
             }
         });
 
