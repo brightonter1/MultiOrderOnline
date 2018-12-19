@@ -52,6 +52,7 @@ public class FinishOrderFragment extends Fragment {
         _daatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                _SuplierOrder.clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Store store = ds.getValue(Store.class);
                     //Toast.makeText(getActivity(), store.getUser_id()+" " +_mAuth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();

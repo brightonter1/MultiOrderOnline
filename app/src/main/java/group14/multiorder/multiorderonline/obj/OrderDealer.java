@@ -12,6 +12,15 @@ public class OrderDealer implements Parcelable{
     private ArrayList<Menu> menu;
     private String _status = "inprogress";
     private String date;
+    private String cus_uid;
+
+    public String getCus_uid() {
+        return cus_uid;
+    }
+
+    public void setCus_uid(String cus_uid) {
+        this.cus_uid = cus_uid;
+    }
 
     public OrderDealer(Parcel in) {
         Orderid = in.readInt();
@@ -19,6 +28,7 @@ public class OrderDealer implements Parcelable{
         menu = in.createTypedArrayList(Menu.CREATOR);
         _status = in.readString();
         date = in.readString();
+        cus_uid = in.readString();
         total = in.readInt();
         address = in.readString();
     }
@@ -30,6 +40,7 @@ public class OrderDealer implements Parcelable{
         dest.writeTypedList(menu);
         dest.writeString(_status);
         dest.writeString(date);
+        dest.writeString(cus_uid);
         dest.writeInt(total);
         dest.writeString(address);
     }

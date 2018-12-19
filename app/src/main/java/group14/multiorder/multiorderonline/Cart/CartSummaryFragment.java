@@ -165,6 +165,7 @@ public class CartSummaryFragment extends Fragment{
                     menuOrder.add(_order.get(i));
                     od.setMenu(menuOrder);
                     od.setDate(_datenow);
+                    od.setCus_uid(_mAuth.getCurrentUser().getUid());
                     od.setTotal(Integer.parseInt(_order.get(i).getPrice().replace("฿", ""))*Integer.parseInt(_order.get(i).getAmount())+od.getTotal());
                 }else{
                     od.setAddress(addressStr);
@@ -173,6 +174,7 @@ public class CartSummaryFragment extends Fragment{
                     menuOrder.add(_order.get(i));
                     od.setMenu(menuOrder);
                     od.setDate(_datenow);
+                    od.setCus_uid(_mAuth.getCurrentUser().getUid());
                     od.setTotal(Integer.parseInt(_order.get(i).getPrice().replace("฿", ""))*Integer.parseInt(_order.get(i).getAmount())+od.getTotal());
                     _databaseRef.child("shop id :"+ String.valueOf(_order.get(i).getShop_id()))
                             .child("order id :"+coder)
@@ -188,6 +190,7 @@ public class CartSummaryFragment extends Fragment{
                 menuOrder.add(_order.get(i));
                 od.setMenu(menuOrder);
                 od.setDate(_datenow);
+                od.setCus_uid(_mAuth.getCurrentUser().getUid());
                 od.setTotal(Integer.parseInt(_order.get(i).getPrice().replace("฿", ""))*Integer.parseInt(_order.get(i).getAmount())+od.getTotal());
                 _databaseRef.child("shop id :"+ String.valueOf(_order.get(i).getShop_id()))
                         .child("order id :"+coder)
