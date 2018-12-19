@@ -3,10 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="Yellow">#FFFF00</color>
+    <color name="Yellow">#ffff00</color>
     <color name="solidRegis">#336469</color>
     <color name="toolbar">#0A454D</color>
-    <color name="White">#fff</color>
+    <color name="White">#ffffff</color>
     <color name="Grey">#c3c3c3 </color>
     <color name="lightGrey">#f2f2f2 </color>
     <color name="grey1">#e6e6e6 </color>
@@ -31,4 +31,5 @@
     <color name="green1">#33cc33</color>
     <color name="yellow1">#e6e600</color>
     <color name="purple1">#8e2bd4</color>
+    <color name="yellowLogin">#ffae22</color>
 </resources>

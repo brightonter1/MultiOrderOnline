@@ -32,10 +32,14 @@
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
         android:background="@drawable/border_rec"
-        android:drawableLeft="@drawable/ic_account_box"
+        android:drawableLeft="@drawable/ic_account_yellow"
         android:fontFamily="@font/lamoon_regular"
-        android:hint="Email"
+        android:hint=" Email"
         android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="@color/colorAccent"
+        android:textColorHint="@android:color/white"
+        android:textCursorDrawable="@color/colorAccent"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
@@ -53,6 +57,8 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_email" />
@@ -70,6 +76,8 @@
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/White"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_password" />
@@ -78,7 +86,7 @@
     <EditText
         android:id="@+id/register_name_store"
         android:layout_width="251dp"
-        android:layout_height="32dp"
+        android:layout_height="45dp"
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
         android:layout_marginTop="12dp"
@@ -87,47 +95,44 @@
         android:hint="*Name Store"
         android:inputType="text"
         android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/White"
         android:textSize="20dp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_radio" />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/lamoon_regular"
-        android:gravity="center"
-        android:text="@string/question"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/register_repassword"
-        app:layout_constraintTop_toBottomOf="@+id/register_repassword" />
-
     <RadioGroup
         android:id="@+id/select_radio"
-        android:layout_width="234dp"
+        android:layout_width="251dp"
         android:layout_height="100dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/border_rec"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_repassword">
 
         <RadioButton
             android:id="@+id/buyer"
             android:layout_width="200dp"
             android:layout_height="50dp"
+            android:buttonTint="@color/White"
+            android:checked="true"
             android:fontFamily="@font/font_regular"
-            android:text="Customer"
-            android:textSize="15dp" />
+            android:text="CUSTOMER"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/seller"
             android:layout_width="200dp"
             android:layout_height="50dp"
+            android:buttonTint="@color/White"
             android:fontFamily="@font/font_regular"
-            android:text="Supplier"
-            android:textSize="15dp" />
+            android:text="SUPPILER"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/editText3"
@@ -147,13 +152,13 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/borderbold"
         android:fontFamily="@font/lamoon_bold"
         android:gravity="center"
         android:text="Sign up"
-        android:textColor="@android:color/black"
-        android:textSize="30dp"
+        android:textColor="@color/yellowLogin"
+        android:textSize="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_name_store" />
 

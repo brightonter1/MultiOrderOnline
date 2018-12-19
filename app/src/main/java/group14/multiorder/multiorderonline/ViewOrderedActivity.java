@@ -8,13 +8,15 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
+import group14.multiorder.multiorderonline.Account.HistorySuplier;
 import group14.multiorder.multiorderonline.Store.AllFragment;
 import group14.multiorder.multiorderonline.Store.DessertFragment;
 import group14.multiorder.multiorderonline.Store.FastfoodFragment;
 
-public class StatusActivity extends AppCompatActivity {
+public class ViewOrderedActivity extends AppCompatActivity {
 
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -39,7 +41,17 @@ public class StatusActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        backBtn();
 
+    }
+
+    public void backBtn(){
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -52,7 +64,7 @@ public class StatusActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new AllFragment();
+                    return new HistorySuplier();
                 case 1:
                     return new FastfoodFragment();
                 case 2:
