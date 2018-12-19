@@ -1,5 +1,6 @@
 package group14.multiorder.multiorderonline.Cart;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -70,6 +71,7 @@ public class CartSummaryFragment extends Fragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_summary, container, false);
     }
+
 
 
     @Override
