@@ -38,6 +38,7 @@ public class HistorySubAdapter extends RecyclerView.Adapter<HistorySubAdapter.Su
         Menu _currentMenu = _menu.get(i);
         subHisViewHolder._name.setText(_currentMenu.getTitle());
         subHisViewHolder._each.setText(_currentMenu.getAmount());
+        subHisViewHolder._status.setText(_currentMenu.getStatus());
         subHisViewHolder._price.setText(String.valueOf(Integer.parseInt(_currentMenu.getPrice().replace("฿",""))*Integer.parseInt(_currentMenu.getAmount())));
         Picasso.with(_context)
                 .load(_currentMenu.getImage())
@@ -52,7 +53,7 @@ public class HistorySubAdapter extends RecyclerView.Adapter<HistorySubAdapter.Su
     }
 
     public class  SubHisViewHolder extends RecyclerView.ViewHolder{
-        public TextView _name, _each, _price;
+        public TextView _name, _each, _price, _status;
         public ImageView _img;
         public SubHisViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +61,7 @@ public class HistorySubAdapter extends RecyclerView.Adapter<HistorySubAdapter.Su
             _each = itemView.findViewById(R.id.viewdetail_each);
             _price = itemView.findViewById(R.id.history_item_price);
             _img = itemView.findViewById(R.id.history_item_img);
+            _status = itemView.findViewById(R.id.viewdeatail_status);
 
 
         }

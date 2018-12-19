@@ -66,7 +66,10 @@ public class AllOrderFragment  extends Fragment{
                         _SuplierOrder.clear();
                         for(DataSnapshot data: dataSnapshot.getChildren()){
                             OrderDealer ord = data.getValue(OrderDealer.class);
-                            _SuplierOrder.add(ord);
+                            if(ord.get_status().equals("inprogress")){
+                                _SuplierOrder.add(ord);
+                            }
+
                             Log.d("System", String.valueOf(ord.getShop_id())+" " +String.valueOf(ord.getOrderid()));
                         }
                         _hisAdapter = new HistorySuplierAdapter(getActivity(), _SuplierOrder);

@@ -52,7 +52,7 @@ public class FinishOrderFragment extends Fragment {
         _daatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                _SuplierOrder.clear();
+
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Store store = ds.getValue(Store.class);
                     //Toast.makeText(getActivity(), store.getUser_id()+" " +_mAuth.getCurrentUser().getUid(), Toast.LENGTH_SHORT).show();
@@ -65,9 +65,12 @@ public class FinishOrderFragment extends Fragment {
                 _dRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        _SuplierOrder.clear();
                         for(DataSnapshot data: dataSnapshot.getChildren()){
                             OrderDealer ord = data.getValue(OrderDealer.class);
-                            _SuplierOrder.add(ord);
+                            if(ord.get_status().equals("Delivered")|| ord.equals("Cancelled order")){
+                                _SuplierOrder.add(ord);
+                            }
                             Log.d("System", String.valueOf(ord.getShop_id())+" " +String.valueOf(ord.getOrderid()));
                         }
                         _hisAdapter = new HistorySuplierAdapter(getActivity(), _SuplierOrder);
