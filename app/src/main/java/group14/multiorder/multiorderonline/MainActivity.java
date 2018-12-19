@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
 //        bottomNavigation();
         navigationBtn();
 
+
+
     }
 
     public void navigationBtn(){

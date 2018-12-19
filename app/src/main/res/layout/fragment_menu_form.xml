@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_form_delete"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Account.MenuForm">
@@ -16,7 +17,7 @@
         android:id="@+id/menu_form_image"
         android:layout_width="wrap_content"
         android:layout_height="141dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:src="@drawable/image_default"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_bar" />
@@ -27,8 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/font_regular"
         android:ems="10"
+        android:fontFamily="@font/font_regular"
         android:hint="name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +55,8 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="price"
         android:fontFamily="@font/font_regular"
+        android:hint="price"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menu_form_description" />
