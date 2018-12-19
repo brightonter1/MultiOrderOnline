@@ -67,7 +67,7 @@ public class EditMenuFragment extends BaseFragment implements SelectPhotoDialog.
     private int checkImg = 0;
 
     private Menu _menu = new Menu();
-
+    private DatabaseReference myRef;
     DatabaseReference reference;
 
     @Nullable
@@ -109,7 +109,25 @@ public class EditMenuFragment extends BaseFragment implements SelectPhotoDialog.
         saveButton = getView().findViewById(R.id.edit_menu_save_btn);
         postInit();
         selectImageInit();
+        removeOnClick();
+    }
 
+    public void removeOnClick(){
+        myRef = FirebaseDatabase.getInstance().getReference("Menus/"+bundle.getString("shoptitle").toString()+"/"+bundle.get("menutitle").toString());
+//        Log.d("System", "Menus/"+bundle.get("shoptitle").toString()+"/"+bundle.get("menutitle").toString());
+        Button btn = getView().findViewById(R.id.edit_menu_remove);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myRef.removeValue();
+                Toast.makeText(getActivity(), "Remove Complete", Toast.LENGTH_LONG).show();
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view, new MenuFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
 
