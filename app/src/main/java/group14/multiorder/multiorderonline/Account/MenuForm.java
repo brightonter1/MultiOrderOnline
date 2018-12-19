@@ -229,7 +229,7 @@ public class MenuForm extends BaseFragment implements SelectPhotoDialog.OnPhotoS
     private void excecuteUploadTask(){
         bundle = this.getArguments();
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference()
-                .child("Menus/"+_name.getText().toString());
+                .child("Menus/"+_menu.getTitle()+"/"+_name.getText().toString());
 
         UploadTask uploadTask = storageReference.putBytes(mUploadBytes);
         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -260,7 +260,16 @@ public class MenuForm extends BaseFragment implements SelectPhotoDialog.OnPhotoS
                                 .child(bundle.getString("Shoptitle"))
                                 .child(_name.getText().toString())
                                 //.child(postId);
-                                .setValue(_menu);
+                                .setValue(_menu).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                getActivity().getSupportFragmentManager()
+                                        .beginTransaction()
+                                        .replace(R.id.main_view, new MenuFragment())
+                                        .addToBackStack(null)
+                                        .commit();
+                            }
+                        });
                         //resetFields();
                         Log.d(TAG, "OnSuccess: firebase download url"+ UI);
 

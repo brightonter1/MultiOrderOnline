@@ -11,8 +11,8 @@ public class OrderDealer implements Parcelable{
     private int shop_id;
     private ArrayList<Menu> menu;
     private String _status = "inprogress";
-    private String date;
-    private String cus_uid;
+    private String date="";
+    private String cus_uid="";
 
     public String getCus_uid() {
         return cus_uid;
