@@ -74,7 +74,7 @@ public class HistorySuplier extends Fragment {
                             _SuplierOrder.add(ord);
                             Log.d("System", String.valueOf(ord.getShop_id())+" " +String.valueOf(ord.getOrderid()));
                         }
-                        _hisAdapter = new HistorySuplierAdapter(getActivity(), _SuplierOrder);
+                        _hisAdapter = new HistorySuplierAdapter(getActivity(), _SuplierOrder, "");
                         orderList.setAdapter(_hisAdapter);
                     }
 

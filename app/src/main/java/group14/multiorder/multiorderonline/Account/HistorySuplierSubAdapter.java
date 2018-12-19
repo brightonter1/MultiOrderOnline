@@ -37,8 +37,8 @@ public class HistorySuplierSubAdapter extends RecyclerView.Adapter<HistorySuplie
     public void onBindViewHolder(@NonNull HistorySuplierSubAdapter.HistoryViewHolder historyViewHolder, int i) {
         Menu _currentMenu = _menu.get(i);
         historyViewHolder._name.setText(_currentMenu.getTitle());
-        historyViewHolder._price.setText(_currentMenu.getPrice());
-        historyViewHolder._piece.setText(_currentMenu.getAmount());
+        historyViewHolder._price.setText(_currentMenu.getPrice().replace("฿","")+"฿");
+        historyViewHolder._piece.setText("x "+_currentMenu.getAmount());
         Picasso.with(_context)
                 .load(_currentMenu.getImage())
                 .fit()

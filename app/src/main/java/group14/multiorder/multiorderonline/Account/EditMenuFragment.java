@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -148,7 +149,8 @@ public class EditMenuFragment extends BaseFragment implements SelectPhotoDialog.
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: Post image ");
-
+                ProgressBar pg = getView().findViewById(R.id.edit_menu_progress);
+                pg.setVisibility(View.VISIBLE);
                 newMenu.setDescription(_description.getText().toString());
                 newMenu.setPrice(_price.getText().toString());
                 Log.d("System", bundle.getString("menuimage") + bundle.getString("menutitle")
@@ -300,6 +302,8 @@ public class EditMenuFragment extends BaseFragment implements SelectPhotoDialog.
                             @Override
                             public void onSuccess(Void aVoid) {
                                 //Log.d(TAG, "OnSuccess: firebase download url"+ UI);
+                                ProgressBar pg = getView().findViewById(R.id.edit_menu_progress);
+                                pg.setVisibility(View.INVISIBLE);
                                 getActivity().getSupportFragmentManager()
                                         .beginTransaction()
                                         .replace(R.id.main_view, new MenuFragment())

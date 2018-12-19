@@ -70,6 +70,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ImageViewHolde
         imageViewHolder._menuPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(_context, "เพิ่มสินค้าลงตะกร้าแล้ว", Toast.LENGTH_SHORT).show();
                 //Log.d("MenuAdapter", "Menu = "+ imageViewHolder._menuName.getText().toString());
                 Menu me = new Menu();
                 me.setTitle(imageViewHolder._menuName.getText().toString());

@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -293,19 +294,27 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
                 SelectPhotoDialog dialog = new SelectPhotoDialog();
                 dialog.show(getFragmentManager(), getString(R.string.dialog_select_photo));
                 dialog.setTargetFragment(AccountFragment.this, 1);
+        ProgressBar pg = getView().findViewById(R.id.fragment_account_progress);
+        pg.setVisibility(View.VISIBLE);
     }
 
     private void postInit(){
+        ProgressBar pg = getView().findViewById(R.id.fragment_account_progress);
+
         if(mSelectedBitmap != null && mSelectedUri == null){
+            pg.setVisibility(View.VISIBLE);
                         UploadImage(mSelectedBitmap);
                     }
                     else if(mSelectedBitmap == null && mSelectedUri != null){
+            pg.setVisibility(View.VISIBLE);
                         UploadImage(mSelectedUri);
                     }
     }
 
     private void UploadImage(Bitmap bitmap){
         Log.d(TAG, "uploadNewPhoto: uploading a new image bitmap to storage");
+        ProgressBar pg = getView().findViewById(R.id.fragment_account_progress);
+        pg.setVisibility(View.VISIBLE);
         AccountFragment.BackgroundImageResize resize = new AccountFragment.BackgroundImageResize(bitmap);
         //MenuForm.BackgroundImageResize resize = new MenuForm.BackgroundImageResize(bitmap);
         //PostFragment.BackgroundImageResize resize = new PostFragment.BackgroundImageResize(bitmap);
@@ -314,6 +323,8 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
     }
     private void UploadImage(Uri imagePath){
         Log.d(TAG, "uploadNewPhoto: uploading a new image uri to storage");
+        ProgressBar pg = getView().findViewById(R.id.fragment_account_progress);
+        pg.setVisibility(View.VISIBLE);
         AccountFragment.BackgroundImageResize resize = new AccountFragment.BackgroundImageResize(null);
         resize.execute(imagePath);
     }
@@ -336,6 +347,8 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            ProgressBar pg = getView().findViewById(R.id.fragment_account_progress);
+            pg.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -366,6 +379,7 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
     }
 
     private void excecuteUploadTask(){
+
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference()
                 .child("Store/"+myStore.getTitle()+"/"+myStore.getTitle());
 
@@ -386,12 +400,14 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
                         Log.d(TAG, "URI = "+UI);
                         reference = FirebaseDatabase.getInstance().getReference();
                         myStore.setImage(UI);
-                        Toast.makeText(getActivity(), myStore.getTitle(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getActivity(), myStore.getTitle(), Toast.LENGTH_SHORT).show();
                         reference.child("Store")
                                 .child(myStore.getTitle())
                                 .setValue(myStore).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+                                ProgressBar pg = getView().findViewById(R.id.fragment_account_progress);
+                                pg.setVisibility(View.INVISIBLE);
                                 Toast.makeText(getActivity(), "Succesfully update image", Toast.LENGTH_SHORT).show();
                             }
                         });
@@ -419,7 +435,7 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
                 if(currentProgress > (mProgress+15)){
                     mProgress = (100*taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                     Log.d(TAG, "onProgress: upload is "+ mProgress+ "& done");
-                    Toast.makeText(getActivity(), mProgress + "%", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), mProgress + "%", Toast.LENGTH_SHORT).show();
 
                 }
             }

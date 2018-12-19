@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,10 +31,12 @@ import group14.multiorder.multiorderonline.obj.OrderDealer;
 public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierAdapter.SuplierHolder>{
     Context _context;
     List<OrderDealer> _order = new ArrayList<>();
+    String ch="";
 
-    public HistorySuplierAdapter(Context _context, List<OrderDealer> _order) {
+    public HistorySuplierAdapter(Context _context, List<OrderDealer> _order, String ch) {
         this._context = _context;
         this._order = _order;
+        this.ch = ch;
     }
 
     @NonNull
@@ -47,9 +50,13 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
     public void onBindViewHolder(@NonNull final SuplierHolder suplierHolder, int i) {
         OrderDealer _cureentOrder = _order.get(i);
         List menu = _cureentOrder.getMenu();
+        if(this.ch.equals("fin")){
+            suplierHolder._confirm.setVisibility(View.INVISIBLE);
+            suplierHolder._cancle.setVisibility(View.INVISIBLE);
+        }
         suplierHolder._orderId.setText(String.format("#ITEM123%03d", _cureentOrder.getOrderid()));
         suplierHolder._date.setText(_cureentOrder.getDate());
-        suplierHolder._total.setText(String.valueOf(_cureentOrder.getTotal()));
+        suplierHolder._total.setText(String.valueOf(_cureentOrder.getTotal()).replace("฿","")+"฿");
         suplierHolder._status.setText(_cureentOrder.get_status());
         suplierHolder._address.setText(_cureentOrder.getAddress());
         HistorySuplierSubAdapter hisAdapter  = new HistorySuplierSubAdapter(_context, menu);
@@ -63,12 +70,95 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
                 confirm(suplierHolder);
             }
         });
+        suplierHolder._cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancel(suplierHolder);
+            }
+        });
 
     }
     List<OrderCustomer>  _orderCUs = new ArrayList<>();
     ArrayList<Menu> changStatusMenu = new ArrayList<>();
     OrderDealer nowOrder = new OrderDealer();
-    private void confirm(SuplierHolder sup){
+
+    private void cancel(final SuplierHolder sup){
+        sup._progress.setVisibility(View.VISIBLE);
+        DatabaseReference _ref = FirebaseDatabase.getInstance().getReference();
+        int position = sup.getAdapterPosition();
+        nowOrder = _order.get(position);
+        changStatusMenu = new ArrayList<>();
+        ArrayList<Menu> nowMenu = nowOrder.getMenu();
+        for(Menu mm : nowMenu){
+
+                mm.setStatus("Cancelled");
+                nowOrder.set_status("Cancelled");
+
+            changStatusMenu.add(mm);
+        }
+        nowOrder.setMenu(changStatusMenu);
+//        _ref.child("OderDealer")
+//                .child("shop id :"+String.valueOf(nowOrder.getShop_id()))
+//                .child("order id :"+String.valueOf(nowOrder.getOrderid()))
+//                .setValue(nowOrder);
+        _ref.child("OrderCustomer")
+                .child(nowOrder.getCus_uid())
+                //.child("order id :"+String.valueOf(nowOrder.getOrderid()))
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        _orderCUs.clear();
+                        OrderCustomer cusOrder = new OrderCustomer();
+                        ArrayList<Menu> cusMenu = new ArrayList<>();
+                        for(DataSnapshot data: dataSnapshot.getChildren()){
+                            if(data.getValue(OrderCustomer.class).getOrder_id() == nowOrder.getOrderid()){
+                                cusOrder = data.getValue(OrderCustomer.class);
+                            }
+
+                        }
+
+                        for(Menu mm: cusOrder.getMenu()){
+                            Menu eM = new Menu();
+                            eM = mm;
+                            for(Menu cM: changStatusMenu){
+                                if (mm.getTitle().equals(cM.getTitle()) && mm.getShop_id() == cM.getShop_id()){
+                                    eM = cM;
+                                }
+                            }
+                            cusMenu.add(eM);
+                        }
+                        cusOrder.setMenu(cusMenu);
+                        DatabaseReference _dataRef = FirebaseDatabase.getInstance().getReference();
+                        _dataRef.child("OrderCustomer")
+                                .child(nowOrder.getCus_uid())
+                                .child("order id :"+String.valueOf(nowOrder.getOrderid()))
+                                .setValue(cusOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                DatabaseReference _DeRef = FirebaseDatabase.getInstance().getReference();
+                                _DeRef.child("OderDealer").
+                                        child("shop id :"+String.valueOf(nowOrder.getShop_id()))
+                                        .child("order id :"+String.valueOf(nowOrder.getOrderid()))
+                                        .setValue(nowOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        sup._progress.setVisibility(View.INVISIBLE);
+                                    }
+                                });
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+    }
+    private void confirm(final SuplierHolder sup){
+        sup._progress.setVisibility(View.VISIBLE);
         DatabaseReference _ref = FirebaseDatabase.getInstance().getReference();
         int position = sup.getAdapterPosition();
         nowOrder = _order.get(position);
@@ -127,7 +217,12 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
                                 _DeRef.child("OderDealer").
                                 child("shop id :"+String.valueOf(nowOrder.getShop_id()))
                                 .child("order id :"+String.valueOf(nowOrder.getOrderid()))
-                                .setValue(nowOrder);
+                                .setValue(nowOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        sup._progress.setVisibility(View.INVISIBLE);
+                                    }
+                                });
                             }
                         });
 
@@ -140,7 +235,7 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
                 });
 
     }
-    private void cancle(){}
+    //private void cancle(){}
 
     @Override
     public int getItemCount() {
@@ -151,6 +246,7 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
         public TextView _orderId, _date, _total, _status, _address;
         public RecyclerView _itemList;
         public Button _confirm, _cancle;
+        public ProgressBar _progress;
 
         public SuplierHolder(@NonNull View itemView) {
             super(itemView);
@@ -162,6 +258,7 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
             _itemList = itemView.findViewById(R.id.suplier_sub_list);
             _confirm = itemView.findViewById(R.id.suplier_sub_history_confirm);
             _cancle = itemView.findViewById(R.id.suplier_sub_history_cancle);
+            _progress = itemView.findViewById(R.id.suplier_subhis_progress);
         }
     }
 }

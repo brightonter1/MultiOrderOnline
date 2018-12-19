@@ -68,12 +68,12 @@ public class FinishOrderFragment extends Fragment {
                         _SuplierOrder.clear();
                         for(DataSnapshot data: dataSnapshot.getChildren()){
                             OrderDealer ord = data.getValue(OrderDealer.class);
-                            if(ord.get_status().equals("Delivered")|| ord.equals("Cancelled order")){
+                            if(ord.get_status().equals("Delivered")|| ord.get_status().equals("Cancelled")){
                                 _SuplierOrder.add(ord);
                             }
                             Log.d("System", String.valueOf(ord.getShop_id())+" " +String.valueOf(ord.getOrderid()));
                         }
-                        _hisAdapter = new HistorySuplierAdapter(getActivity(), _SuplierOrder);
+                        _hisAdapter = new HistorySuplierAdapter(getActivity(), _SuplierOrder, "fin");
                         orderList.setAdapter(_hisAdapter);
                     }
 

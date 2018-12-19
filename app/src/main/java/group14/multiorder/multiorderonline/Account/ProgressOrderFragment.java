@@ -73,7 +73,7 @@ public class ProgressOrderFragment extends Fragment {
                             }
                             Log.d("System", String.valueOf(ord.getShop_id())+" " +String.valueOf(ord.getOrderid()));
                         }
-                        _hisAdapter = new HistorySuplierAdapter(getActivity(), _SuplierOrder);
+                        _hisAdapter = new HistorySuplierAdapter(getActivity(), _SuplierOrder, "");
                         orderList.setAdapter(_hisAdapter);
                     }
 

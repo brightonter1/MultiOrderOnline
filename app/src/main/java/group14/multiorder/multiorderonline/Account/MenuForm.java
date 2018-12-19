@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -134,6 +135,7 @@ public class MenuForm extends BaseFragment implements SelectPhotoDialog.OnPhotoS
         _addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Log.d(TAG, "getImageBitmap: setting the image to imageview");
                 SelectPhotoDialog dialog = new SelectPhotoDialog();
                 dialog.show(getFragmentManager(), getString(R.string.dialog_select_photo));
@@ -146,6 +148,8 @@ public class MenuForm extends BaseFragment implements SelectPhotoDialog.OnPhotoS
         _saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressBar pg = getView().findViewById(R.id.fragment_menu_form_progress);
+                pg.setVisibility(View.VISIBLE);
                 Log.d(TAG, "onClick: Post image ");
                 if(!_name.getText().toString().isEmpty()
                         &&!_description.getText().toString().isEmpty()
@@ -263,6 +267,8 @@ public class MenuForm extends BaseFragment implements SelectPhotoDialog.OnPhotoS
                                 .setValue(_menu).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+                                ProgressBar pg = getView().findViewById(R.id.fragment_menu_form_progress);
+                                pg.setVisibility(View.INVISIBLE);
                                 getActivity().getSupportFragmentManager()
                                         .beginTransaction()
                                         .replace(R.id.main_view, new MenuFragment())
