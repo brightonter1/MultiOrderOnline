@@ -68,6 +68,7 @@ public class HistorySuplier extends Fragment {
                 _dRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        _SuplierOrder.clear();
                         for(DataSnapshot data: dataSnapshot.getChildren()){
                             OrderDealer ord = data.getValue(OrderDealer.class);
                             _SuplierOrder.add(ord);

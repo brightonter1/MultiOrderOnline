@@ -22,14 +22,6 @@ public class OrderCustomer implements Parcelable {
         total = in.readInt();
     }
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(order_id);
@@ -55,6 +47,14 @@ public class OrderCustomer implements Parcelable {
             return new OrderCustomer[size];
         }
     };
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
     public String getDate() {
         return date;
