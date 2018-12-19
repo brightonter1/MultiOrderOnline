@@ -5,16 +5,16 @@ import android.os.Parcelable;
 import android.util.Log;
 
 public class Store implements Parcelable {
-    private String post_id;
-    private String user_id;
-    private String image;
-    private String title;
-    private String description;
-    private String tag;
+    private String post_id="";
+    private String user_id="";
+    private String image="";
+    private String title="";
+    private String description="";
+    private String tag="";
     private int shop_id;
-    private String openClose;
-    private String address;
-    private String phoneNumber;
+    private String openClose="";
+    private String address="";
+    private String phoneNumber="";
 
 
     protected Store(Parcel in) {

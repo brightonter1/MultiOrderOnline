@@ -5,12 +5,12 @@ import android.os.Parcelable;
 
 public class Menu implements Parcelable {
 
-    private String post_id;
-    private String user_id;
-    private String image;
-    private String title;
-    private String description;
-    private String price;
+    private String post_id="";
+    private String user_id="";
+    private String image="";
+    private String title="";
+    private String description="";
+    private String price="";
     private String amount = "1";
     private int shop_id;
     private String status  = "inprogress";

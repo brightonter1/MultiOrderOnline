@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class OrderCustomer implements Parcelable {
 
     private int order_id;
-    private ArrayList<Menu> menu;
+    private ArrayList<Menu> menu =new ArrayList<>();
     private String status = "inprogress";
-    private String date;
+    private String date="";
     private int total;
 
     public OrderCustomer(Parcel in) {
