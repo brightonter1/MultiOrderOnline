@@ -32,4 +32,5 @@
     <color name="yellow1">#e6e600</color>
     <color name="purple1">#8e2bd4</color>
     <color name="yellowLogin">#ffae22</color>
+    <color name="redDark">#c20000</color>
 </resources>

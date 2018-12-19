@@ -57,12 +57,13 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/font_regular"
             android:text="TOTAL : "
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/suplier_sub_history_confirm"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.74"
@@ -84,10 +85,11 @@
             android:id="@+id/suplier_sub_status"
             android:layout_width="wrap_content"
             android:layout_height="18dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/font_regular"
             android:text="Shipped"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
@@ -100,6 +102,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/font_regular"
             android:text="ORDER DATE"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView12"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -111,6 +114,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/font_regular"
             android:text="ORDER"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,6 +135,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/font_regular"
             android:text="Address :"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -148,6 +153,7 @@
             android:id="@+id/suplier_sub_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
