@@ -13,63 +13,44 @@ public class Menu implements Parcelable {
     private String price;
     private String amount = "1";
     private int shop_id;
+    private String status  = "inprogress";
 
-    public int getShop_id() {
-        return shop_id;
+    public String getStatus() {
+        return status;
     }
 
-    public void setShop_id(int shop_id) {
-        this.shop_id = shop_id;
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private Menu(Parcel in) {
+        post_id = in.readString();
+        user_id = in.readString();
+        image = in.readString();
+        title = in.readString();
+        description = in.readString();
+        price = in.readString();
+        amount = in.readString();
+        shop_id = in.readInt();
+        status = in.readString();
     }
 
     @Override
-    public String toString() {
-        return "Menu{" +
-                "post_id='" + post_id + '\'' +
-                ", user_id='" + user_id + '\'' +
-                ", image='" + image + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", price='" + price + '\'' +
-                ", amount='" + amount + '\'' +
-                '}';
-    }
-
-    public Menu(){}
-
-
-
-    protected Menu(Parcel in) {
-        this.post_id = in.readString();
-        this.user_id = in.readString();
-        this.image = in.readString();
-        this.title = in.readString();
-        this.description = in.readString();
-        this.price = in.readString();
-        this.amount = in.readString();
-    }
-
-    public String getAmount() {
-        return amount;
-    }
-
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(post_id);
+        dest.writeString(user_id);
+        dest.writeString(image);
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeString(price);
+        dest.writeString(amount);
+        dest.writeInt(shop_id);
+        dest.writeString(status);
     }
 
     @Override
     public int describeContents() {
         return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.post_id);
-        dest.writeString(this.user_id);
-        dest.writeString(this.image);
-        dest.writeString(this.title);
-        dest.writeString(this.description);
-        dest.writeString(this.price);
     }
 
     public static final Creator<Menu> CREATOR = new Creator<Menu>() {
@@ -83,6 +64,40 @@ public class Menu implements Parcelable {
             return new Menu[size];
         }
     };
+
+    public int getShop_id() {
+        return shop_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "post_id='" + post_id + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", image='" + image + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", price='" + price + '\'' +
+                ", amount='" + amount + '\'' +
+                ", shop_id=" + shop_id +
+                ", status='" + status + '\'' +
+                '}';
+    }
+
+    public void setShop_id(int shop_id) {
+        this.shop_id = shop_id;
+    }
+
+    public Menu(){}
+
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 
     public String getPost_id() {
         return post_id;
