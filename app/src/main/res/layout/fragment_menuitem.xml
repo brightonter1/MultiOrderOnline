@@ -76,7 +76,7 @@
             android:layout_marginStart="108dp"
             android:layout_marginTop="108dp"
             android:fontFamily="@font/lamoon_regular"
-            android:text="Button"
+            android:text="Add"
             app:layout_constraintStart_toEndOf="@+id/menuitem_img"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>

@@ -31,19 +31,21 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/font_regular"
         android:text="Address :"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/summary_address"
         app:layout_constraintStart_toStartOf="@+id/summary_items" />
 
     <Button
         android:id="@+id/summary_comfirm"
-        android:layout_width="202dp"
+        android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
-        android:background="@color/green1"
+        android:background="@drawable/border_bg_radian"
         android:fontFamily="@font/font_bold"
         android:text="Confirm"
+        android:textColor="@color/yellowLogin"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -25,6 +25,7 @@
         android:layout_height="20dp"
         android:fontFamily="@font/font_regular"
         android:text="TextView"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/sub_des"
         app:layout_constraintTop_toTopOf="@+id/sub_image" />
 
@@ -48,6 +49,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/font_regular"
         android:text="69 THB"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/sub_image"
         app:layout_constraintTop_toBottomOf="@+id/sub_des" />
 

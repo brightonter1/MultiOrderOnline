@@ -26,12 +26,14 @@
 
     <Button
         android:id="@+id/account_logout"
-        android:layout_width="0dp"
+        android:layout_width="298dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/border_bgred_radian"
         android:fontFamily="@font/lamoon_bold"
-        android:background="@color/green1"
         android:text="Logout"
-        android:textSize="20dp"
+        android:textColor="@android:color/white"
+        android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -63,12 +65,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_account_image" />
 
+
     <ImageButton
         android:id="@+id/account_btn_image"
         android:layout_width="43dp"
         android:layout_height="41dp"
-        android:layout_marginTop="152dp"
-        android:layout_marginEnd="92dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="88dp"
+        android:background="@drawable/borderbold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fragment_account_image"
         app:srcCompat="@drawable/ic_edit" />
