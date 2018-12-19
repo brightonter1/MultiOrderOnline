@@ -84,9 +84,11 @@ public class MenuFragment extends BaseFragment {
                 myRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        menuArrayList.clear();
                         for (DataSnapshot menu : dataSnapshot.getChildren()){
                             Menu temp = menu.getValue(Menu.class);
                             menuArrayList.add(temp);
+
                         }
                         editList.setAdapter(nMenuAdapter);
                         editList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -135,10 +137,14 @@ public class MenuFragment extends BaseFragment {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Bundle bundleToAdd = new Bundle();
+                bundleToAdd.putInt("addshopid", myStore.getShop_id());
+                bundleToAdd.putString("Shoptitle", myStore.getTitle());
+                MenuForm menuForm = new MenuForm();
+                menuForm.setArguments(bundleToAdd);
                 getActivity().getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.main_view, new MenuForm())
+                        .replace(R.id.main_view, menuForm)
                         .addToBackStack(null)
                         .commit();
             }

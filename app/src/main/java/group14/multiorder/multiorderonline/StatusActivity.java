@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import group14.multiorder.multiorderonline.Account.AllOrderFragment;
+import group14.multiorder.multiorderonline.Account.FinishOrderFragment;
+import group14.multiorder.multiorderonline.Account.ProgressOrderFragment;
 import group14.multiorder.multiorderonline.Store.AllFragment;
 import group14.multiorder.multiorderonline.Store.DessertFragment;
 import group14.multiorder.multiorderonline.Store.FastfoodFragment;
@@ -52,11 +55,11 @@ public class StatusActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new AllFragment();
+                    return new AllOrderFragment();
                 case 1:
-                    return new FastfoodFragment();
+                    return new ProgressOrderFragment();
                 case 2:
-                    return new DessertFragment();
+                    return new FinishOrderFragment();
             }
             return null;
         }

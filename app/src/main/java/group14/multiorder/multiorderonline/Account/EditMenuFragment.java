@@ -268,17 +268,23 @@ public class EditMenuFragment extends Fragment implements SelectPhotoDialog.OnPh
                         //_menu.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
                         reference = FirebaseDatabase.getInstance().getReference();
                         reference.child("Menus")
+                                .child(bundle.getString("shoptitle").toString())
                                 .child(newMenu.getTitle())
                                 //.child(_name.getText().toString())
                                 //.child(postId);
-                                .setValue(newMenu);
+                                .setValue(newMenu).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                //Log.d(TAG, "OnSuccess: firebase download url"+ UI);
+                                getActivity().getSupportFragmentManager()
+                                        .beginTransaction()
+                                        .replace(R.id.main_view, new MenuFragment())
+                                        .addToBackStack(null)
+                                        .commit();
+                            }
+                        });
                         //resetFields();
-                        Log.d(TAG, "OnSuccess: firebase download url"+ UI);
-                        getActivity().getSupportFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.main_view, new MenuFragment())
-                                .addToBackStack(null)
-                                .commit();
+
 
 
                     }

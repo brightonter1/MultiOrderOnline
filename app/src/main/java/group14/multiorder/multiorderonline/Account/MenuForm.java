@@ -224,7 +224,10 @@ public class MenuForm extends BaseFragment implements SelectPhotoDialog.OnPhotoS
 
 
     }
+
+    Bundle bundle;
     private void excecuteUploadTask(){
+        bundle = this.getArguments();
         final StorageReference storageReference = FirebaseStorage.getInstance().getReference()
                 .child("Menus/"+_name.getText().toString());
 
@@ -248,12 +251,13 @@ public class MenuForm extends BaseFragment implements SelectPhotoDialog.OnPhotoS
                         _menu.setDescription(_description.getText().toString());
                         //post.setPost_id(postId);
 
+                        _menu.setShop_id(bundle.getInt("addshopid"));
                         _menu.setPrice(_price.getText().toString());
                         _menu.setTitle(_name.getText().toString());
                         _menu.setUser_id(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                         reference.child("Menus")
-                                .child("AMOR")
+                                .child(bundle.getString("Shoptitle"))
                                 .child(_name.getText().toString())
                                 //.child(postId);
                                 .setValue(_menu);
