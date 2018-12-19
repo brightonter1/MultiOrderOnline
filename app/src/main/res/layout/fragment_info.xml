@@ -46,6 +46,7 @@
         android:layout_marginTop="16dp"
         android:text="TextView"
         android:textSize="20dp"
+        android:fontFamily="@font/font_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/info_open-close"

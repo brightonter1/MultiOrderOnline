@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,16 +21,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.History.HistoryAdapter;
 import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.obj.OrderCustomer;
 
-public class TrackOrderFragment extends Fragment{
+public class TrackOrderFragment extends BaseFragment {
     FirebaseAuth _mAuth = FirebaseAuth.getInstance();
     DatabaseReference _daatabaseRef;
     List<OrderCustomer> _CustomerOrder = new ArrayList<>();
     HistoryAdapter _hisAdapter;
-
+    Toolbar toolbar;
     public TrackOrderFragment() {
         // Required empty public constructor
     }
@@ -45,6 +47,8 @@ public class TrackOrderFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        toolbar = setToolbar("Track Order");
+        backBtn();
         ShowHis();
     }
 
@@ -75,5 +79,24 @@ public class TrackOrderFragment extends Fragment{
             }
         });
 
+    }
+
+    @Override
+    public Toolbar setToolbar(String nPager) {
+        return super.setToolbar(nPager);
+    }
+
+    @Override
+    public void backBtn() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view, new AccountFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 }

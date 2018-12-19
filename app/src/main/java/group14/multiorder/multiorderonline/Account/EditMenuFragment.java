@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,12 +40,13 @@ import com.squareup.picasso.Picasso;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import group14.multiorder.multiorderonline.BaseFragment;
 import group14.multiorder.multiorderonline.R;
 import group14.multiorder.multiorderonline.SelectPhotoDialog;
 import group14.multiorder.multiorderonline.obj.Menu;
 import group14.multiorder.multiorderonline.util.UniversalImageLoader;
 
-public class EditMenuFragment extends Fragment implements SelectPhotoDialog.OnPhotoSelectedListener{
+public class EditMenuFragment extends BaseFragment implements SelectPhotoDialog.OnPhotoSelectedListener{
     public static final String TAG = "EditMenuFragment";
     private DatabaseReference _dataRef;
     TextView _title;
@@ -76,6 +78,8 @@ public class EditMenuFragment extends Fragment implements SelectPhotoDialog.OnPh
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        toolbar = setToolbar("Edit Menu");
+        backBtn();
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(getActivity()));
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         newMenu = new Menu();
@@ -198,6 +202,26 @@ public class EditMenuFragment extends Fragment implements SelectPhotoDialog.OnPh
         bitmap.compress(Bitmap.CompressFormat.JPEG, quality, stream);
         return stream.toByteArray();
     }
+
+    @Override
+    public void backBtn() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_view, new MenuFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+    }
+
+    @Override
+    public Toolbar setToolbar(String nPager) {
+        return super.setToolbar(nPager);
+    }
+
     public class BackgroundImageResize extends AsyncTask<Uri, Integer, byte[]>{
         Bitmap _bitmap;
 
