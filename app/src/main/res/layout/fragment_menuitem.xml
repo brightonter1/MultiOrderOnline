@@ -75,8 +75,12 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="108dp"
             android:layout_marginTop="108dp"
+            android:background="@drawable/border_bg_yellow_radian"
             android:fontFamily="@font/lamoon_regular"
             android:text="Add"
+            android:textColor="@android:color/white"
+            android:textSize="22dp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/menuitem_img"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
