@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton radioButton;
     private DatabaseReference myRef;
+    private String USER_ID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,10 +118,11 @@ public class RegisterActivity extends AppCompatActivity {
                         sendVerifiedEmail(authResult.getUser());
                         Log.d("System", "[Register] Register Complete");
                         Toast.makeText(context, "Register Complete!!", Toast.LENGTH_SHORT).show();
-                        createDBforUser(mAuth.getCurrentUser().getUid());
-                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
+                        USER_ID = mAuth.getCurrentUser().getUid();
+                        createDBforUser(USER_ID);
+//                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+//                        startActivity(intent);
+//                        finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -238,18 +240,26 @@ public class RegisterActivity extends AppCompatActivity {
 
                         Toast.makeText(context, "Please fill name store ", Toast.LENGTH_LONG).show();
                         Store newStoreInfo = new Store();
-                        newStoreInfo.setAddress("");
-                        newStoreInfo.setOpenClose("");
-                        newStoreInfo.setDescription("");
-                        newStoreInfo.setPhoneNumber("");
-                        newStoreInfo.setTag("");
+                        newStoreInfo.setAddress(" ");
+                        newStoreInfo.setOpenClose(" ");
+                        newStoreInfo.setDescription(" ");
+                        newStoreInfo.setPhoneNumber(" ");
+                        newStoreInfo.setTag(" ");
                         newStoreInfo.setTitle(Sname);
                         newStoreInfo.setImage("none");
-                        newStoreInfo.setUser_id("");
-                        newStoreInfo.setPost_id("");
+                        newStoreInfo.setUser_id(USER_ID);
+                        newStoreInfo.setPost_id(" ");
                         newStoreInfo.setShop_id(i);
-                        myRef.child(newStoreInfo.getTitle()).setValue(newStoreInfo);
-                    mAuth.signOut();
+                        myRef.child(newStoreInfo.getTitle()).setValue(newStoreInfo).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+
+//                    mAuth.signOut();
                 }
 
                 @Override

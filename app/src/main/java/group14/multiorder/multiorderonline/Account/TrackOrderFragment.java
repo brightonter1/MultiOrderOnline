@@ -62,6 +62,7 @@ public class TrackOrderFragment extends BaseFragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot orderhis: dataSnapshot.getChildren()){
+                    _CustomerOrder.clear();
                     OrderCustomer ordercus = orderhis.getValue(OrderCustomer.class);
                     if(!ordercus.getStatus().equals("shipped")){
                         _CustomerOrder.add(ordercus);

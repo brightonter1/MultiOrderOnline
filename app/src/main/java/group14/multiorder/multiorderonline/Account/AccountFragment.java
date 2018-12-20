@@ -193,6 +193,7 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
     String name;
     ImageView _img;
     private void getProfile(){
+        mAuth = FirebaseAuth.getInstance();
         _penImg = getView().findViewById(R.id.account_btn_image);
         //_penImg.setVisibility(View.INVISIBLE);
         _penImg.setOnClickListener(new View.OnClickListener() {
@@ -213,7 +214,8 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
                     if(dat.getValue(Store.class).getUser_id().equals(mAuth.getCurrentUser().getUid())){
                         myStore  = dat.getValue(Store.class);
                         name = myStore.getTitle();
-                        Log.d("System", "title " + name);
+                        Log.d("System", "title " + name + "  " +myStore.getImage());
+                        Log.d("System", "AccountFragment : image" + myStore.getImage() + " user " + mAuth.getCurrentUser().getUid());
                         Picasso.with(getContext())
                                 .load(myStore.getImage())
                                 .fit()
@@ -401,16 +403,19 @@ public class AccountFragment extends BaseFragment implements SelectPhotoDialog.O
                         reference = FirebaseDatabase.getInstance().getReference();
                         myStore.setImage(UI);
                         //Toast.makeText(getActivity(), myStore.getTitle(), Toast.LENGTH_SHORT).show();
-                        reference.child("Store")
-                                .child(myStore.getTitle())
-                                .setValue(myStore).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                ProgressBar pg = getView().findViewById(R.id.fragment_account_progress);
-                                pg.setVisibility(View.INVISIBLE);
-                                Toast.makeText(getActivity(), "Succesfully update image", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                        if(!myStore.getTitle().equals("")){
+                            reference.child("Store")
+                                    .child(myStore.getTitle())
+                                    .setValue(myStore).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    ProgressBar pg = getView().findViewById(R.id.fragment_account_progress);
+                                    pg.setVisibility(View.INVISIBLE);
+                                    Toast.makeText(getActivity(), "Succesfully update image", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
                         //resetFields();
                         Log.d(TAG, "OnSuccess: firebase download url"+ UI);
 

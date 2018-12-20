@@ -89,7 +89,7 @@
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/border_rec"
         android:fontFamily="@font/lamoon_regular"
         android:hint="*Name Store"
@@ -130,7 +130,7 @@
             android:layout_height="50dp"
             android:buttonTint="@color/White"
             android:fontFamily="@font/font_regular"
-            android:text="SUPPILER"
+            android:text="SUPPLIER"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
 

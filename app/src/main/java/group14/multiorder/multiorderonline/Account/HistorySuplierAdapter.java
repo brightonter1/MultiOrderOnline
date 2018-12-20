@@ -116,37 +116,40 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
                             }
 
                         }
-
+                        int checklp = 0;
                         for(Menu mm: cusOrder.getMenu()){
                             Menu eM = new Menu();
                             eM = mm;
                             for(Menu cM: changStatusMenu){
-                                if (mm.getTitle().equals(cM.getTitle()) && mm.getShop_id() == cM.getShop_id()){
+                                if (mm.getTitle().equals(cM.getTitle()) && mm.getShop_id() == cM.getShop_id() && !mm.getStatus().equals(cM.getStatus())){
                                     eM = cM;
+                                    checklp = 1;
                                 }
                             }
                             cusMenu.add(eM);
-                        }
-                        cusOrder.setMenu(cusMenu);
-                        DatabaseReference _dataRef = FirebaseDatabase.getInstance().getReference();
-                        _dataRef.child("OrderCustomer")
-                                .child(nowOrder.getCus_uid())
-                                .child("order id :"+String.valueOf(nowOrder.getOrderid()))
-                                .setValue(cusOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                DatabaseReference _DeRef = FirebaseDatabase.getInstance().getReference();
-                                _DeRef.child("OderDealer").
-                                        child("shop id :"+String.valueOf(nowOrder.getShop_id()))
-                                        .child("order id :"+String.valueOf(nowOrder.getOrderid()))
-                                        .setValue(nowOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        sup._progress.setVisibility(View.INVISIBLE);
-                                    }
-                                });
-                            }
-                        });
+                        }//if(checklp == 1){
+                            cusOrder.setMenu(cusMenu);
+                            DatabaseReference _dataRef = FirebaseDatabase.getInstance().getReference();
+                            _dataRef.child("OrderCustomer")
+                                    .child(nowOrder.getCus_uid())
+                                    .child("order id :"+String.valueOf(nowOrder.getOrderid()))
+                                    .setValue(cusOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    DatabaseReference _DeRef = FirebaseDatabase.getInstance().getReference();
+                                    _DeRef.child("OderDealer").
+                                            child("shop id :"+String.valueOf(nowOrder.getShop_id()))
+                                            .child("order id :"+String.valueOf(nowOrder.getOrderid()))
+                                            .setValue(nowOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            sup._progress.setVisibility(View.INVISIBLE);
+                                        }
+                                    });
+                                }
+                            });
+                        //}
+
 
                     }
 
@@ -155,6 +158,7 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
 
                     }
                 });
+
 
     }
     private void confirm(final SuplierHolder sup){
@@ -171,7 +175,7 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
             }else  if(mm.getStatus().equals("shipping now")){
                 mm.setStatus("Delivered");
                 nowOrder.set_status("Delivered");
-            }
+            }else{}
             changStatusMenu.add(mm);
         }
         nowOrder.setMenu(changStatusMenu);
@@ -194,37 +198,40 @@ public class HistorySuplierAdapter  extends RecyclerView.Adapter<HistorySuplierA
                             }
 
                         }
-
+                        int checklp = 0;
                         for(Menu mm: cusOrder.getMenu()){
                             Menu eM = new Menu();
                             eM = mm;
                             for(Menu cM: changStatusMenu){
-                                if (mm.getTitle().equals(cM.getTitle()) && mm.getShop_id() == cM.getShop_id()){
+                                if (mm.getTitle().equals(cM.getTitle()) && mm.getShop_id() == cM.getShop_id() && !mm.getStatus().equals("Delivered")&& !mm.getStatus().equals("Cancelled") ){
                                     eM = cM;
+                                    checklp = 1;
                                 }
                             }
                             cusMenu.add(eM);
+                        }if(checklp == 1){
+                            cusOrder.setMenu(cusMenu);
+                            DatabaseReference _dataRef = FirebaseDatabase.getInstance().getReference();
+                            _dataRef.child("OrderCustomer")
+                                    .child(nowOrder.getCus_uid())
+                                    .child("order id :"+String.valueOf(nowOrder.getOrderid()))
+                                    .setValue(cusOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    DatabaseReference _DeRef = FirebaseDatabase.getInstance().getReference();
+                                    _DeRef.child("OderDealer").
+                                            child("shop id :"+String.valueOf(nowOrder.getShop_id()))
+                                            .child("order id :"+String.valueOf(nowOrder.getOrderid()))
+                                            .setValue(nowOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            sup._progress.setVisibility(View.INVISIBLE);
+                                        }
+                                    });
+                                }
+                            });
                         }
-                        cusOrder.setMenu(cusMenu);
-                        DatabaseReference _dataRef = FirebaseDatabase.getInstance().getReference();
-                        _dataRef.child("OrderCustomer")
-                                .child(nowOrder.getCus_uid())
-                                .child("order id :"+String.valueOf(nowOrder.getOrderid()))
-                                .setValue(cusOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                DatabaseReference _DeRef = FirebaseDatabase.getInstance().getReference();
-                                _DeRef.child("OderDealer").
-                                child("shop id :"+String.valueOf(nowOrder.getShop_id()))
-                                .child("order id :"+String.valueOf(nowOrder.getOrderid()))
-                                .setValue(nowOrder).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        sup._progress.setVisibility(View.INVISIBLE);
-                                    }
-                                });
-                            }
-                        });
+
 
                     }
 
